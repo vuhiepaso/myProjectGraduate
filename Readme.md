@@ -12,4 +12,8 @@ cd CalanthaFashion
 npm install
 ```
 
+```
+npm start
+```
+
 scan the qr code at http://localhost:19002/
