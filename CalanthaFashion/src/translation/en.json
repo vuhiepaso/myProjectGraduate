@@ -1,0 +1,123 @@
+{
+  "Dashboard": {
+    "title": "Dashboard",
+    "categories": "Categories",
+    "hot-deal": "Hot Deals",
+    "search": "Search keyword"
+  },
+  "Category": {
+    "title": "Category"
+  },
+  "Contact": {
+    "title": "Contact store"
+  },
+  "Add-to-cart": "Add to cart",
+  "Added-to-cart": "Added to cart",
+  "Login": "Login",
+  "Favorite": "Favorite",
+  "Search": {
+    "search-product": "Search keyword",
+    "history": "History",
+    "suggestions": "Suggestions"
+  },
+  "Personal": {
+    "title": "Personal",
+    "PersonalInformation": "Personal information",
+    "DeliveryAddress": "Delivery address",
+    "StoreContact": "Store contact",
+    "Language": "Language",
+    "My-order": "My order",
+    "Purchase-history": "Purchase history",
+    "Logout": "Logout",
+    "Order": "Order",
+    "Pack": "Pack",
+    "Ship": "Ship",
+    "Review": "Review"
+  },
+  "History": {
+    "title": "Purchase history"
+  },
+  "Product": {
+    "Remain": "Remain",
+    "Quantity": "Quantity",
+    "Add-to-cart": "Add to cart",
+    "more": "more",
+    "hide": "hide"
+  },
+  "Welcome": {
+    "title": "Welcome",
+    "caption": "To the world’s no.1 shopping app for Android and IOS. We deliver everything on time.",
+    "login-caption": "Already have an account?",
+    "login-button": "Login",
+    "google-button": "Connect with Google",
+    "register-button": "Create an account"
+  },
+  "Password Recovery": "Password Recovery",
+  "ChangeLanguage": {
+    "title": "Change Language",
+    "message": "Please choose your langue"
+  },
+  "GetStarted": {
+    "Get-Started": "Get started",
+    "Skip": "Skip",
+    "Next": "Next"
+  },
+  "Logins": {
+    "Sign": "Sign in to your account.",
+    "Remember-me": "Remember me",
+    "Forgot-Password": "Forgot Password?",
+    "Don’t-have-an-account": "Don’t have an account?",
+    "Sign-up": "Sign up",
+    "placeholder": {
+      "PhoneNumber": "Phone number",
+      "Password": "Password"
+    },
+    "Alert": {
+      "title": "Login unsuccessful",
+      "message": "Wrong phone number or password"
+    }
+  },
+  "Cart": {
+    "title": "Shopping cart",
+    "Checkout": "Checkout",
+    "Remain": "Remain",
+    "Total": "Total"
+  },
+  "Checkout": {
+    "title": "Checkout"
+  },
+  "ForgotPassword": {
+    "title": "Forgot password",
+    "instruct": "Enter your phone and we will send you instructions on how to reset it",
+    "Button": "Verify",
+    "PhoneNumber": "Phone Number"
+  },
+  "EnterPassword": {
+    "title": "Forgot password",
+    "instruct": "Enter your new password and make sure it strong enough",
+    "Button": "Verify",
+    "Password": "Password",
+    "confirmPassword": "Confirm password"
+  },
+  "Register": {
+    "title": "Register",
+    "Create-account": "Create account",
+    "Quickly-create-account": "Quickly create account",
+    "Placeholder": {
+      "Email": "Email",
+      "Phone": "Phone number",
+      "Password": "Password",
+      "ConfirmPassword": "Confirm password"
+    }
+  },
+  "Login with Facebook": "Login with Facebook",
+  "Login with Google": "Login with Google",
+  "Language": {
+    "title": "Language",
+    "submit": "Submit"
+  },
+  "languages": {
+    "vi": "Vietnamese",
+    "en": "English"
+  }
+}
