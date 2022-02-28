@@ -1,0 +1,129 @@
+{
+   "GetStarted": {
+    "get-started": "Bắt đầu",
+    "skip": "Đóng",
+    "next": "Tiếp"
+  },
+  "Welcome": {
+    "name":"Xin chào",
+    "title": "Xin chào",
+    "caption": "Đến ứng dụng mua sắm số 1 thế giới dành cho Android và IOS. Chúng tôi cung cấp mọi thứ mọi thời gian.",
+    "link-caption": "Đã có tài khoản?",
+    "link-button": "Đăng nhập",
+    "google-button": "Kết nối với Google",
+    "register-button": "Tạo tài khoản"
+  },
+  "Register": {
+    "name": "Đăng ký",
+    "title": "Tạo tài khoản",
+    "caption": "Tạo tài khoản nhanh",
+    "link-caption":"Đã có tài khoản?",
+    "link-button": "Đăng nhập",
+    "button":"Tạo tài khoản",
+    "placeholder": {
+      "email": "Email",
+      "phone": "Số điện thoại",
+      "password": "Mật khẩu",
+      "confirm-password": "Nhập lại mật khẩu"
+    }
+  },
+  "Dashboard": {
+    "title": "Trang chủ",
+    "categories": "Phân loại",
+    "hot-deal": "Ưu đãi lớn",
+    "search": "Tìm kiếm"
+  },
+  "Category": {
+    "title": "Phân loại"
+  },
+  "Contact": {
+    "title": "Liên hệ cửa hàng"
+  },
+  "Add-to-cart": "Thêm vào giỏ",
+  "Added-to-cart": "Đã thêm vào giỏ",
+  "Login": "Đăng nhập",
+  "Favorite": "Yêu thích",
+  "Search": {
+    "search-product": "Từ tìm kiếm",
+    "history": "Lịch sử",
+    "suggestions": "Gợi ý"
+  },
+  "Personal": {
+    "title": "Cá nhân",
+    "PersonalInformation": "Thông tin cá nhân",
+    "DeliveryAddress": "Địa chỉ giao hàng",
+    "StoreContact": "Liên hệ cửa hàng",
+    "Language": "Ngôn ngữ",
+    "My-order": "Đơn hàng của tôi",
+    "Purchase-history": "Lịch sử mua hàng",
+    "Logout": "Đăng xuất",
+    "Order": "Đặt hàng",
+    "Pack": "Đóng gói",
+    "Ship": "Vận chuyển",
+    "Review": "Đánh giá"
+  },
+  "History": {
+    "title": "Lịch sử mua hàng"
+  },
+  "Product": {
+    "Remain": "Còn lại",
+    "Quantity": "Số lượng",
+    "Add-to-cart": "Thêm vào giỏ",
+    "more": "hiển thị thêm",
+    "hide": "ẩn"
+  },
+  
+  "Password Recovery": "Quên mật khẩu",
+  "ChangeLanguage": {
+    "title": "Thay đổi ngôn ngữ",
+    "message": "Vui lòng chọn ngôn ngữ bạn muốn"
+  },
+ 
+  "Logins": {
+    "Sign": "Đăng nhập vào tài khoản của bạn.",
+    "Remember-me": "Nhớ mật khẩu",
+    "Forgot-Password": "Quên mật khẩu?",
+    "Don’t-have-an-account": "Không có tài khoản?",
+    "Sign-up": "Đăng ký",
+    "placeholder": {
+      "PhoneNumber": "Số điện thoại",
+      "Password": "Mật khẩu"
+    },
+    "Alert": {
+      "title": "Đăng nhập không thành công",
+      "message": "Số điện thoại hoặc mật khẩu sai"
+    }
+  },
+  "Cart": {
+    "title": "Giỏ hàng",
+    "Checkout": "Thanh toán",
+    "Remain": "Còn lại",
+    "Total": "Tổng"
+  },
+  "Checkout": {
+    "title": "Thanh toán"
+  },
+  "ForgotPassword": {
+    "title": "Quên mật khẩu",
+    "instruct": "Nhập số điện thoại của bạn và chúng tôi sẽ gửi cho bạn hướng dẫn về cách đặt lại điện thoại",
+    "Button": "Xác nhận",
+    "PhoneNumber": "Số điện thoại"
+  },
+  "EnterPassword": {
+    "title": "Quên mật khẩu",
+    "instruct": "Nhập mật khẩu mới của bạn và đảm bảo mật khẩu đủ mạnh",
+    "Button": "Xác nhận",
+    "Password": "Mật khẩu",
+    "confirmPassword": "Xác nhận mật khẩu"
+  },
+  "Login with Facebook": "Đăng nhập với Facebook",
+  "Login with Google": "Đăng nhập với Google",
+  "Language": {
+    "title": "Ngôn ngữ",
+    "submit": "Xác nhận"
+  },
+  "languages": {
+    "vi": "Việt Nam",
+    "en": "Tiếng Anh"
+  }
+}
