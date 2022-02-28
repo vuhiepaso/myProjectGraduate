@@ -2,6 +2,7 @@ import React from 'react'
 import {TouchableOpacity, View, Text} from 'react-native'
 
 import styles from '../../../assets/styles/pages/GetStartedStyles'
+import {DefaultButton} from '../../../component/view'
 
 function Adapter(props) {
   const {images, position, onSwitch, buttonName, activeColor, inActiveColor} = props
@@ -21,9 +22,7 @@ function Adapter(props) {
           />
         ))}
       </View>
-      <TouchableOpacity style={styles.switchButton} onPress={onSwitch}>
-        <Text style={styles.textClick}>{buttonName}</Text>
-      </TouchableOpacity>
+      <DefaultButton buttonName={buttonName} onClick={onSwitch} />
     </View>
   )
 }

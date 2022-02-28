@@ -71,7 +71,7 @@ function RegisterForm({onRegister}) {
       />
       <DefaultButton
         buttonName="Register.button"
-        action={() =>
+        onClick={() =>
           onRegister({
             email,
             phone,

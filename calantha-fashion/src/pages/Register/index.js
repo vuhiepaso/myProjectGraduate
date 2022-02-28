@@ -78,37 +78,3 @@ const mapStateToProps = (state) => ({
 })
 
 export default connect(mapStateToProps)(Register)
-
-// useEffect(() => {
-//    setEmail(data.email)
-// }, [])
-
-// const register = () => {
-//   // const { errors, isValid } = validateRegister({
-//   //   email,
-//   //   phone,
-//   //   password,
-//   //   confirmPassword,
-//   // })
-//   // if (isValid) {
-//   mutateAsync({ email, phone, password, confirmPassword })
-//     .then((res) => {
-//       const data = res.data
-//       if (data.message === 'success') {
-//         navigation.navigate('Login')
-//       } else if (data.error === 'phone or email existed') {
-//         Alert.alert('phone number already exists or phone number already exists')
-//       } else {
-//         Alert.alert(' ' + data.error)
-//       }
-//     })
-//     .catch((err) => {
-//       Alert.alert('' + err)
-//     })
-//   // } else {
-//   //   setEmailText(errors.email)
-//   //   setPhoneText(errors.phone)
-//   //   setPasswordText(errors.password)
-//   //   setConfirmPasswordText(errors.confirmPassword)
-//   // }
-// }
