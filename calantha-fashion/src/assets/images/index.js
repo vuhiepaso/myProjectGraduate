@@ -11,6 +11,10 @@ export const welcomeBackground =
   'https://res.cloudinary.com/cde/image/upload/v1637285754/do-an/model53_a0t3zs.jpg'
 export const registerBackground =
   'https://res.cloudinary.com/cde/image/upload/v1637285795/do-an/model44_dc1otk.jpg'
+export const PasswordRecoveryBackground =
+  'https://res.cloudinary.com/cde/image/upload/v1637285745/do-an/model67_glrej2.jpg'
+export const LoginBackground =
+  'https://res.cloudinary.com/cde/image/upload/v1637285776/do-an/model151_z9untm.jpg'
 
 // icons
 export const googleIcon =

@@ -1,99 +1,62 @@
-// color
-const primaryColor = '#027235'
-const backgroundColor = '#F4F7F9'
-const errorColor = '#FE5758' // RedColor
-const redColor = '#E4455B' // DeepRedColor
-const whiteColor = '#FFFFFF'
-const greyColor = '#444444'
+export const PrimaryColor = '#027235'
+export const BackgroundColor = '#F4F7F9'
+export const WhiteColor = '#FFFFFF'
+export const RedColor = '#FE5758'
+export const DeepRedColor = '#E4455B'
 
-// text color
-const primaryTextColor = '#001E0D'
-const secondaryTextColor = '#6B716E'
-const blueTextColor = '#548DD0'
-const greyTextColor = '#626865'
-const lightGreyTextColor = '#EEF0F5'
-const disableTextColor = '#ABAEAC'
+export const PrimaryTextColor = '#001E0D'
+export const SecondaryTextColor = '#6B716E'
+export const BlueTextColor = '#548DD0'
+export const GreyTextColor = '#626865'
+export const LightGreyTextColor = '#EEF0F5'
+export const DisableTextColor = '#ABAEAC'
 
-// text size
-const tinyTextSize = 12
-const primaryTextSize = 14
-const largeTextSize = 20
-const buttonTextSize = 16
-const titleTextSize = 24
+export const TinyTextSize = 12
+export const PrimaryTextSize = 14
+export const LargeTextSize = 20
+export const ButtonTextSize = 16
+export const TitleTextSize = 24
 
-// text bold
-const textBold = '500'
+export const TextBold = '500'
+export const MaxWidth = 400
+export const ButtonHeight = 45
+export const TinyRadius = 10
+export const NormalRadius = 20
+export const LargeRadius = 50
 
-// screen width
-const maxWidth = 400
-
-// button size
-const buttonHeight = 45
-
-// border radius
-const tinyRadius = 10
-const normalRadius = 20
-const largeRadius = 50
-
-// customize switch button
-const SwitchColor = {
-  backgroundColor: disableTextColor,
-  backgroundActive: blueTextColor,
-  backgroundInactive: backgroundColor,
-  circleActiveColor: whiteColor,
-  circleInActiveColor: disableTextColor,
-  backgroundColorBorder: greyTextColor,
+export const SwitchColor = {
+  backgroundColor: DisableTextColor,
+  backgroundActive: BlueTextColor,
+  backgroundInactive: BackgroundColor,
+  circleActiveColor: WhiteColor,
+  circleInActiveColor: DisableTextColor,
+  backgroundColorBorder: GreyTextColor,
 }
 
-// customize ui
-// const container = {
-//   flex: 1,
-//   justifyContent: 'center',
-//   alignItems: 'center',
-//   backgroundColor: whiteColor,
-// }
-// const title = {
-//   fontSize: titleTextSize,
-//   fontWeight: textBold,
-//   color: primaryTextColor,
-// }
-// const caption = {
-//   fontSize: primaryTextSize,
-//   color: secondaryTextColor,
-// }
-// const buttonText = {
-//   fontSize: buttonTextSize,
-//   fontWeight: textBold,
-// }
-// const button = {
-//   height: buttonHeight,
-//   justifyContent: 'center',
-//   alignItems: 'center',
-// }
-
-export {
-  primaryColor,
-  backgroundColor,
-  whiteColor,
-  errorColor,
-  redColor,
-  greyColor,
-  primaryTextColor,
-  secondaryTextColor,
-  blueTextColor,
-  greyTextColor,
-  lightGreyTextColor,
-  disableTextColor,
-  tinyTextSize,
-  primaryTextSize,
-  largeTextSize,
-  buttonTextSize,
-  titleTextSize,
-  textBold,
-  maxWidth,
-  buttonHeight,
-  tinyRadius,
-  normalRadius,
-  largeRadius,
-  SwitchColor,
+export const component = {
+  title: {
+    fontSize: TitleTextSize,
+    fontWeight: TextBold,
+    color: PrimaryTextColor,
+  },
+  caption: {
+    fontSize: PrimaryTextSize,
+    color: SecondaryTextColor,
+  },
+  buttonText: {
+    fontSize: ButtonTextSize,
+    fontWeight: TextBold,
+  },
+  flex: {
+    flex: 1,
+  },
+  row: {
+    flexDirection: 'row',
+  },
+  button: {
+    height: ButtonHeight,
+    width: '100%',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
 }
