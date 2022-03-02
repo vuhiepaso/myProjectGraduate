@@ -14,6 +14,7 @@ const Container = () => {
       screenOptions={{
         headerTitleAlign: 'center',
       }}
+      initialRouteName="Register"
     >
       <Stack.Screen
         name="GetStarted"

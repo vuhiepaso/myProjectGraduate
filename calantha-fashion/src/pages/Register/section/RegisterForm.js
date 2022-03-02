@@ -42,24 +42,23 @@ function RegisterForm({onRegister}) {
         icon={emailIcon}
         placeholder={t('Register.placeholder.email')}
         onChange={changeEmail}
-        autoComplete="email"
-        textContentType="emailAddress"
+        // autoFocus
+        // autoComplete="email"
+        // textContentType="emailAddress"
         error={emailError}
       />
       <DefaultInput
         icon={phoneIcon}
         placeholder={t('Register.placeholder.phone')}
-        // keyboardType="phone-pad"
-        autoComplete="tel"
-        textContentType="telephoneNumber"
+        keyboardType="phone-pad"
+        // autoComplete="tel"
+        // textContentType="telephoneNumber"
         onChange={changePhone}
         error={phoneError}
       />
       <PasswordInput
         icon={lockIcon}
         placeholder={t('Register.placeholder.password')}
-        autoComplete="password"
-        textContentType="password"
         onChange={changePassword}
         error={passwordError}
       />

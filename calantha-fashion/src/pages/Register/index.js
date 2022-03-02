@@ -1,10 +1,9 @@
-import React, {useCallback} from 'react'
+import React, {useCallback, useState} from 'react'
 import {useMutation} from 'react-query'
-import {connect} from 'react-redux'
 
 import axios from '../../config/axios'
 import {BackgroundLayout, DefaultLayout, FormLayout} from '../../component/layout'
-import {Link, Title} from '../../component/view'
+import {Link, Title, Dialog} from '../../component/view'
 import {OverlayIndicator} from '../../component/loading'
 import {registerBackground} from '../../assets/images'
 import RegisterForm from './section/RegisterForm'
@@ -13,8 +12,16 @@ import {handleError, handleSuccess} from '../../utils/middleware'
 
 function Register(props) {
   const {navigation} = props
+  const [modalVisible, setModalVisible] = useState(false)
+  const [dialogTitle, setDialogTitle] = useState('')
+  const [dialogContent, setDialogContent] = useState('')
 
   const handleNavigateLogin = () => navigation.navigate('login')
+
+  const handleResetError = useCallback(() => {
+    setDialogTitle('')
+    setDialogContent('')
+  }, [])
 
   const handleRegister = useCallback(
     ({
@@ -50,13 +57,20 @@ function Register(props) {
     'register',
     (values) => axios.post('/user/register', values),
     {
-      onError: (e) => handleError(e),
+      onError: (e) => handleError(e, setModalVisible, setDialogTitle, setDialogContent),
       onSuccess: (res) => handleSuccess(res),
     },
   )
 
   return (
     <DefaultLayout statusBarStyle="light-content">
+      <Dialog
+        title={dialogTitle}
+        content={dialogContent}
+        modalVisible={modalVisible}
+        setModalVisible={setModalVisible}
+        reset={handleResetError}
+      />
       {isLoading && <OverlayIndicator />}
       <BackgroundLayout background={registerBackground}>
         <FormLayout>
@@ -73,8 +87,4 @@ function Register(props) {
   )
 }
 
-const mapStateToProps = (state) => ({
-  data: state.CreateUser,
-})
-
-export default connect(mapStateToProps)(Register)
+export default Register
