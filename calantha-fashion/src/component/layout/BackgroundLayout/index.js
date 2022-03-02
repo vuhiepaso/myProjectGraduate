@@ -1,9 +1,9 @@
 import React from 'react'
-import { ImageBackground } from 'react-native'
+import {ImageBackground} from 'react-native'
 
 import styles from './styles'
 
-function BackgroundLayout({ children, background }) {
+function BackgroundLayout({children, background}) {
   return (
     <ImageBackground
       source={{
