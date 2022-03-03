@@ -29,3 +29,10 @@ export const hidePassword =
   'https://res.cloudinary.com/cde/image/upload/v1645709383/Icon/hide_vision_lb3n9p.png'
 export const lockIcon =
   'https://res.cloudinary.com/cde/image/upload/v1638102360/Icon/lock_try5mw.png'
+
+//flag
+export const vietNamFlag =
+  'https://res.cloudinary.com/cde/image/upload/v1638333255/Icon/Flag_of_Vietnam_g3lnjf.png'
+
+export const englandFlag =
+  'https://res.cloudinary.com/cde/image/upload/v1638333254/Icon/Flag-England_y19mv7.jpg'
