@@ -14,17 +14,15 @@ import AsyncStorage from '@react-native-async-storage/async-storage'
 import {useMutation} from 'react-query'
 import {useTranslation} from 'react-i18next'
 import {Switch} from 'react-native-switch'
-import {connect} from 'react-redux'
 
-import TextInput from '../../component/unuse/TextInput'
-import PasswordInput from '../../component/unuse/PasswordInput'
-import Button from '../../component/unuse/Button'
+import TextInput from '../../component/view/TextInput'
+import PasswordInput from '../../component/view/PasswordInput'
+import DefaultButton from '../../component/view/DefaultButton'
 import OverlayIndicator from '../../component/loading/OverlayIndicator'
 import LoadingIndicator from '../../component/loading/LoadingIndicator'
 import axios from '../../config/axios'
-import {setUser as setEmail} from '../../redux/action/userAction'
 import validateLoginInput from '../../utils/validate/loginValidate'
-import styles from '../../assets/styles/pages/Login'
+import styles from '../../assets/styles/pages/LoginStyles'
 import {switchColor} from '../../assets/styles'
 import {LoginBackground, phoneIcon} from '../../assets/images'
 
@@ -130,6 +128,7 @@ function Login(props) {
                   maxLength={10}
                   value={phone}
                 />
+                
                 <PasswordInput
                   placeholder={t('Logins.placeholder.Password')}
                   setValue={setPassword}
@@ -171,7 +170,10 @@ function Login(props) {
                   </Pressable>
                 </View>
 
-                <Button onPress={submit} texts={t('Login')} />
+                <DefaultButton 
+                   buttonName={t('Login')} 
+                   onClick={submit} 
+                />
                 <View style={styles.containerRegister}>
                   <Text style={styles.text}>{t('Logins.Don’t-have-an-account')}</Text>
                   <Pressable onPress={SwitchRegister}>

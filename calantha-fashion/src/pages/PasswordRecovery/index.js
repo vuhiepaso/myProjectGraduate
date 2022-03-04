@@ -4,7 +4,6 @@ import {
   Text,
   ImageBackground,
   KeyboardAvoidingView,
-  StyleSheet,
   Platform,
   Alert,
   Image,
@@ -13,17 +12,10 @@ import {
 import {useTranslation} from 'react-i18next'
 import {useMutation} from 'react-query'
 
-import TextInput from '../../component/unuse/TextInput'
-import Button from '../../component/unuse/Button'
-import validatePhone from '../../utils/validate/phoneValidate'
-import {
-  maxWidth,
-  primaryTextSize,
-  textBold,
-  titleTextSize,
-  whiteColor,
-  greyTextColor,
-} from '../../assets/styles/index'
+import TextInput from '../../component/view/TextInput'
+import { DefaultButton } from '../../component/view'
+import validatePhone from '../../utils/validate/phoneValidate' 
+import styles from '../../assets/styles/pages/PasswordRecoveryStyles'
 import axios from '../../config/axios'
 import OverlayIndicator from '../../component/loading/OverlayIndicator'
 import {PasswordRecoveryBackground, phoneIcon} from '../../assets/images'
@@ -86,45 +78,13 @@ export default function PasswordRecovery(props) {
             helperText={phoneText}
             maxLength={10}
           />
-          <Button texts={t('ForgotPassword.Button')} onPress={Verify} />
+          <DefaultButton 
+            onClick={Verify}
+            buttonName={t('ForgotPassword.Button')}
+          />
         </View>
       </KeyboardAvoidingView>
     </ImageBackground>
   )
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-    padding: 20,
-  },
-  flex: {
-    flex: 1,
-  },
-  content: {
-    flex: 1,
-    minHeight: 350,
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginBottom: 50,
-    maxWidth: maxWidth,
-  },
-  title: {
-    fontSize: titleTextSize,
-    color: whiteColor,
-    fontWeight: textBold,
-  },
-  instruct: {
-    fontSize: primaryTextSize,
-    color: whiteColor,
-    textAlign: 'center',
-    marginBottom: 20,
-  },
-  icon: {
-    width: 20,
-    height: 20,
-    tintColor: greyTextColor,
-  },
-})
