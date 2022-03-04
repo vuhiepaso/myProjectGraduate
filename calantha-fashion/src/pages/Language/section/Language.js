@@ -1,24 +1,45 @@
-import React from 'react'
-import {DefaultButton} from '../../../component/view'
+import React, {useEffect, useState} from 'react'
+import {ChooseLanguageView, DefaultButton} from '../../../component/view'
 import {} from '../../../assets/images'
-import { Button, Image, View } from 'react-native';
-import { FlatList, TouchableOpacity } from 'react-native-gesture-handler';
-const Language = () =>{
+import { Image, View, Text, AsyncStorage} from 'react-native'
 
-    const Data = [
-        {},
-        {}
-    ]
+import {disableTextColor} from '../../../assets/styles'
+import {vietNamFlag, englandFlag, correctIcon} from '../../../assets/images'
+import {useTranslation} from 'react-i18next'
+import i18next from 'i18next'
+export default function Language(props) {
+  const {navigation} = props
+  const {t} = useTranslation()
+  const [loading, setLoading] = useState(true)
+  const [language, setLanguage] = useState('en')
 
-    return(
-        
-        <>
-            <FlatList
-                data={Data}
-                renderItem = {({item}) => (
-                    <Image source={{uri: ""}}/>
-                )}
-            />
-        </>
-    );
-}   
+  const SubmitPress = async () => {
+    await AsyncStorage.setItem('language', language)
+    i18next.changeLanguage(language)
+  }
+
+  return (
+    <View style = {{backgroundColor: disableTextColor, height: '100%'}}>
+      {/*  */}
+      <ChooseLanguageView
+        flag={vietNamFlag}
+        languageName={'vi'}
+        name={t('languages.vi')}
+        language={language}
+        uri={correctIcon}
+      />
+      <ChooseLanguageView
+        flag={englandFlag}
+        languageName={'en'}
+        name={t('languages.vi')}
+        language={language}
+        uri={correctIcon}
+      />
+      <DefaultButton
+        action={SubmitPress()}
+        buttonName = {'Language.submit'}
+      />
+
+    </View>
+  )
+}
