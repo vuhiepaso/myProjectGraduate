@@ -1,12 +1,12 @@
 import React from 'react'
 import {View, StyleSheet, Text, TouchableOpacity} from 'react-native'
 import {
-  ButtonHeight,
-  ButtonTextSize,
-  LargeRadius,
-  MaxWidth,
-  PrimaryColor,
-  WhiteColor,
+  buttonHeight,
+  buttonTextSize,
+  largeRadius,
+  maxWidth,
+  primaryColor,
+  whiteColor,
 } from '../../assets/styles/index'
 
 export default function button(props) {
@@ -20,17 +20,17 @@ export default function button(props) {
 
 const styles = StyleSheet.create({
   button: {
-    backgroundColor: PrimaryColor,
-    height: ButtonHeight,
+    backgroundColor: primaryColor,
+    height: buttonHeight,
     width: '100%',
     justifyContent: 'center',
     alignItems: 'center',
-    borderRadius: LargeRadius,
+    borderRadius: largeRadius,
     marginBottom: 12,
     marginTop: 12,
   },
   buttonText: {
-    color: WhiteColor,
-    fontSize: ButtonTextSize,
+    color: whiteColor,
+    fontSize: buttonTextSize,
   },
 })

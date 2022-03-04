@@ -6,7 +6,7 @@ import GetStarted from '../pages/GetStarted'
 import Login from '../pages/Login'
 import PasswordRecovery from '../pages/PasswordRecovery'
 import Welcome from '../pages/Welcome'
-import {WhiteColor} from '../assets/styles'
+import {whiteColor} from '../assets/styles'
 import Register from '../pages/Register'
 
 const Stack = createStackNavigator()
@@ -17,7 +17,7 @@ const Container = () => {
       screenOptions={{
         headerTitleAlign: 'center',
       }}
-      initialRouteName="GetStarted"
+      initialRouteName="Welcome"
     >
       <Stack.Screen
         name="GetStarted"
@@ -42,7 +42,7 @@ const Container = () => {
         options={{
           title: t('Register.title'),
           headerTransparent: true,
-          headerTintColor: WhiteColor,
+          headerTintColor: whiteColor,
         }}
       />
       <Stack.Screen
@@ -50,7 +50,7 @@ const Container = () => {
         component={Login}
         options={{
           title: t('Login'),
-          headerTintColor: WhiteColor,
+          headerTintColor: whiteColor,
           headerTransparent: true,
         }}
       />
@@ -59,7 +59,7 @@ const Container = () => {
         component={PasswordRecovery}
         options={{
           title: t('Password Recovery'),
-          headerTintColor: WhiteColor,
+          headerTintColor: whiteColor,
           headerTransparent: true,
         }}
       />

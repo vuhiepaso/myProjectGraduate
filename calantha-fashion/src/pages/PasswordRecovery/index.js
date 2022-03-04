@@ -8,23 +8,23 @@ import {
   Platform,
   Alert,
   Image,
+  StatusBar,
 } from 'react-native'
-import {StatusBar} from 'expo-status-bar'
 import {useTranslation} from 'react-i18next'
 import {useMutation} from 'react-query'
 
-import TextInput from '../../component/view/TextInput'
-import Button from '../../component/view/Button'
+import TextInput from '../../component/unuse/TextInput'
+import Button from '../../component/unuse/Button'
 import validatePhone from '../../utils/validate/phoneValidate'
 import {
-  MaxWidth,
-  PrimaryTextSize,
-  TextBold,
-  TitleTextSize,
-  WhiteColor,
-  GreyTextColor,
+  maxWidth,
+  primaryTextSize,
+  textBold,
+  titleTextSize,
+  whiteColor,
+  greyTextColor,
 } from '../../assets/styles/index'
-import client from '../../config/api'
+import axios from '../../config/axios'
 import OverlayIndicator from '../../component/loading/OverlayIndicator'
 import {PasswordRecoveryBackground, phoneIcon} from '../../assets/images'
 
@@ -36,6 +36,7 @@ export default function PasswordRecovery(props) {
   const Verify = () => {
     const {errors, isValid} = validatePhone(phone)
     if (isValid) {
+      // @ts-ignore
       mutateAsync({phone})
     } else {
       setPhoneText(errors.phone)
@@ -46,7 +47,7 @@ export default function PasswordRecovery(props) {
   }
   const {isLoading, mutateAsync} = useMutation(
     'login',
-    (values) => client.post('/user/select-user', values),
+    (values) => axios.post('/user/select-user', values),
     {
       onError: (err) => Alert.alert('1' + err),
       onSuccess: async (res) => {
@@ -67,12 +68,9 @@ export default function PasswordRecovery(props) {
   )
   const Loading = isLoading
   return (
-    <ImageBackground
-      style={styles.container}
-      source={{uri: PasswordRecoveryBackground}}
-    >
+    <ImageBackground style={styles.container} source={{uri: PasswordRecoveryBackground}}>
       {Loading && <OverlayIndicator />}
-      <StatusBar style="light" />
+      <StatusBar barStyle="light-content" />
       <KeyboardAvoidingView
         behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
         style={styles.flex}
@@ -111,22 +109,22 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     marginBottom: 50,
-    maxWidth: MaxWidth,
+    maxWidth: maxWidth,
   },
   title: {
-    fontSize: TitleTextSize,
-    color: WhiteColor,
-    fontWeight: TextBold,
+    fontSize: titleTextSize,
+    color: whiteColor,
+    fontWeight: textBold,
   },
   instruct: {
-    fontSize: PrimaryTextSize,
-    color: WhiteColor,
+    fontSize: primaryTextSize,
+    color: whiteColor,
     textAlign: 'center',
     marginBottom: 20,
   },
   icon: {
     width: 20,
     height: 20,
-    tintColor: GreyTextColor,
+    tintColor: greyTextColor,
   },
 })

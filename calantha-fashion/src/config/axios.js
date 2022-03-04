@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { apiUrl } from './keys'
+import {api} from './keys'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 
 export async function getToken(tokenType) {
@@ -15,20 +15,19 @@ export async function getToken(tokenType) {
 }
 
 const client = axios.create({
-  baseURL: apiUrl,
+  baseURL: api,
   timeout: 5000,
+  // @ts-ignore
   Authorization: `Bearer ${getToken('token')}`,
 })
 
 client.interceptors.response.use(undefined, async (error) => {
   const originalRequest = error.config
-  console.log(error)
   if (error.response && error.response.status === 401) {
     const token = await AsyncStorage.getItem('token')
     originalRequest.headers.Authorization = `Bearer ${token}`
     return axios(originalRequest)
   }
-
   return Promise.reject(error)
 })
 

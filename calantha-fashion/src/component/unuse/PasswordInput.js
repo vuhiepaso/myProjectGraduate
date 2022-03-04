@@ -3,14 +3,14 @@ import {TextInput, View, StyleSheet, Text, Pressable, Image} from 'react-native'
 import {isEmpty} from '../../utils/validate'
 import {Ionicons} from '@expo/vector-icons'
 import {
-  ButtonHeight,
-  DisableTextColor,
-  GreyTextColor,
-  LargeRadius,
-  PrimaryTextSize,
-  RedColor,
-  TinyTextSize,
-  WhiteColor,
+  buttonHeight,
+  disableTextColor,
+  greyTextColor,
+  largeRadius,
+  primaryTextSize,
+  redColor,
+  tinyTextSize,
+  whiteColor,
 } from '../../assets/styles'
 import {lockIcon} from '../../assets/images'
 
@@ -33,24 +33,16 @@ export default function Input(props) {
           secureTextEntry={security}
         />
         {security ? (
-          <Pressable
-            onPress={() => setSecurity(false)}
-            style={styles.imageStyle}
-          >
-            <Ionicons name="eye" size={20} color={DisableTextColor} />
+          <Pressable onPress={() => setSecurity(false)} style={styles.imageStyle}>
+            <Ionicons name="eye" size={20} color={disableTextColor} />
           </Pressable>
         ) : (
-          <Pressable
-            onPress={() => setSecurity(true)}
-            style={styles.imageStyle}
-          >
-            <Ionicons name="eye-off" size={20} color={DisableTextColor} />
+          <Pressable onPress={() => setSecurity(true)} style={styles.imageStyle}>
+            <Ionicons name="eye-off" size={20} color={disableTextColor} />
           </Pressable>
         )}
       </View>
-      {!isEmpty(helperText) && (
-        <Text style={styles.helperText}>{helperText}</Text>
-      )}
+      {!isEmpty(helperText) && <Text style={styles.helperText}>{helperText}</Text>}
     </View>
   )
 }
@@ -62,35 +54,35 @@ const styles = StyleSheet.create({
   view: {
     display: 'flex',
     flexDirection: 'row',
-    height: ButtonHeight,
+    height: buttonHeight,
     width: '100%',
     marginBottom: 12,
     alignItems: 'center',
-    borderRadius: LargeRadius,
+    borderRadius: largeRadius,
     paddingLeft: 16,
     paddingRight: 16,
-    backgroundColor: WhiteColor,
+    backgroundColor: whiteColor,
   },
   textInput: {
     paddingLeft: 12,
-    height: ButtonHeight,
+    height: buttonHeight,
     flexGrow: 1,
-    fontSize: PrimaryTextSize,
+    fontSize: primaryTextSize,
   },
   helperText: {
-    color: RedColor,
-    fontSize: TinyTextSize,
+    color: redColor,
+    fontSize: tinyTextSize,
     marginBottom: 12,
     marginTop: -8,
     paddingLeft: 12,
   },
   imageStyle: {
-    backgroundColor: WhiteColor,
+    backgroundColor: whiteColor,
     paddingRight: 8,
   },
   icon: {
     width: 20,
     height: 20,
-    tintColor: GreyTextColor,
+    tintColor: greyTextColor,
   },
 })

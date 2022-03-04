@@ -1,6 +1,6 @@
-import { StyleSheet } from 'react-native'
+import {StyleSheet} from 'react-native'
 
-import { backgroundColor, normalRadius, maxWidth } from '../../../assets/styles'
+import {backgroundColor, normalRadius, maxWidth} from '../../../assets/styles'
 
 export default StyleSheet.create({
   flex: {
@@ -10,14 +10,13 @@ export default StyleSheet.create({
     bottom: 0,
   },
   container: {
-    flexDirection: 'row',
-    justifyContent: 'center',
     width: '100%',
     backgroundColor: backgroundColor,
     borderTopLeftRadius: normalRadius,
     borderTopRightRadius: normalRadius,
   },
   content: {
+    alignSelf: 'center',
     width: '100%',
     padding: 24,
     maxWidth: maxWidth,

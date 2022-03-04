@@ -1,16 +1,16 @@
 import {StyleSheet} from 'react-native'
 import {
-  BackgroundColor,
-  PrimaryTextColor,
-  SecondaryTextColor,
-  BlueTextColor,
-  GreyTextColor,
-  MaxWidth,
-  TitleTextSize,
-  PrimaryTextSize,
-  SwitchColor,
-  TextBold,
-  NormalRadius,
+  backgroundColor,
+  primaryTextColor,
+  secondaryTextColor,
+  blueTextColor,
+  greyTextColor,
+  maxWidth,
+  titleTextSize,
+  primaryTextSize,
+  switchColor,
+  textBold,
+  normalRadius,
 } from '../index'
 
 export default StyleSheet.create({
@@ -27,23 +27,23 @@ export default StyleSheet.create({
   containerLogin: {
     width: '100%',
     alignItems: 'center',
-    backgroundColor: BackgroundColor,
+    backgroundColor: backgroundColor,
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20,
     padding: 24,
   },
   content: {
-    maxWidth: MaxWidth,
+    maxWidth: maxWidth,
     width: '100%',
   },
   loginTitle: {
-    color: PrimaryTextColor,
-    fontSize: TitleTextSize,
-    fontWeight: TextBold,
+    color: primaryTextColor,
+    fontSize: titleTextSize,
+    fontWeight: textBold,
   },
   loginCaption: {
-    color: SecondaryTextColor,
-    fontSize: PrimaryTextSize,
+    color: secondaryTextColor,
+    fontSize: primaryTextSize,
   },
   inputView: {
     marginTop: 20,
@@ -51,11 +51,11 @@ export default StyleSheet.create({
   icon: {
     width: 20,
     height: 20,
-    tintColor: GreyTextColor,
+    tintColor: greyTextColor,
   },
   containerText: {
     width: '100%',
-    maxWidth: MaxWidth,
+    maxWidth: maxWidth,
     paddingLeft: 12,
   },
   containerRegister: {
@@ -73,25 +73,25 @@ export default StyleSheet.create({
   },
   text: {
     marginLeft: 5,
-    color: GreyTextColor,
-    fontSize: PrimaryTextSize,
+    color: greyTextColor,
+    fontSize: primaryTextSize,
   },
   forgotText: {
-    color: BlueTextColor,
-    fontSize: PrimaryTextSize,
+    color: blueTextColor,
+    fontSize: primaryTextSize,
   },
   registerText: {
-    color: BlueTextColor,
-    fontSize: PrimaryTextSize,
+    color: blueTextColor,
+    fontSize: primaryTextSize,
   },
   switch: {
-    backgroundColor: SwitchColor.backgroundColorBorder,
+    backgroundColor: switchColor.backgroundColorBorder,
     padding: 1,
-    borderRadius: NormalRadius,
+    borderRadius: normalRadius,
   },
   switchView: {
-    backgroundColor: SwitchColor.backgroundColor,
+    backgroundColor: switchColor.backgroundColor,
     padding: 1,
-    borderRadius: NormalRadius,
+    borderRadius: normalRadius,
   },
 })

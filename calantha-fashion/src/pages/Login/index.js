@@ -8,28 +8,28 @@ import {
   Image,
   KeyboardAvoidingView,
   Platform,
+  StatusBar,
 } from 'react-native'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import {useMutation} from 'react-query'
-import {StatusBar} from 'expo-status-bar'
 import {useTranslation} from 'react-i18next'
 import {Switch} from 'react-native-switch'
 import {connect} from 'react-redux'
 
-import TextInput from '../../component/view/TextInput'
-import PasswordInput from '../../component/view/PasswordInput'
-import Button from '../../component/view/Button'
+import TextInput from '../../component/unuse/TextInput'
+import PasswordInput from '../../component/unuse/PasswordInput'
+import Button from '../../component/unuse/Button'
 import OverlayIndicator from '../../component/loading/OverlayIndicator'
 import LoadingIndicator from '../../component/loading/LoadingIndicator'
-import client from '../../config/api'
+import axios from '../../config/axios'
 import {setUser as setEmail} from '../../redux/action/userAction'
 import validateLoginInput from '../../utils/validate/loginValidate'
 import styles from '../../assets/styles/pages/Login'
-import {SwitchColor} from '../../assets/styles'
+import {switchColor} from '../../assets/styles'
 import {LoginBackground, phoneIcon} from '../../assets/images'
 
 function Login(props) {
-  const {navigation, createUserEmail} = props
+  const {navigation} = props
   const [phone, setPhone] = useState()
   const [phoneText, setPhoneText] = useState('')
   const [password, setPassword] = useState()
@@ -41,6 +41,7 @@ function Login(props) {
   const submit = () => {
     const {errors, isValid} = validateLoginInput({phone, password})
     if (isValid) {
+      // @ts-ignore
       mutateAsync({phone, password})
     } else {
       setPhoneText(errors.phone)
@@ -50,7 +51,7 @@ function Login(props) {
 
   const {isLoading, mutateAsync} = useMutation(
     'login',
-    (values) => client.post('/user/phone-login', values),
+    (values) => axios.post('/user/phone-login', values),
     {
       onError: (err) => Alert.alert('' + err),
       onSuccess: async (res) => {
@@ -80,21 +81,23 @@ function Login(props) {
     },
   )
 
-  const SwitchRegister = () => {
-    createUserEmail('')
-    navigation.navigate('Register')
-  }
+  const SwitchRegister = () => navigation.navigate('Register')
 
-  useEffect(async () => {
-    const remember = await AsyncStorage.getItem('remember')
-    if (remember === 'true') {
-      const rememberPhone = await AsyncStorage.getItem('phone')
-      const rememberPassword = await AsyncStorage.getItem('password')
-      setPhone(rememberPhone)
-      setPassword(rememberPassword)
-      setIsEnabled(true)
+  useEffect(() => {
+    async function handleStart() {
+      const remember = await AsyncStorage.getItem('remember')
+      if (remember === 'true') {
+        const rememberPhone = await AsyncStorage.getItem('phone')
+        const rememberPassword = await AsyncStorage.getItem('password')
+        // @ts-ignore
+        setPhone(rememberPhone)
+        // @ts-ignore
+        setPassword(rememberPassword)
+        setIsEnabled(true)
+      }
+      setLoading(false)
     }
-    setLoading(false)
+    handleStart()
   }, [])
 
   const Loading = isLoading
@@ -105,7 +108,7 @@ function Login(props) {
     return (
       <ImageBackground style={styles.container} source={{uri: LoginBackground}}>
         {Loading && <OverlayIndicator />}
-        <StatusBar style="light" />
+        <StatusBar barStyle="light-content" />
         <KeyboardAvoidingView
           behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
           style={styles.flex}
@@ -146,10 +149,10 @@ function Login(props) {
                         renderActiveText={false}
                         renderInActiveText={false}
                         circleBorderWidth={0}
-                        backgroundActive={SwitchColor.backgroundActive}
-                        backgroundInactive={SwitchColor.backgroundInactive}
-                        circleActiveColor={SwitchColor.circleActiveColor}
-                        circleInActiveColor={SwitchColor.circleInActiveColor}
+                        backgroundActive={switchColor.backgroundActive}
+                        backgroundInactive={switchColor.backgroundInactive}
+                        circleActiveColor={switchColor.circleActiveColor}
+                        circleInActiveColor={switchColor.circleInActiveColor}
                         switchLeftPx={2}
                         switchRightPx={2}
                         switchWidthMultiplier={2}
@@ -170,14 +173,9 @@ function Login(props) {
 
                 <Button onPress={submit} texts={t('Login')} />
                 <View style={styles.containerRegister}>
-                  <Text style={styles.text}>
-                    {t('Logins.Don’t-have-an-account')}
-                  </Text>
+                  <Text style={styles.text}>{t('Logins.Don’t-have-an-account')}</Text>
                   <Pressable onPress={SwitchRegister}>
-                    <Text style={styles.registerText}>
-                      {' '}
-                      {t('Logins.Sign-up')}
-                    </Text>
+                    <Text style={styles.registerText}> {t('Logins.Sign-up')}</Text>
                   </Pressable>
                 </View>
               </View>
@@ -189,12 +187,4 @@ function Login(props) {
   }
 }
 
-const mapStateToProps = (state) => ({
-  data: state.CreateUser,
-})
-
-const mapDispatchToProps = (dispatch) => ({
-  createUserEmail: (email) => dispatch(setEmail(email)),
-})
-
-export default connect(mapStateToProps, mapDispatchToProps)(Login)
+export default Login

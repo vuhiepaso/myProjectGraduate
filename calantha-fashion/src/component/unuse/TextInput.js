@@ -3,12 +3,12 @@ import {TextInput, View, StyleSheet, Text} from 'react-native'
 import {isEmpty} from '../../utils/validate'
 
 import {
-  ButtonHeight,
-  LargeRadius,
-  PrimaryTextSize,
-  RedColor,
-  TinyTextSize,
-  WhiteColor,
+  buttonHeight,
+  largeRadius,
+  primaryTextSize,
+  redColor,
+  tinyTextSize,
+  whiteColor,
 } from '../../assets/styles'
 
 export default function Input(props) {
@@ -28,9 +28,7 @@ export default function Input(props) {
           onChangeText={(e) => changeText(e)}
         />
       </View>
-      {!isEmpty(helperText) && (
-        <Text style={styles.helperText}>{helperText}</Text>
-      )}
+      {!isEmpty(helperText) && <Text style={styles.helperText}>{helperText}</Text>}
     </View>
   )
 }
@@ -42,24 +40,24 @@ const styles = StyleSheet.create({
   view: {
     display: 'flex',
     flexDirection: 'row',
-    height: ButtonHeight,
+    height: buttonHeight,
     width: '100%',
     marginBottom: 12,
     alignItems: 'center',
-    borderRadius: LargeRadius,
+    borderRadius: largeRadius,
     paddingLeft: 16,
     paddingRight: 16,
-    backgroundColor: WhiteColor,
+    backgroundColor: whiteColor,
   },
   textInput: {
     paddingLeft: 12,
-    height: ButtonHeight,
+    height: buttonHeight,
     flexGrow: 1,
-    fontSize: PrimaryTextSize,
+    fontSize: primaryTextSize,
   },
   helperText: {
-    color: RedColor,
-    fontSize: TinyTextSize,
+    color: redColor,
+    fontSize: tinyTextSize,
     marginTop: -8,
     paddingLeft: 12,
     marginBottom: 12,
