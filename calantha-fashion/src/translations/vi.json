@@ -27,6 +27,42 @@
       "confirm-password": "Nhập lại mật khẩu"
     }
   },
+   "Login": {
+    "title":"Đăng nhập",
+    "caption": "Đăng nhập vào tài khoản của bạn.",
+    "remember-me": "Nhớ mật khẩu",
+    "forgot-password": "Quên mật khẩu?",
+    "login-button":"Đăng nhậ",
+    "button-caption": "Không có tài khoản?",
+    "button-title": "Đăng ký",
+    "placeholder": {
+      "phone": "Số điện thoại",
+      "password": "Mật khẩu"
+    },
+    "validate":{
+      "phone-invalid":"Vui lòng nhập số điện thoại hợp lệ",
+      "password-length":"Vui lòng nhập mật khẩu ít nhất 6 ký tự",
+      "phone-empty":"Vui lòng nhập số điện thoại",
+      "password-empty":"ui lòng nhập mật khẩu"
+    },
+    "Alert": {
+      "title": "Đăng nhập không thành công",
+      "message": "Số điện thoại hoặc mật khẩu sai"
+    }
+  },
+  "ForgotPassword": {
+    "title": "Quên mật khẩu",
+    "instruct": "Nhập số điện thoại của bạn và chúng tôi sẽ gửi cho bạn hướng dẫn về cách đặt lại điện thoại",
+    "Button": "Xác nhận",
+    "PhoneNumber": "Số điện thoại",
+    "placeholder":{
+      "phone":"Số điện thoại"
+    },
+    "validate":{
+      "phone-invalid":"Vui lòng nhập số điện thoại hợp lệ",
+      "phone-empty":"Vui lòng nhập số điện thoại"
+    }
+  },
   "Dashboard": {
     "title": "Trang chủ",
     "categories": "Phân loại",
@@ -41,7 +77,6 @@
   },
   "Add-to-cart": "Thêm vào giỏ",
   "Added-to-cart": "Đã thêm vào giỏ",
-  "Login": "Đăng nhập",
   "Favorite": "Yêu thích",
   "Search": {
     "search-product": "Từ tìm kiếm",
@@ -72,27 +107,10 @@
     "more": "hiển thị thêm",
     "hide": "ẩn"
   },
-  
   "Password Recovery": "Quên mật khẩu",
   "ChangeLanguage": {
     "title": "Thay đổi ngôn ngữ",
     "message": "Vui lòng chọn ngôn ngữ bạn muốn"
-  },
- 
-  "Logins": {
-    "Sign": "Đăng nhập vào tài khoản của bạn.",
-    "Remember-me": "Nhớ mật khẩu",
-    "Forgot-Password": "Quên mật khẩu?",
-    "Don’t-have-an-account": "Không có tài khoản?",
-    "Sign-up": "Đăng ký",
-    "placeholder": {
-      "PhoneNumber": "Số điện thoại",
-      "Password": "Mật khẩu"
-    },
-    "Alert": {
-      "title": "Đăng nhập không thành công",
-      "message": "Số điện thoại hoặc mật khẩu sai"
-    }
   },
   "Cart": {
     "title": "Giỏ hàng",
@@ -102,12 +120,6 @@
   },
   "Checkout": {
     "title": "Thanh toán"
-  },
-  "ForgotPassword": {
-    "title": "Quên mật khẩu",
-    "instruct": "Nhập số điện thoại của bạn và chúng tôi sẽ gửi cho bạn hướng dẫn về cách đặt lại điện thoại",
-    "Button": "Xác nhận",
-    "PhoneNumber": "Số điện thoại"
   },
   "EnterPassword": {
     "title": "Quên mật khẩu",

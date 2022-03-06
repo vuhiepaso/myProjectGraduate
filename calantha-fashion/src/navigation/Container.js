@@ -17,7 +17,7 @@ const Container = () => {
       screenOptions={{
         headerTitleAlign: 'center',
       }}
-      initialRouteName="GetStarted"
+      initialRouteName="Login"
     >
       <Stack.Screen
         name="GetStarted"
@@ -49,7 +49,7 @@ const Container = () => {
         name="Login"
         component={Login}
         options={{
-          title: t('Login'),
+          title: t('Login.title'),
           headerTintColor: whiteColor,
           headerTransparent: true,
         }}

@@ -4,24 +4,17 @@ const validateLoginInput = (data) => {
   let errors = {}
   const {phone, password} = data
 
-  if (!phone || phone.length < 10) {
-    errors.phone = 'Your phone at least 10 characters'
+  if (!phone || phone.length < 10 || isNaN(phone)) {
+    errors.phone = 'Login.validate.phone-invalid'
   }
-
   if (!password || password.length < 6) {
-    errors.password = 'Your password at least 6 characters'
+    errors.password = 'Login.validate.password-length'
   }
-
   if (isEmpty(phone)) {
-    errors.phone = 'Your phone name is empty'
+    errors.phone = 'Login.validate.phone-empty'
   }
-
   if (isEmpty(password)) {
     errors.password = 'Your password is empty'
-  }
-
-  if (isNaN(phone)) {
-    errors.phone = 'Your phone number is incorrect'
   }
 
   return {errors, isValid: isEmpty(errors)}

@@ -1,43 +1,41 @@
 import React, {memo, useState} from 'react'
+import {useTranslation} from 'react-i18next'
 import {TextInput, View, Text, Image, Pressable} from 'react-native'
+import {hidePassword, showPassword} from '../../../assets/images'
 
-import { disableTextColor } from '../../../assets/styles'
-import {Ionicons} from '@expo/vector-icons'
 import {isEmpty} from '../../../utils/validate'
 import styles from './styles'
-import {lockIcon} from '../../../assets/images'
 
-function DefaultInput(props) {
+function PasswordInput({placeholder, error, onChange, icon, ...other}) {
+  const {t} = useTranslation()
   const [security, setSecurity] = useState(true)
-  const {placeholder, helperText, setValue, resetForm} = props
-  const changeText = (e) => {
-    resetForm()
-    setValue(e)
-  }
+
   return (
     <View style={styles.container}>
       <View style={styles.view}>
-        <Image source={{uri: lockIcon}} style={styles.icon} />
+        <Image source={{uri: icon}} style={styles.icon} />
         <TextInput
-          {...props}
+          {...other}
           style={styles.textInput}
-          placeholder={placeholder}
-          onChangeText={(e) => changeText(e)}
+          placeholder={t(placeholder)}
+          onChangeText={(e) => onChange(e)}
           secureTextEntry={security}
+          textContentType="oneTimeCode"
+          autoCapitalize="none"
         />
         {security ? (
           <Pressable onPress={() => setSecurity(false)} style={styles.imageStyle}>
-            <Ionicons name="eye" size={20} color={disableTextColor} />
+            <Image source={{uri: hidePassword}} style={styles.securityIcon} />
           </Pressable>
         ) : (
           <Pressable onPress={() => setSecurity(true)} style={styles.imageStyle}>
-            <Ionicons name="eye-off" size={20} color={disableTextColor} />
+            <Image source={{uri: showPassword}} style={styles.securityIcon} />
           </Pressable>
         )}
       </View>
-      {!isEmpty(helperText) && <Text style={styles.helperText}>{helperText}</Text>}
+      {!isEmpty(error) && <Text style={styles.helperText}>{t(error)}</Text>}
     </View>
   )
 }
 
-export default memo(DefaultInput)
+export default memo(PasswordInput)

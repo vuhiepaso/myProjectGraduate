@@ -30,7 +30,8 @@ function Welcome({navigation}) {
   const [dialogTitle, setDialogTitle] = useState('')
   const [dialogContent, setDialogContent] = useState('')
 
-  const handleResetError = useCallback(() => {
+  const handleClose = useCallback(() => {
+    setModalVisible(false)
     setDialogTitle('')
     setDialogContent('')
   }, [])
@@ -38,25 +39,23 @@ function Welcome({navigation}) {
   const {isLoading, mutateAsync} = useMutation(
     'google-login',
     (values) => axios.post('/user/google-login', values),
-    {
-      onError: (e) => handleError(e, setModalVisible, setDialogTitle, setDialogContent),
-    },
+    {onError: (e) => handleError(e, setModalVisible, setDialogTitle, setDialogContent)},
   )
 
   const SignInWithGoogle = async () => {
     try {
       const result = await Google.logInAsync(googleConfig)
       if (result.type === 'success') {
-        LoginGoogle(result)
+        LoginGoogle({email: result.user.email, email_token: result.accessToken})
       }
     } catch (error) {
       alert(`${error}`)
     }
   }
 
-  const LoginGoogle = (result) => {
+  const LoginGoogle = ({email, email_token}) => {
     // @ts-ignore
-    mutateAsync({email: result.user.email, email_token: result.accessToken}).then(async (res) => {
+    mutateAsync({email, email_token}).then(async (res) => {
       const {message, token} = res.data
       if (message === 'User existed') {
         try {
@@ -71,16 +70,13 @@ function Welcome({navigation}) {
     })
   }
 
-  const SwitchRegister = () => navigation.navigate('Register')
-
-  const SwitchLogin = () => navigation.navigate('Login')
+  const handleNavigateRegister = () => navigation.navigate('Register')
+  const handleNavigateLogin = () => navigation.navigate('Login')
 
   useEffect(() => {
     async function handleStart() {
       const getStarted = await AsyncStorage.getItem('get-started')
-      if (getStarted !== 'false') {
-        navigation.navigate('GetStarted')
-      }
+      if (getStarted !== 'false') navigation.navigate('GetStarted')
       const language = await AsyncStorage.getItem('language')
       switch (language) {
         case 'vi':
@@ -101,15 +97,15 @@ function Welcome({navigation}) {
   } else {
     return (
       <View style={styles.container}>
-        <StatusBar barStyle="light-content" />
+        <StatusBar barStyle="light-content" translucent backgroundColor="transparent" />
+        {isLoading && <OverlayIndicator />}
         <Dialog
           title={dialogTitle}
           content={dialogContent}
           modalVisible={modalVisible}
           setModalVisible={setModalVisible}
-          reset={handleResetError}
+          handleClose={handleClose}
         />
-        {isLoading && <OverlayIndicator />}
         <ImageBackground
           source={{
             uri: welcomeBackground,
@@ -125,14 +121,14 @@ function Welcome({navigation}) {
                 <Text style={styles.googleText}>{t('Welcome.google-button')}</Text>
                 <View style={styles.icon} />
               </TouchableOpacity>
-              <TouchableOpacity style={styles.createAccountButton} onPress={() => SwitchRegister()}>
+              <TouchableOpacity style={styles.createAccountButton} onPress={handleNavigateRegister}>
                 <Image style={styles.createIcon} source={{uri: createAccountIcon}} />
                 <Text style={styles.createAccountText}>{t('Welcome.register-button')}</Text>
                 <View style={styles.icon} />
               </TouchableOpacity>
               <View style={styles.login}>
                 <Text style={styles.loginText}>{t('Welcome.link-caption')}</Text>
-                <Pressable onPress={SwitchLogin}>
+                <Pressable onPress={handleNavigateLogin}>
                   <Text style={styles.loginButton}>{t('Welcome.link-button')}</Text>
                 </Pressable>
               </View>

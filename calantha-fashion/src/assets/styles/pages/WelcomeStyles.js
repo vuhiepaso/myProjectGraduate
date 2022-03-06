@@ -24,7 +24,7 @@ export default StyleSheet.create({
     height: '100%',
     justifyContent: 'flex-end',
     alignItems: 'center',
-    backgroundColor: 'white',
+    backgroundColor: whiteColor,
   },
   content: {
     flexDirection: 'row',
@@ -106,7 +106,7 @@ export default StyleSheet.create({
     color: secondaryTextColor,
   },
   loginButton: {
-    paddingLeft: 5,
+    paddingLeft: 4,
     color: blueTextColor,
     fontWeight: textBold,
   },

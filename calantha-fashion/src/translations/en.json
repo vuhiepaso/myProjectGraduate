@@ -27,6 +27,42 @@
       "confirm-password": "Confirm password"
     }
   },
+  "Login": {
+    "title":"Login",
+    "caption": "Sign in to your account.",
+    "remember-me": "Remember me",
+    "forgot-password": "Forgot Password?",
+    "login-button":"Login",
+    "button-caption": "Don’t have an account?",
+    "button-title": "Sign up",
+    "placeholder": {
+      "phone": "Phone number",
+      "password": "Password"
+    },
+    "validate":{
+      "phone-invalid":"Your phone is invalid",
+      "password-length":"Your password at least 6 characters",
+      "phone-empty":"Your phone name is empty",
+      "password-empty":"Your password name is empty"
+    },
+    "Alert": {
+      "title": "Login unsuccessful",
+      "message": "Wrong phone number or password"
+    }
+  },
+  "ForgotPassword": {
+    "title": "Forgot password",
+    "instruct": "Enter your phone and we will send you instructions on how to reset it",
+    "Button": "Verify",
+    "PhoneNumber": "Phone Number",
+    "placeholder":{
+      "phone":"Phone number"
+    },
+    "validate":{
+      "phone-invalid":"Your phone is invalid",
+      "phone-empty":"Your phone name is empty"
+    }
+  },
   "Dashboard": {
     "title": "Dashboard",
     "categories": "Categories",
@@ -41,7 +77,6 @@
   },
   "Add-to-cart": "Add to cart",
   "Added-to-cart": "Added to cart",
-  "Login": "Login",
   "Favorite": "Favorite",
   "Search": {
     "search-product": "Search keyword",
@@ -72,28 +107,12 @@
     "more": "more",
     "hide": "hide"
   },
-  
   "Password Recovery": "Password Recovery",
   "ChangeLanguage": {
     "title": "Change Language",
     "message": "Please choose your langue"
   },
   
-  "Logins": {
-    "Sign": "Sign in to your account.",
-    "Remember-me": "Remember me",
-    "Forgot-Password": "Forgot Password?",
-    "Don’t-have-an-account": "Don’t have an account?",
-    "Sign-up": "Sign up",
-    "placeholder": {
-      "PhoneNumber": "Phone number",
-      "Password": "Password"
-    },
-    "Alert": {
-      "title": "Login unsuccessful",
-      "message": "Wrong phone number or password"
-    }
-  },
   "Cart": {
     "title": "Shopping cart",
     "Checkout": "Checkout",
@@ -103,12 +122,7 @@
   "Checkout": {
     "title": "Checkout"
   },
-  "ForgotPassword": {
-    "title": "Forgot password",
-    "instruct": "Enter your phone and we will send you instructions on how to reset it",
-    "Button": "Verify",
-    "PhoneNumber": "Phone Number"
-  },
+  
   "EnterPassword": {
     "title": "Forgot password",
     "instruct": "Enter your new password and make sure it strong enough",

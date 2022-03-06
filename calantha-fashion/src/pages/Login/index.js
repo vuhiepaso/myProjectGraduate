@@ -1,9 +1,8 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState, useEffect, useCallback} from 'react'
 import {
   View,
   Text,
   ImageBackground,
-  Alert,
   Pressable,
   Image,
   KeyboardAvoidingView,
@@ -15,8 +14,7 @@ import {useMutation} from 'react-query'
 import {useTranslation} from 'react-i18next'
 import {Switch} from 'react-native-switch'
 
-import TextInput from '../../component/view/TextInput'
-import PasswordInput from '../../component/view/PasswordInput'
+import {PasswordInput, DefaultInput, Dialog} from '../../component/view'
 import DefaultButton from '../../component/view/DefaultButton'
 import OverlayIndicator from '../../component/loading/OverlayIndicator'
 import LoadingIndicator from '../../component/loading/LoadingIndicator'
@@ -24,62 +22,73 @@ import axios from '../../config/axios'
 import validateLoginInput from '../../utils/validate/loginValidate'
 import styles from '../../assets/styles/pages/LoginStyles'
 import {switchColor} from '../../assets/styles'
-import {LoginBackground, phoneIcon} from '../../assets/images'
+import {lockIcon, LoginBackground, phoneIcon} from '../../assets/images'
+import {handleError} from '../../utils/middleware'
 
 function Login(props) {
   const {navigation} = props
-  const [phone, setPhone] = useState()
-  const [phoneText, setPhoneText] = useState('')
-  const [password, setPassword] = useState()
-  const [passwordText, setPasswordText] = useState('')
-  const {t} = useTranslation()
+  const [phone, setPhone] = useState('')
+  const [phoneError, setPhoneError] = useState('')
+  const [password, setPassword] = useState('')
+  const [passwordError, setPasswordError] = useState('')
+  const [modalVisible, setModalVisible] = useState(false)
+  const [dialogTitle, setDialogTitle] = useState('')
+  const [dialogContent, setDialogContent] = useState('')
   const [isEnabled, setIsEnabled] = useState(false)
   const [loading, setLoading] = useState(true)
 
-  const submit = () => {
+  const {t} = useTranslation()
+
+  const handleClose = useCallback(() => {
+    setModalVisible(false)
+    setDialogTitle('')
+    setDialogContent('')
+  }, [])
+
+  const handleLogin = () => {
     const {errors, isValid} = validateLoginInput({phone, password})
     if (isValid) {
       // @ts-ignore
-      mutateAsync({phone, password})
+      mutateAsync({phone, password}).then(async (res) => {
+        console.log(res.data)
+        if (res.data.token) {
+          await AsyncStorage.setItem('token', res.data.token)
+          if (isEnabled) {
+            await AsyncStorage.setItem('remember', 'true')
+            await AsyncStorage.setItem('phone', phone)
+            await AsyncStorage.setItem('password', password)
+          } else {
+            await AsyncStorage.setItem('remember', 'false')
+          }
+          navigation.navigate('Dashboard')
+        }
+      })
     } else {
-      setPhoneText(errors.phone)
-      setPasswordText(errors.password)
+      setPhoneError(errors.phone)
+      setPasswordError(errors.password)
     }
   }
+
+  const handleChangePassword = useCallback((e) => {
+    setPassword(e)
+    setPasswordError('')
+  }, [])
+
+  const handleChangePhone = useCallback((e) => {
+    setPhone(e)
+    setPhoneError('')
+  }, [])
 
   const {isLoading, mutateAsync} = useMutation(
     'login',
     (values) => axios.post('/user/phone-login', values),
     {
-      onError: (err) => Alert.alert('' + err),
-      onSuccess: async (res) => {
-        try {
-          const data = res.data
-          if (data.message === 'error') {
-            Alert.alert(data.error)
-          } else {
-            if (data.token) {
-              await AsyncStorage.setItem('token', res.data.token)
-              if (isEnabled) {
-                await AsyncStorage.setItem('remember', 'true')
-                await AsyncStorage.setItem('phone', phone)
-                await AsyncStorage.setItem('password', password)
-              } else {
-                await AsyncStorage.setItem('remember', 'false')
-              }
-              navigation.navigate('Dashboard')
-            } else {
-              Alert.alert(data.success)
-            }
-          }
-        } catch (e) {
-          alert('' + e)
-        }
-      },
+      onError: (e) => handleError(e, setModalVisible, setDialogTitle, setDialogContent),
     },
   )
 
-  const SwitchRegister = () => navigation.navigate('Register')
+  const handleNavigateRegister = () => navigation.navigate('Register')
+  const handleNavigateForgotPassword = () => navigation.navigate('PasswordRecovery')
 
   useEffect(() => {
     async function handleStart() {
@@ -98,15 +107,20 @@ function Login(props) {
     handleStart()
   }, [])
 
-  const Loading = isLoading
-
   if (loading) {
     return <LoadingIndicator />
   } else {
     return (
       <ImageBackground style={styles.container} source={{uri: LoginBackground}}>
-        {Loading && <OverlayIndicator />}
-        <StatusBar barStyle="light-content" />
+        <Dialog
+          title={dialogTitle}
+          content={dialogContent}
+          modalVisible={modalVisible}
+          setModalVisible={setModalVisible}
+          handleClose={handleClose}
+        />
+        {isLoading && <OverlayIndicator />}
+        <StatusBar barStyle="light-content" translucent backgroundColor="transparent" />
         <KeyboardAvoidingView
           behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
           style={styles.flex}
@@ -114,27 +128,22 @@ function Login(props) {
           <View style={styles.containerLogin}>
             <View style={styles.content}>
               <View style={styles.containerText}>
-                <Text style={styles.loginTitle}>{t('Login')}</Text>
-                <Text style={styles.loginCaption}>{t('Logins.Sign')}</Text>
+                <Text style={styles.loginTitle}>{t('Login.title')}</Text>
+                <Text style={styles.loginCaption}>{t('Login.caption')}</Text>
               </View>
               <View style={styles.inputView}>
-                <TextInput
-                  icon={<Image source={{uri: phoneIcon}} style={styles.icon} />}
-                  placeholder={t('Logins.placeholder.PhoneNumber')}
-                  setValue={setPhone}
-                  helperText={phoneText}
-                  autoCompleteType="tel"
-                  resetForm={() => setPhoneText('')}
-                  maxLength={10}
+                <DefaultInput
+                  icon={phoneIcon}
+                  error={phoneError}
+                  onChange={handleChangePhone}
+                  placeholder="Login.placeholder.phone"
                   value={phone}
                 />
-                
                 <PasswordInput
-                  placeholder={t('Logins.placeholder.Password')}
-                  setValue={setPassword}
-                  autoCompleteType="password"
-                  helperText={passwordText}
-                  resetForm={() => setPasswordText('')}
+                  placeholder="Login.placeholder.password"
+                  error={passwordError}
+                  onChange={handleChangePassword}
+                  icon={lockIcon}
                   value={password}
                 />
                 <View style={styles.rememberView}>
@@ -158,26 +167,19 @@ function Login(props) {
                         switchBorderRadius={30}
                       />
                     </View>
-                    <Text style={styles.text}>{t('Logins.Remember-me')}</Text>
+                    <Text style={styles.text}>{t('Login.remember-me')}</Text>
                   </View>
                   <Pressable>
-                    <Text
-                      style={styles.forgotText}
-                      onPress={() => navigation.navigate('PasswordRecovery')}
-                    >
-                      {t('Logins.Forgot-Password')}
+                    <Text style={styles.forgotText} onPress={handleNavigateForgotPassword}>
+                      {t('Login.forgot-password')}
                     </Text>
                   </Pressable>
                 </View>
-
-                <DefaultButton 
-                   buttonName={t('Login')} 
-                   onClick={submit} 
-                />
+                <DefaultButton buttonName={'Login.login-button'} onClick={handleLogin} />
                 <View style={styles.containerRegister}>
-                  <Text style={styles.text}>{t('Logins.Don’t-have-an-account')}</Text>
-                  <Pressable onPress={SwitchRegister}>
-                    <Text style={styles.registerText}> {t('Logins.Sign-up')}</Text>
+                  <Text style={styles.text}>{t('Login.button-caption')}</Text>
+                  <Pressable onPress={handleNavigateRegister}>
+                    <Text style={styles.registerText}> {t('Login.button-title')}</Text>
                   </Pressable>
                 </View>
               </View>
