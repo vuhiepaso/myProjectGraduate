@@ -6,7 +6,7 @@ import {hidePassword, showPassword} from '../../../assets/images'
 import {isEmpty} from '../../../utils/validate'
 import styles from './styles'
 
-function DefaultInput({placeholder, error, onChange, icon, ...other}) {
+function PasswordInput({placeholder, error, onChange, icon, ...other}) {
   const {t} = useTranslation()
   const [security, setSecurity] = useState(true)
 
@@ -17,7 +17,7 @@ function DefaultInput({placeholder, error, onChange, icon, ...other}) {
         <TextInput
           {...other}
           style={styles.textInput}
-          placeholder={placeholder}
+          placeholder={t(placeholder)}
           onChangeText={(e) => onChange(e)}
           secureTextEntry={security}
           textContentType="oneTimeCode"
@@ -38,4 +38,4 @@ function DefaultInput({placeholder, error, onChange, icon, ...other}) {
   )
 }
 
-export default memo(DefaultInput)
+export default memo(PasswordInput)
