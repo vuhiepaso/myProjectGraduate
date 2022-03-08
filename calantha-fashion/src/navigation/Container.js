@@ -5,6 +5,7 @@ import {useTranslation} from 'react-i18next'
 import GetStarted from '../pages/GetStarted'
 import {whiteColor} from '../assets/styles'
 import Register from '../pages/Register'
+import Language from '../pages/Language'
 
 const Stack = createStackNavigator()
 const Container = () => {
@@ -14,6 +15,7 @@ const Container = () => {
       screenOptions={{
         headerTitleAlign: 'center',
       }}
+      initialRouteName="Language"
     >
       <Stack.Screen
         name="GetStarted"
@@ -29,6 +31,13 @@ const Container = () => {
           title: t('Register.title'),
           headerTransparent: true,
           headerTintColor: whiteColor,
+        }}
+      />
+      <Stack.Screen
+        name="Language"
+        component={Language}
+        options={{
+          title: t('Language.title'),
         }}
       />
     </Stack.Navigator>

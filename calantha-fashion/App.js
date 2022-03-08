@@ -12,8 +12,6 @@ import en from './src/translations/en.json'
 import vi from './src/translations/vi.json'
 import Container from './src/navigation/Container'
 
-import Language from './src/pages/Language/section/Language'
-
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
@@ -47,8 +45,7 @@ const App = () => {
       <Provider store={store}>
         <QueryClientProvider client={queryClient}>
           <NavigationContainer>
-            {/* <Container /> */}
-            <Language/>
+            <Container />
           </NavigationContainer>
         </QueryClientProvider>
       </Provider>
