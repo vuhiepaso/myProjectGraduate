@@ -38,7 +38,7 @@ const normalRadius = 20
 const largeRadius = 50
 
 // customize switch button
-const SwitchColor = {
+const switchColor = {
   backgroundColor: disableTextColor,
   backgroundActive: blueTextColor,
   backgroundInactive: backgroundColor,
@@ -73,5 +73,5 @@ export {
   tinyRadius,
   normalRadius,
   largeRadius,
-  SwitchColor,
+  switchColor,
 }

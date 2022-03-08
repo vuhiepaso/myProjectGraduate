@@ -1,23 +1,55 @@
-import { StyleSheet } from 'react-native'
+import {StyleSheet} from 'react-native'
 import {
   backgroundColor,
   blueTextColor,
   buttonHeight,
+  buttonTextSize,
   largeRadius,
   maxWidth,
   primaryColor,
-  secondaryTextColor,
-  textBold,
-  whiteColor,
-  normalRadius,
-  titleTextSize,
   primaryTextColor,
   primaryTextSize,
-  buttonTextSize,
+  secondaryTextColor,
+  textBold,
+  titleTextSize,
+  whiteColor,
 } from '..'
 
 export default StyleSheet.create({
-  // Google Button
+  container: {
+    flex: 1,
+  },
+  imageBackground: {
+    width: '100%',
+    height: '100%',
+    justifyContent: 'flex-end',
+    alignItems: 'center',
+    backgroundColor: whiteColor,
+  },
+  content: {
+    flexDirection: 'row',
+    width: '100%',
+    backgroundColor: backgroundColor,
+    borderTopLeftRadius: 20,
+    borderTopRightRadius: 20,
+    justifyContent: 'center',
+  },
+  welcomeView: {
+    width: '100%',
+    padding: 24,
+    maxWidth: maxWidth,
+  },
+  title: {
+    fontSize: titleTextSize,
+    fontWeight: textBold,
+    color: primaryTextColor,
+  },
+  caption: {
+    fontSize: primaryTextSize,
+    color: secondaryTextColor,
+    marginTop: 8,
+    marginBottom: 16,
+  },
   googleButton: {
     height: buttonHeight,
     width: '100%',
@@ -36,12 +68,23 @@ export default StyleSheet.create({
     marginLeft: 16,
     marginRight: 16,
   },
+  createIcon: {
+    width: 24,
+    height: 24,
+    marginLeft: 16,
+    marginRight: 16,
+    tintColor: whiteColor,
+  },
   googleText: {
     fontSize: buttonTextSize,
     fontWeight: textBold,
     color: primaryColor,
   },
-  // Create Button
+  createAccountText: {
+    fontSize: buttonTextSize,
+    fontWeight: textBold,
+    color: whiteColor,
+  },
   createAccountButton: {
     height: buttonHeight,
     width: '100%',
@@ -53,16 +96,18 @@ export default StyleSheet.create({
     flexDirection: 'row',
     marginBottom: 8,
   },
-  createIcon: {
-    width: 24,
-    height: 24,
-    marginLeft: 16,
-    marginRight: 16,
-    tintColor: whiteColor,
+  login: {
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'flex-end',
+    paddingTop: 4,
   },
-  createAccountText: {
-    fontSize: buttonTextSize,
+  loginText: {
+    color: secondaryTextColor,
+  },
+  loginButton: {
+    paddingLeft: 4,
+    color: blueTextColor,
     fontWeight: textBold,
-    color: whiteColor,
   },
 })

@@ -3,6 +3,9 @@ import {createStackNavigator} from '@react-navigation/stack'
 import {useTranslation} from 'react-i18next'
 
 import GetStarted from '../pages/GetStarted'
+import Login from '../pages/Login'
+import PasswordRecovery from '../pages/PasswordRecovery'
+import Welcome from '../pages/Welcome'
 import {whiteColor} from '../assets/styles'
 import Register from '../pages/Register'
 import Language from '../pages/Language'
@@ -15,13 +18,23 @@ const Container = () => {
       screenOptions={{
         headerTitleAlign: 'center',
       }}
-      initialRouteName="Language"
+      initialRouteName=""
     >
       <Stack.Screen
         name="GetStarted"
         component={GetStarted}
         options={{
           headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="Welcome"
+        component={Welcome}
+        options={{
+          title: t('Welcome.title'),
+          headerTintColor: 'white',
+          headerTransparent: true,
+          headerLeft: null,
         }}
       />
       <Stack.Screen
@@ -38,6 +51,24 @@ const Container = () => {
         component={Language}
         options={{
           title: t('Language.title'),
+        }}
+      />
+      <Stack.Screen
+        name="Login"
+        component={Login}
+        options={{
+          title: t('Login.title'),
+          headerTintColor: whiteColor,
+          headerTransparent: true,
+        }}
+      />
+      <Stack.Screen
+        name="PasswordRecovery"
+        component={PasswordRecovery}
+        options={{
+          title: t('Password Recovery'),
+          headerTintColor: whiteColor,
+          headerTransparent: true,
         }}
       />
     </Stack.Navigator>
