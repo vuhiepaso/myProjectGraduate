@@ -8,6 +8,7 @@ import PasswordRecovery from '../pages/PasswordRecovery'
 import Welcome from '../pages/Welcome'
 import {whiteColor} from '../assets/styles'
 import Register from '../pages/Register'
+import Language from '../pages/Language'
 
 const Stack = createStackNavigator()
 const Container = () => {
@@ -17,7 +18,7 @@ const Container = () => {
       screenOptions={{
         headerTitleAlign: 'center',
       }}
-      initialRouteName="Login"
+      initialRouteName=""
     >
       <Stack.Screen
         name="GetStarted"
@@ -43,6 +44,13 @@ const Container = () => {
           title: t('Register.title'),
           headerTransparent: true,
           headerTintColor: whiteColor,
+        }}
+      />
+      <Stack.Screen
+        name="Language"
+        component={Language}
+        options={{
+          title: t('Language.title'),
         }}
       />
       <Stack.Screen
