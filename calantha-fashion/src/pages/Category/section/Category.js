@@ -22,29 +22,9 @@ export default function Category(props){
     }
     else{
         return(
-            <View
-                style = {{justifyContent: 'center',
-                alignItems:'center'}}>
-                <ScrollView showsVerticalScrollIndicator={false}>
-                    <View>
-                        {category?.data.data.map((item, index) =>(
-                            <Pressable
-                            style = {{maxHeight: 200,
-                            height: width * 0.4,
-                            marginTop: width * 0.04,
-                            borderRadius: 10,
-                            justifyContent: 'space-between'}}
-                                key={index}>
-                                <ItemCategory
-                                    text={item.category_name}
-                                    img ={item.Image}
-                                />
-                            </Pressable>
-                        ))}
-                    </View>
-
-                </ScrollView>
-            </View>
+            <ItemCategory
+                category={category}
+            />
         );
     }
 }
