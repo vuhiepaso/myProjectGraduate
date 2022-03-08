@@ -26,6 +26,9 @@ export default StyleSheet.create({
     position: 'absolute',
     bottom: width * 0.05,
     flexDirection: 'column',
+    width: '100%',
+    paddingLeft: 24,
+    paddingRight: 24,
     alignItems: 'center',
   },
   dotView: {

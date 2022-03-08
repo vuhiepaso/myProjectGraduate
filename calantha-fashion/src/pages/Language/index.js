@@ -1,9 +1,9 @@
 import React, {useState} from 'react'
-
+import i18next from 'i18next'
 import AsyncStorage from '@react-native-async-storage/async-storage'
+
 import {ChooseLanguageButton, DefaultButton} from '../../component/view'
 import {vietNamFlag, englandFlag, correctIcon} from '../../assets/images'
-import i18next from 'i18next'
 import {DefaultLayout, ScrollLayout} from '../../component/layout'
 
 export default function Language({navigation}) {
@@ -34,7 +34,7 @@ export default function Language({navigation}) {
           uri={correctIcon}
           onChoose={() => setLanguage('en')}
         />
-        <DefaultButton action={handleSubmit} buttonName={'Language.submit'} />
+        <DefaultButton onClick={handleSubmit} buttonName={'Language.submit'} />
       </ScrollLayout>
     </DefaultLayout>
   )

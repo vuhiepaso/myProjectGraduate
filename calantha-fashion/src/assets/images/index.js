@@ -29,7 +29,7 @@ export const hidePassword =
   'https://res.cloudinary.com/cde/image/upload/v1645709383/Icon/hide_vision_lb3n9p.png'
 export const lockIcon =
   'https://res.cloudinary.com/cde/image/upload/v1638102360/Icon/lock_try5mw.png'
-  export const correctIcon =
+export const correctIcon =
   'https://res.cloudinary.com/cde/image/upload/v1638333883/Icon/correct_gunfrz.png'
 //flag
 export const vietNamFlag =
@@ -37,3 +37,7 @@ export const vietNamFlag =
 
 export const englandFlag =
   'https://res.cloudinary.com/cde/image/upload/v1638333254/Icon/Flag-England_y19mv7.jpg'
+export const warningIcon =
+  'https://res.cloudinary.com/cde/image/upload/v1646235479/Icon/179386_w5c4zs.png'
+export const successIcon =
+  'https://res.cloudinary.com/cde/image/upload/v1646235479/Icon/5910333_wcbkxx.png'

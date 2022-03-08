@@ -1,10 +1,11 @@
-import { StyleSheet } from 'react-native'
+import {StyleSheet} from 'react-native'
 
 import {
   buttonHeight,
   greyColor,
   greyTextColor,
   largeRadius,
+  maxWidth,
   primaryTextSize,
   redColor,
   tinyTextSize,
@@ -14,13 +15,14 @@ import {
 export default StyleSheet.create({
   container: {
     width: '100%',
+    marginBottom: 12,
+    maxWidth: maxWidth,
   },
   view: {
     display: 'flex',
     flexDirection: 'row',
     height: buttonHeight,
     width: '100%',
-    marginBottom: 12,
     alignItems: 'center',
     borderRadius: largeRadius,
     paddingLeft: 16,
@@ -28,22 +30,21 @@ export default StyleSheet.create({
     backgroundColor: whiteColor,
   },
   icon: {
+    marginRight: 16,
     width: 20,
     height: 20,
     tintColor: greyTextColor,
   },
   textInput: {
-    paddingLeft: 12,
-    height: buttonHeight,
+    height: buttonHeight - 16,
     flexGrow: 1,
     fontSize: primaryTextSize,
   },
   helperText: {
     color: redColor,
     fontSize: tinyTextSize,
-    marginTop: -8,
-    paddingLeft: 12,
-    marginBottom: 12,
+    marginTop: 4,
+    paddingLeft: 4,
   },
   imageStyle: {
     backgroundColor: whiteColor,
@@ -52,6 +53,7 @@ export default StyleSheet.create({
   securityIcon: {
     width: 18,
     height: 18,
+    marginLeft: 8,
     tintColor: greyColor,
   },
 })

@@ -1,8 +1,5 @@
 function handleSuccess(data) {
-  if (data.message === 'error') {
-    alert('' + data.error)
-  } else {
-  }
+  alert('' + data?.message)
 }
 
 export default handleSuccess

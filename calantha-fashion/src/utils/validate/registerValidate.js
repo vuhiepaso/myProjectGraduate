@@ -1,6 +1,6 @@
-import { emailPattern, isEmpty } from '.'
+import {emailPattern, isEmpty} from '.'
 
-const validateRegister = ({ email, phone, password, confirmPassword }) => {
+const validateRegister = ({email, phone, password, confirmPassword}) => {
   let errors = {}
 
   if (!email || !email.toLowerCase().match(emailPattern)) {
@@ -31,7 +31,7 @@ const validateRegister = ({ email, phone, password, confirmPassword }) => {
     errors.confirmPassword = 'Your confirm password is empty'
   }
 
-  return { errors, isValid: isEmpty(errors) }
+  return {errors, isValid: isEmpty(errors)}
 }
 
 export default validateRegister

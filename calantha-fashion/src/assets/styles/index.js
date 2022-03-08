@@ -1,9 +1,11 @@
 // color
 const primaryColor = '#027235'
 const backgroundColor = '#F4F7F9'
+const warningColor = '#FFD148'
 const errorColor = '#FE5758' // RedColor
 const redColor = '#E4455B' // DeepRedColor
 const whiteColor = '#FFFFFF'
+const blackColor = '#000000'
 const greyColor = '#444444'
 
 // text color
@@ -45,36 +47,12 @@ const SwitchColor = {
   backgroundColorBorder: greyTextColor,
 }
 
-// customize ui
-// const container = {
-//   flex: 1,
-//   justifyContent: 'center',
-//   alignItems: 'center',
-//   backgroundColor: whiteColor,
-// }
-// const title = {
-//   fontSize: titleTextSize,
-//   fontWeight: textBold,
-//   color: primaryTextColor,
-// }
-// const caption = {
-//   fontSize: primaryTextSize,
-//   color: secondaryTextColor,
-// }
-// const buttonText = {
-//   fontSize: buttonTextSize,
-//   fontWeight: textBold,
-// }
-// const button = {
-//   height: buttonHeight,
-//   justifyContent: 'center',
-//   alignItems: 'center',
-// }
-
 export {
   primaryColor,
   backgroundColor,
   whiteColor,
+  blackColor,
+  warningColor,
   errorColor,
   redColor,
   greyColor,

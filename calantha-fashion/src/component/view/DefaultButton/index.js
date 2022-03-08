@@ -1,13 +1,21 @@
-import React, { memo } from 'react'
-import { useTranslation } from 'react-i18next'
-import { Text, TouchableOpacity } from 'react-native'
+import React, {memo} from 'react'
+import {useTranslation} from 'react-i18next'
+import {Text, TouchableOpacity} from 'react-native'
 
 import styles from './styles'
 
-function DefaultButton({ buttonName, action, ...other }) {
-  const { t } = useTranslation()
+function DefaultButton({buttonName, onClick, ...other}) {
+  const {t} = useTranslation()
   return (
-    <TouchableOpacity style={styles.button} onPress={action} {...other}>
+    <TouchableOpacity
+      // onPressIn={(e) => {
+      //   e.preventDefault()
+      //   e.stopPropagation()
+      // }}
+      style={styles.button}
+      onPress={onClick}
+      {...other}
+    >
       <Text style={styles.buttonText}>{t(buttonName)}</Text>
     </TouchableOpacity>
   )
