@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react'
+import React from 'react'
 import {View, Image, Text, ScrollView, TouchableOpacity} from 'react-native'
 import {useTranslation} from 'react-i18next'
 
