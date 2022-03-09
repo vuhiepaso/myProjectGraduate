@@ -16,7 +16,7 @@ function Register(props) {
   const [dialogTitle, setDialogTitle] = useState('')
   const [dialogContent, setDialogContent] = useState('')
 
-  const handleNavigateLogin = () => navigation.navigate('login')
+  const handleNavigateLogin = () => navigation.navigate('Login')
 
   const handleClose = useCallback(() => {
     setModalVisible(false)
