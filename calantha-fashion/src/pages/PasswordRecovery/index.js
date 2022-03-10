@@ -8,7 +8,7 @@ import validatePhone from '../../utils/validate/phoneValidate'
 import styles from '../../assets/styles/pages/PasswordRecoveryStyles'
 import axios from '../../config/axios'
 import OverlayIndicator from '../../component/loading/OverlayIndicator'
-import {PasswordRecoveryBackground, phoneIcon} from '../../assets/images'
+import {passwordRecoveryBackground, phoneIcon} from '../../assets/images'
 import {handleError} from '../../utils/middleware'
 
 export default function PasswordRecovery({navigation}) {
@@ -50,7 +50,7 @@ export default function PasswordRecovery({navigation}) {
   )
 
   return (
-    <ImageBackground style={styles.container} source={{uri: PasswordRecoveryBackground}}>
+    <ImageBackground style={styles.container} source={{uri: passwordRecoveryBackground}}>
       <Dialog
         title={dialogTitle}
         content={dialogContent}

@@ -47,6 +47,34 @@ const switchColor = {
   backgroundColorBorder: greyTextColor,
 }
 
+// export const component = {
+//   title: {
+//     fontSize: titleTextSize,
+//     fontWeight: textBold,
+//     color: primaryTextColor,
+//   },
+//   caption: {
+//     fontSize: primaryTextSize,
+//     color: secondaryTextColor,
+//   },
+//   buttonText: {
+//     fontSize: buttonTextSize,
+//     fontWeight: textBold,
+//   },
+//   flex: {
+//     flex: 1,
+//   },
+//   row: {
+//     flexDirection: 'row',
+//   },
+//   button: {
+//     height: buttonHeight,
+//     width: '100%',
+//     justifyContent: 'center',
+//     alignItems: 'center',
+//   },
+// }
+
 export {
   primaryColor,
   backgroundColor,

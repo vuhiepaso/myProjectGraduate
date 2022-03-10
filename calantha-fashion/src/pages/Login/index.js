@@ -22,7 +22,7 @@ import axios from '../../config/axios'
 import validateLoginInput from '../../utils/validate/loginValidate'
 import styles from '../../assets/styles/pages/LoginStyles'
 import {switchColor} from '../../assets/styles'
-import {lockIcon, LoginBackground, phoneIcon} from '../../assets/images'
+import {lockIcon, loginBackground, phoneIcon} from '../../assets/images'
 import {handleError} from '../../utils/middleware'
 
 function Login(props) {
@@ -50,7 +50,6 @@ function Login(props) {
     if (isValid) {
       // @ts-ignore
       mutateAsync({phone, password}).then(async (res) => {
-        console.log(res.data)
         if (res.data.token) {
           await AsyncStorage.setItem('token', res.data.token)
           if (isEnabled) {
@@ -111,7 +110,7 @@ function Login(props) {
     return <LoadingIndicator />
   } else {
     return (
-      <ImageBackground style={styles.container} source={{uri: LoginBackground}}>
+      <ImageBackground style={styles.container} source={{uri: loginBackground}}>
         <Dialog
           title={dialogTitle}
           content={dialogContent}
