@@ -15,13 +15,11 @@ const DashboardTab = () => {
   return (
     <Tab.Navigator
       initialRouteName="DashboardStack"
-      tabBarOptions={{
-        showLabel: false,
-        style: styles.tabBar,
-      }}
       screenOptions={{
         unmountOnBlur: true,
         headerShown: false,
+        tabBarShowLabel: false,
+        tabBarStyle: styles.tabBar,
       }}
     >
       <Tab.Screen
@@ -45,10 +43,6 @@ const DashboardTab = () => {
           ),
         }}
       />
-      
-      
-
-      
     </Tab.Navigator>
   )
 }
