@@ -36,7 +36,10 @@ export default function Personal({navigation}) {
     onSuccess: (res) => setUser(res?.data?.data || {}),
   })
 
-  const handleNavigate = (typeNavigate) => navigation.navigate(typeNavigate) // no handle navigate
+  const handleNavigateHistory = () => navigation.navigate("History")
+  const handleNavigatePersonalInformation = () => navigation.navigate("PersonalInformation") 
+  const handleNavigateLanguage = () => navigation.navigate("Language") 
+  const handleNavigateWelcome = () => navigation.navigate("Welcome") 
   const handleNavigateContact = () => navigation.navigate('Contact')
   const handleClose = useCallback(() => {
     setModalVisible(false)
@@ -84,7 +87,7 @@ export default function Personal({navigation}) {
             <View style={styles.title}>
               <Text style={styles.titleText}>{t('Personal.My-order')}</Text>
               <TouchableOpacity
-                onPress={() => handleNavigate('History')}
+                onPress={handleNavigateHistory}
                 style={styles.historyButton}
               >
                 <Text style={styles.historyText}>{t('Personal.Purchase-history')}</Text>
@@ -93,28 +96,28 @@ export default function Personal({navigation}) {
             </View>
             <View style={styles.purchase}>
               <TouchableOpacity
-                onPress={() => handleNavigate('History')} //77
+                onPress={handleNavigateHistory} 
                 style={styles.purchaseContainer}
               >
                 <Image resizeMode="stretch" source={{uri: billIcon}} style={styles.purchaseIcon} />
                 <Text style={styles.purchaseText}>{t('Personal.Order')}</Text>
               </TouchableOpacity>
               <TouchableOpacity
-                onPress={() => handleNavigate('History')} //77
+                onPress={handleNavigateHistory} 
                 style={styles.purchaseContainer}
               >
                 <Image resizeMode="stretch" source={{uri: packIcon}} style={styles.purchaseIcon} />
                 <Text style={styles.purchaseText}>{t('Personal.Pack')}</Text>
               </TouchableOpacity>
               <TouchableOpacity
-                onPress={() => handleNavigate('History')} //77
+                onPress={handleNavigateHistory} 
                 style={styles.purchaseContainer}
               >
                 <Image source={{uri: shipIcon}} resizeMode="stretch" style={styles.purchaseIcon} />
                 <Text style={styles.purchaseText}>{t('Personal.Ship')}</Text>
               </TouchableOpacity>
               <TouchableOpacity
-                onPress={() => () => handleNavigate('History')} //77
+                onPress={() => handleNavigateHistory} 
                 style={styles.purchaseContainer}
               >
                 <Image
@@ -129,7 +132,7 @@ export default function Personal({navigation}) {
 
           <View style={styles.buttonView}>
             <TouchableOpacity
-              onPress={() => handleNavigate('PersonalInformation')} // create handle function
+              onPress={handleNavigatePersonalInformation} 
               style={styles.button}
             >
               <View style={styles.buttonData}>
@@ -164,7 +167,7 @@ export default function Personal({navigation}) {
             </TouchableOpacity>
 
             <TouchableOpacity
-              onPress={handleNavigateContact} //  create handle function
+              onPress={handleNavigateContact} 
               style={styles.button}
             >
               <View style={styles.buttonData}>
@@ -179,8 +182,7 @@ export default function Personal({navigation}) {
             </TouchableOpacity>
 
             <TouchableOpacity
-              onPress={() => handleNavigate('Language')}
-              // create handle function
+              onPress={handleNavigateLanguage}
               style={styles.button}
             >
               <View style={styles.buttonData}>
@@ -199,8 +201,7 @@ export default function Personal({navigation}) {
             </TouchableOpacity>
 
             <TouchableOpacity
-              onPress={() => handleNavigate('Welcome')}
-              //  create handle function
+              onPress={handleNavigateWelcome}
               style={styles.button}
             >
               <View style={styles.buttonData}>
