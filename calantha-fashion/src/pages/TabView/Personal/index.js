@@ -36,10 +36,10 @@ export default function Personal({navigation}) {
     onSuccess: (res) => setUser(res?.data?.data || {}),
   })
 
-  const handleNavigateHistory = () => navigation.navigate("History")
-  const handleNavigatePersonalInformation = () => navigation.navigate("PersonalInformation") 
-  const handleNavigateLanguage = () => navigation.navigate("Language") 
-  const handleNavigateWelcome = () => navigation.navigate("Welcome") 
+  const handleNavigateHistory = () => navigation.navigate('History')
+  const handleNavigatePersonalInformation = () => navigation.navigate('PersonalInformation')
+  const handleNavigateLanguage = () => navigation.navigate('Language')
+  const handleNavigateWelcome = () => navigation.navigate('Welcome')
   const handleNavigateContact = () => navigation.navigate('Contact')
   const handleClose = useCallback(() => {
     setModalVisible(false)
@@ -86,38 +86,26 @@ export default function Personal({navigation}) {
           <View style={styles.purchaseView}>
             <View style={styles.title}>
               <Text style={styles.titleText}>{t('Personal.My-order')}</Text>
-              <TouchableOpacity
-                onPress={handleNavigateHistory}
-                style={styles.historyButton}
-              >
+              <TouchableOpacity onPress={handleNavigateHistory} style={styles.historyButton}>
                 <Text style={styles.historyText}>{t('Personal.Purchase-history')}</Text>
                 <Image source={{uri: navigationIcon}} style={styles.historyIcon} />
               </TouchableOpacity>
             </View>
             <View style={styles.purchase}>
-              <TouchableOpacity
-                onPress={handleNavigateHistory} 
-                style={styles.purchaseContainer}
-              >
+              <TouchableOpacity onPress={handleNavigateHistory} style={styles.purchaseContainer}>
                 <Image resizeMode="stretch" source={{uri: billIcon}} style={styles.purchaseIcon} />
                 <Text style={styles.purchaseText}>{t('Personal.Order')}</Text>
               </TouchableOpacity>
-              <TouchableOpacity
-                onPress={handleNavigateHistory} 
-                style={styles.purchaseContainer}
-              >
+              <TouchableOpacity onPress={handleNavigateHistory} style={styles.purchaseContainer}>
                 <Image resizeMode="stretch" source={{uri: packIcon}} style={styles.purchaseIcon} />
                 <Text style={styles.purchaseText}>{t('Personal.Pack')}</Text>
               </TouchableOpacity>
-              <TouchableOpacity
-                onPress={handleNavigateHistory} 
-                style={styles.purchaseContainer}
-              >
+              <TouchableOpacity onPress={handleNavigateHistory} style={styles.purchaseContainer}>
                 <Image source={{uri: shipIcon}} resizeMode="stretch" style={styles.purchaseIcon} />
                 <Text style={styles.purchaseText}>{t('Personal.Ship')}</Text>
               </TouchableOpacity>
               <TouchableOpacity
-                onPress={() => handleNavigateHistory} 
+                onPress={() => handleNavigateHistory}
                 style={styles.purchaseContainer}
               >
                 <Image
@@ -131,10 +119,7 @@ export default function Personal({navigation}) {
           </View>
 
           <View style={styles.buttonView}>
-            <TouchableOpacity
-              onPress={handleNavigatePersonalInformation} 
-              style={styles.button}
-            >
+            <TouchableOpacity onPress={handleNavigatePersonalInformation} style={styles.button}>
               <View style={styles.buttonData}>
                 <Image
                   resizeMode="contain"
@@ -166,10 +151,7 @@ export default function Personal({navigation}) {
               />
             </TouchableOpacity>
 
-            <TouchableOpacity
-              onPress={handleNavigateContact} 
-              style={styles.button}
-            >
+            <TouchableOpacity onPress={handleNavigateContact} style={styles.button}>
               <View style={styles.buttonData}>
                 <Image source={{uri: contactIcon}} resizeMode="contain" style={styles.buttonIcon} />
                 <Text style={styles.buttonText}>{t('Personal.StoreContact')}</Text>
@@ -181,10 +163,7 @@ export default function Personal({navigation}) {
               />
             </TouchableOpacity>
 
-            <TouchableOpacity
-              onPress={handleNavigateLanguage}
-              style={styles.button}
-            >
+            <TouchableOpacity onPress={handleNavigateLanguage} style={styles.button}>
               <View style={styles.buttonData}>
                 <Image
                   resizeMode="contain"
@@ -200,10 +179,7 @@ export default function Personal({navigation}) {
               />
             </TouchableOpacity>
 
-            <TouchableOpacity
-              onPress={handleNavigateWelcome}
-              style={styles.button}
-            >
+            <TouchableOpacity onPress={handleNavigateWelcome} style={styles.button}>
               <View style={styles.buttonData}>
                 <Image resizeMode="contain" source={{uri: logoutIcon}} style={styles.buttonIcon} />
                 <Text style={styles.buttonText}>{t('Personal.Logout')}</Text>

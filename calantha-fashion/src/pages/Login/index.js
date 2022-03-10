@@ -50,7 +50,6 @@ function Login(props) {
     if (isValid) {
       // @ts-ignore
       mutateAsync({phone, password}).then(async (res) => {
-        console.log(res.data)
         if (res.data.token) {
           await AsyncStorage.setItem('token', res.data.token)
           if (isEnabled) {
