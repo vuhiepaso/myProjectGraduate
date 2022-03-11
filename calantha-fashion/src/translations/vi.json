@@ -85,11 +85,14 @@
   },
   "Personal": {
     "title": "Cá nhân",
-    "PersonalInformation": "Thông tin cá nhân",
+    "PersonalInformation":{
+      "title":"Thông tin cá nhân",
+      "Button-verify": "xác nhận"
+    }, 
     "DeliveryAddress": "Địa chỉ giao hàng",
     "StoreContact": "Liên hệ cửa hàng",
     "Language": "Ngôn ngữ",
-    "My-order": "Đơn hàng của tôi",
+    "My-order": "Đơn hàng",
     "Purchase-history": "Lịch sử mua hàng",
     "Logout": "Đăng xuất",
     "Order": "Đặt hàng",

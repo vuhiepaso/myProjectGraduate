@@ -85,7 +85,10 @@
   },
   "Personal": {
     "title": "Personal",
-    "PersonalInformation": "Personal information",
+    "PersonalInformation": {
+      "title": "Personal information",
+      "Button-verify": "Verify"
+    },
     "DeliveryAddress": "Delivery address",
     "StoreContact": "Store contact",
     "Language": "Language",

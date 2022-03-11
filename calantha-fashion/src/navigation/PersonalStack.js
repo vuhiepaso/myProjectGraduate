@@ -3,6 +3,7 @@ import {createStackNavigator} from '@react-navigation/stack'
 import {useTranslation} from 'react-i18next'
 
 import Personal from '../pages/TabView/Personal'
+import PersonalInformation from '../pages/TabView/Personal/PersonalInformation'
 
 const Stack = createStackNavigator()
 
@@ -16,6 +17,13 @@ const PersonalStack = () => {
         options={{
           headerLeft: null,
           headerTitle: t('Personal.title'),
+        }}
+      />
+      <Stack.Screen
+        name="PersonalInformation"
+        component={PersonalInformation}
+        options={{
+          headerTitle: t('Personal.PersonalInformation.title'),
         }}
       />
     </Stack.Navigator>

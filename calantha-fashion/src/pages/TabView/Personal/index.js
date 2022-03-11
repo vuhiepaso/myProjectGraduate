@@ -126,7 +126,7 @@ export default function Personal({navigation}) {
                   source={{uri: personalIcon}}
                   style={styles.buttonIcon}
                 />
-                <Text style={styles.buttonText}>{t('Personal.PersonalInformation')}</Text>
+                <Text style={styles.buttonText}>{t('Personal.PersonalInformation.title')}</Text>
               </View>
               <Image
                 resizeMode="contain"
