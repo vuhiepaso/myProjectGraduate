@@ -18,7 +18,6 @@ export const loginBackground =
 export const anonymousAvatar =
   'https://res.cloudinary.com/cde/image/upload/v1638279626/do-an/res-console.cloudinary_wrlsah.jpg'
 
-
 // icons
 export const googleIcon =
   'https://res.cloudinary.com/cde/image/upload/v1638099555/Icon/GoogleIcon_rwiso5.png'
@@ -74,4 +73,17 @@ export const shipIcon =
   'https://res.cloudinary.com/cde/image/upload/v1638341460/Icon/delivery_n9ngbb.png'
 export const reviewIcon =
   'https://res.cloudinary.com/cde/image/upload/v1638341458/Icon/review_q481ux.png'
-
+export const fillHeartIcon =
+  'https://res.cloudinary.com/cde/image/upload/v1638681442/Icon/fill-heart_jrunke.png'
+export const backNavigationIcon =
+  'https://res.cloudinary.com/cde/image/upload/a_0180/v1638710301/Icon/res-console.cloudinary_i8yami.png'
+export const nextNavigationIcon =
+  'https://res.cloudinary.com/cde/image/upload/v1638710301/Icon/res-console.cloudinary_i8yami.png'
+export const nextArrow =
+  'https://res.cloudinary.com/cde/image/upload/v1638113048/Icon/next_oymfe5.png'
+export const backArrow =
+  'https://res.cloudinary.com/cde/image/upload/v1638113050/Icon/back_sxsk5v.png'
+export const filterIcon =
+  'https://res.cloudinary.com/cde/image/upload/v1638683346/Icon/sort_jn62l4.png'
+export const searchIcon =
+  'https://res.cloudinary.com/cde/image/upload/v1638682996/Icon/search_unbyoc.png'
