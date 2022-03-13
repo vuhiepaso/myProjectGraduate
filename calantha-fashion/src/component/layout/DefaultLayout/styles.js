@@ -1,6 +1,6 @@
-import { StyleSheet } from 'react-native'
+import {StyleSheet} from 'react-native'
 
-import { backgroundColor } from '../../../assets/styles'
+import {backgroundColor} from '../../../assets/styles'
 
 export default StyleSheet.create({
   container: {
@@ -8,5 +8,6 @@ export default StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: backgroundColor,
+    paddingBottom: 60,
   },
 })
