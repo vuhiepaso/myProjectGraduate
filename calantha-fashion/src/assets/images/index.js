@@ -74,4 +74,13 @@ export const shipIcon =
   'https://res.cloudinary.com/cde/image/upload/v1638341460/Icon/delivery_n9ngbb.png'
 export const reviewIcon =
   'https://res.cloudinary.com/cde/image/upload/v1638341458/Icon/review_q481ux.png'
+export const cameraIcon =
+  'https://res.cloudinary.com/cde/image/upload/v1646979113/Icon/camera_icon_tacijj.png'
+export const birthIcon =
+  'https://res.cloudinary.com/cde/image/upload/v1646981096/Icon/birth_anw3i7.png'
+export const mapIcon =
+  'https://res.cloudinary.com/cde/image/upload/v1646981096/Icon/map_ur9tyb.png'
+export const lookIcon =
+  'https://res.cloudinary.com/cde/image/upload/v1646980331/Icon/look_ery4iu.png'
+
 
