@@ -16,9 +16,10 @@ function Register(props) {
   const [dialogTitle, setDialogTitle] = useState('')
   const [dialogContent, setDialogContent] = useState('')
 
-  const handleNavigateLogin = () => navigation.navigate('login')
+  const handleNavigateLogin = () => navigation.navigate('Login')
 
-  const handleResetError = useCallback(() => {
+  const handleClose = useCallback(() => {
+    setModalVisible(false)
     setDialogTitle('')
     setDialogContent('')
   }, [])
@@ -69,7 +70,7 @@ function Register(props) {
         content={dialogContent}
         modalVisible={modalVisible}
         setModalVisible={setModalVisible}
-        reset={handleResetError}
+        handleClose={handleClose}
       />
       {isLoading && <OverlayIndicator />}
       <BackgroundLayout background={registerBackground}>

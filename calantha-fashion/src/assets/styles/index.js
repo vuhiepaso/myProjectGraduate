@@ -38,7 +38,7 @@ const normalRadius = 20
 const largeRadius = 50
 
 // customize switch button
-const SwitchColor = {
+const switchColor = {
   backgroundColor: disableTextColor,
   backgroundActive: blueTextColor,
   backgroundInactive: backgroundColor,
@@ -46,6 +46,34 @@ const SwitchColor = {
   circleInActiveColor: disableTextColor,
   backgroundColorBorder: greyTextColor,
 }
+
+// export const component = {
+//   title: {
+//     fontSize: titleTextSize,
+//     fontWeight: textBold,
+//     color: primaryTextColor,
+//   },
+//   caption: {
+//     fontSize: primaryTextSize,
+//     color: secondaryTextColor,
+//   },
+//   buttonText: {
+//     fontSize: buttonTextSize,
+//     fontWeight: textBold,
+//   },
+//   flex: {
+//     flex: 1,
+//   },
+//   row: {
+//     flexDirection: 'row',
+//   },
+//   button: {
+//     height: buttonHeight,
+//     width: '100%',
+//     justifyContent: 'center',
+//     alignItems: 'center',
+//   },
+// }
 
 export {
   primaryColor,
@@ -73,5 +101,5 @@ export {
   tinyRadius,
   normalRadius,
   largeRadius,
-  SwitchColor,
+  switchColor,
 }
