@@ -11,11 +11,14 @@ function ItemCategory({categories}) {
     //         style = {styles.categoryImage}
     //     />
     // </View>
-    <View>
+    <View style={styles.container}>
       {categories.map((category, index) => (
-        <Pressable style={styles.pressable} key={index}>
-          <Text>{category.category_name}</Text>
-          <Image source={{uri: category.image}} style={{width: 100, height: 100}} />
+        <Pressable
+          style={[styles.pressable, {backgroundColor: category.background_color}]}
+          key={index}
+        >
+          <Text style={styles.categoryText}>{category.category_name}</Text>
+          <Image source={{uri: category.image}} style={styles.categoryImage} />
         </Pressable>
       ))}
     </View>

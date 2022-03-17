@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react'
-import {View, FlatList, ScrollView, Pressable, Dimensions} from 'react-native'
+import {View, FlatList, ScrollView, Pressable, Dimensions, StyleSheet} from 'react-native'
 
 import {useQuery} from 'react-query'
 import client from '../../../config/axios'
@@ -34,9 +34,15 @@ export default function Category(props) {
   }
   return (
     <DefaultLayout statusBarStyle="dark-content">
-      <ScrollLayout>
+      <ScrollView style={styles.scroll}>
         <ItemCategory categories={categories?.data?.data || []} />
-      </ScrollLayout>
+      </ScrollView>
     </DefaultLayout>
   )
 }
+const styles = StyleSheet.create({
+  scroll: {
+    paddingTop: 16,
+    paddingBottom: 48,
+  },
+})
