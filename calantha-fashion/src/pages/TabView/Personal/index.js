@@ -29,12 +29,12 @@ export default function Personal({navigation}) {
   const [modalVisible, setModalVisible] = useState(false)
   const [dialogTitle, setDialogTitle] = useState('')
   const [dialogContent, setDialogContent] = useState('')
-  const [user, setUser] = useState({user_id: '', avatar: '', full_name: '', phone: '', address: ''})
 
-  const {isLoading} = useQuery('user-information', () => client.get('/user/information'), {
-    onError: (e) => handleError(e, setModalVisible, setDialogTitle, setDialogContent),
-    onSuccess: (res) => setUser(res?.data?.data || {}),
-  })
+  const {data: user, isLoading} = useQuery(
+    'user-information',
+    () => client.get('/user/information'),
+    {onError: (e) => handleError(e, setModalVisible, setDialogTitle, setDialogContent)},
+  )
 
   const handleNavigateHistory = () => navigation.navigate('History')
   const handleNavigatePersonalInformation = () => navigation.navigate('PersonalInformation')
@@ -63,22 +63,22 @@ export default function Personal({navigation}) {
           <View style={styles.informationView}>
             <Image
               source={{
-                uri: isEmpty(user.avatar) ? anonymousAvatar : user.avatar,
+                uri: user?.data?.data?.avatar || anonymousAvatar,
               }}
               style={styles.avatar}
             />
             <View style={styles.information}>
               <View style={styles.row}>
                 <Image source={{uri: personalIcon}} style={styles.icon} />
-                <Text style={styles.informationText}>{user.full_name}</Text>
+                <Text style={styles.informationText}>{user?.data?.data?.full_name}</Text>
               </View>
               <View style={styles.row}>
                 <Image source={{uri: phoneIcon}} style={styles.icon} />
-                <Text style={styles.informationText}>{user.phone}</Text>
+                <Text style={styles.informationText}>{user?.data?.data?.phone}</Text>
               </View>
               <View style={styles.row}>
                 <Image source={{uri: locationIcon}} style={styles.icon} />
-                <Text style={styles.informationText}>{user.address}</Text>
+                <Text style={styles.informationText}>{user?.data?.data?.address}</Text>
               </View>
             </View>
           </View>

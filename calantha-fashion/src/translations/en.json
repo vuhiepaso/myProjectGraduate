@@ -89,6 +89,9 @@
       "title": "Personal information",
       "Button-verify": "Verify"
     },
+    "TakePhoto": {
+      "title": "Open Camera"
+    },
     "DeliveryAddress": "Delivery address",
     "StoreContact": "Store contact",
     "Language": "Language",
