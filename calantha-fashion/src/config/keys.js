@@ -1,4 +1,4 @@
-const api = 'http://192.168.0.107:5000'
+const api = 'http://192.16.5.105:5000'
 
 const googleId = 'AIzaSyCYO9-zBJGd9FvFCgTJUUi4ZNvex1Qc-6o'
 const androidClientId = '756518407865-0aml2l3471p0sk82fcqqdm15htv1ime0.apps.googleusercontent.com'

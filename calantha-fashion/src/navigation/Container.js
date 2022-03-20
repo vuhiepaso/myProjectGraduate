@@ -10,7 +10,7 @@ import Welcome from '../pages/Welcome'
 import Register from '../pages/Register'
 import Language from '../pages/Language'
 import DashboardTab from './DashboardTab'
-import Category from '../pages/Category'
+import Category from '../pages/Category/section/Category'
 
 const Stack = createStackNavigator()
 const Container = () => {
@@ -74,19 +74,17 @@ const Container = () => {
         }}
       />
       <Stack.Screen
-        name="Category"
-        component={Category}
-        options={{
-          title: t('Category'),
-          headerTintColor: whiteColor,
-          headerTransparent: true,
-        }}
-      />
-      <Stack.Screen
         name="Dashboard"
         component={DashboardTab}
         options={{
           headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="Category"
+        component={Category}
+        options={{
+          title: t('Category.title'),
         }}
       />
     </Stack.Navigator>

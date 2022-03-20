@@ -43,16 +43,12 @@ function RegisterForm({onRegister}) {
         placeholder={t('Register.placeholder.email')}
         onChange={changeEmail}
         // autoFocus
-        // autoComplete="email"
-        // textContentType="emailAddress"
         error={emailError}
       />
       <DefaultInput
         icon={phoneIcon}
         placeholder={t('Register.placeholder.phone')}
         keyboardType="phone-pad"
-        // autoComplete="tel"
-        // textContentType="telephoneNumber"
         onChange={changePhone}
         error={phoneError}
       />
