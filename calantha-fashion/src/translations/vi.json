@@ -89,6 +89,9 @@
       "title":"Thông tin cá nhân",
       "Button-verify": "xác nhận"
     }, 
+    "TakePhoto": {
+      "title": "Camera"
+    },
     "DeliveryAddress": "Địa chỉ giao hàng",
     "StoreContact": "Liên hệ cửa hàng",
     "Language": "Ngôn ngữ",

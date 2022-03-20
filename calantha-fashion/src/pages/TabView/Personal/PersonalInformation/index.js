@@ -1,6 +1,7 @@
-import React, { useCallback, useState } from 'react'
+import React, { useCallback, useMemo, useRef, useState } from 'react'
 import { View, TextInput, Image, Text, ScrollView, TouchableOpacity } from 'react-native'
 import { useTranslation } from 'react-i18next'
+import { BottomSheetView, BottomSheetModal, BottomSheetModalProvider } from "@gorhom/bottom-sheet";
 
 import {
     anonymousAvatar,
@@ -23,10 +24,12 @@ import { LoadingIndicator } from '../../../../component/loading'
 
 export default function PersonalInformation({ navigation }) {
     const { t } = useTranslation()
+    const bottomSheetModalRef = useRef(null);
+    const snapPoints = useMemo(() => ['25%', '50%'], []);
 
+    const [isOpen, setIsOpen] = useState(false);
     const [fullName, setFullName] = useState("")
     const [birthday, setBirthday] = useState('')
-
     const [modalVisible, setModalVisible] = useState(false)
     const [dialogTitle, setDialogTitle] = useState('')
     const [dialogContent, setDialogContent] = useState('')
@@ -36,6 +39,7 @@ export default function PersonalInformation({ navigation }) {
         email: "",
         phone: "",
     });
+
     const handleClose = useCallback(() => {
         setModalVisible(false)
         setDialogTitle('')
@@ -47,21 +51,37 @@ export default function PersonalInformation({ navigation }) {
     const handleChangeName = () => {
 
     }
+    const handleChangeAvatar = useCallback(() => {
+        bottomSheetModalRef.current?.present();
+    }, []);
+    const handleSheetChanges = useCallback((index) => {
+        index === 1 ? setIsOpen(true) : setIsOpen(false)
+    }, []);
+
+    const handleCancelBottomSheet = () => {
+        bottomSheetModalRef.current?.dismiss();
+    }
+    const handleChooseLibrary = () => {
+
+    }
+    const handleTakePhoto = () => {
+        navigation.navigate('TakePhoto')
+    }
     const handleChangeBirthday = (e) => {
 
         const getBirthday = (b) => {
             if (b.length > birthday.length) {
-              if (b.length === 2 || b.length === 5) {
-                return b + '-'
-              }
-              return b
+                if (b.length === 2 || b.length === 5) {
+                    return b + '-'
+                }
+                return b
             } else {
-              if (b.length === 2 || b.length === 5) {
-                return b.slice(0, -1)
-              }
-              return b
+                if (b.length === 2 || b.length === 5) {
+                    return b.slice(0, -1)
+                }
+                return b
             }
-          }
+        }
 
         setBirthday(getBirthday(e))
 
@@ -84,7 +104,8 @@ export default function PersonalInformation({ navigation }) {
                     setModalVisible={setModalVisible}
                     handleClose={handleClose}
                 />
-                <ScrollView showsVerticalScrollIndicator={false} style={styles.flex}>
+                <ScrollView showsVerticalScrollIndicator={false} 
+                        style={[styles.flex, {opacity: isOpen ? 0.2: 1}]}>
                     <View style={styles.informationView}>
                         <View style={styles.wrapAvatar}>
                             <Image
@@ -93,7 +114,9 @@ export default function PersonalInformation({ navigation }) {
                                 }}
                                 style={styles.avatar}
                             />
-                            <TouchableOpacity style={styles.buttonCamera}>
+                            <TouchableOpacity
+                                onPress={handleChangeAvatar}
+                                style={styles.buttonCamera}>
                                 <Image
                                     resizeMode="contain"
                                     source={{ uri: cameraIcon }}
@@ -205,6 +228,36 @@ export default function PersonalInformation({ navigation }) {
                         />
                     </View>
                 </ScrollView>
+                <BottomSheetModalProvider>
+                    <BottomSheetModal
+                        ref={bottomSheetModalRef}
+                        index={1}
+                        snapPoints={snapPoints}
+                        onChange={handleSheetChanges}
+                    >
+                        <View style={styles.panel}>
+                            <View style={{ alignItems: 'center' }}>
+                                <Text style={styles.panelTitle}>Upload Photo</Text>
+                                <Text style={styles.panelSubtitle}>Choose Your Profile Picture</Text>
+                            </View>
+                            <TouchableOpacity
+                                onPress={handleTakePhoto}
+                                style={styles.panelButton}>
+                                <Text style={styles.panelButtonTitle}>Take Photo</Text>
+                            </TouchableOpacity>
+                            <TouchableOpacity
+                                onPress={handleChooseLibrary}
+                                style={styles.panelButton}>
+                                <Text style={styles.panelButtonTitle}>Choose From Library</Text>
+                            </TouchableOpacity>
+                            <TouchableOpacity
+                                onPress={handleCancelBottomSheet}
+                                style={styles.panelButton}>
+                                <Text style={styles.panelButtonTitle}>Cancel</Text>
+                            </TouchableOpacity>
+                        </View>
+                    </BottomSheetModal>
+                </BottomSheetModalProvider>
             </View>
         )
     }
