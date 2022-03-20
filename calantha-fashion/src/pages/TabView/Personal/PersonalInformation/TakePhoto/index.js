@@ -9,17 +9,8 @@ export default function App() {
   const [previewVisible, setPreviewVisible] = useState(false)
   const [capturedImage, setCapturedImage] = useState(null)
   const [cameraType, setCameraType] = useState(Camera.Constants.Type.back)
-  const [flashMode, setFlashMode] = useState('off')
+  const [flashMode, setFlashMode] = useState(Camera.Constants.FlashMode.on)
   const [hasPermission, setHasPermission] = useState(null)
-
-  // if (hasPermission === null) {
-  //   Alert.alert('Access denied')
-  // }
-  // if (hasPermission === false) {
-  //   return (
-  //     Alert.alert('Access denied')
-  //   );
-  // }
 
   useEffect(() => {
     async function handleRequestPermission() {
@@ -56,12 +47,12 @@ export default function App() {
     __startCamera()
   }
   const __handleFlashMode = () => {
-    if (flashMode === 'on') {
-      setFlashMode('off')
-    } else if (flashMode === 'off') {
-      setFlashMode('on')
+    if (flashMode === Camera.Constants.FlashMode.on) {
+      setFlashMode(Camera.Constants.FlashMode.off)
+    } else if (flashMode === Camera.Constants.FlashMode.off) {
+      setFlashMode(Camera.Constants.FlashMode.on)
     } else {
-      setFlashMode('auto')
+      setFlashMode(Camera.Constants.FlashMode.auto)
     }
   }
   const __switchCamera = () => {
@@ -111,7 +102,7 @@ export default function App() {
                 <TouchableOpacity
                   onPress={__handleFlashMode}
                   style={{
-                    backgroundColor: flashMode === 'off' ? '#000' : '#fff',
+                    backgroundColor: flashMode === Camera.Constants.FlashMode.off ? '#000' : '#fff',
                     borderRadius: 50,
                     height: 25,
                     width: 25,
