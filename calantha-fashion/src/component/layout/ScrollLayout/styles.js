@@ -4,7 +4,7 @@ const {width} = Dimensions.get('screen')
 
 export default StyleSheet.create({
   container: {
-    marginTop: 16,
+    paddingTop: 16,
     width: width - 48,
     paddingBottom: 48,
   },

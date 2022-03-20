@@ -18,7 +18,6 @@ export const loginBackground =
 export const anonymousAvatar =
   'https://res.cloudinary.com/cde/image/upload/v1638279626/do-an/res-console.cloudinary_wrlsah.jpg'
 
-
 // icons
 export const googleIcon =
   'https://res.cloudinary.com/cde/image/upload/v1638099555/Icon/GoogleIcon_rwiso5.png'
@@ -38,10 +37,8 @@ export const lockIcon =
   'https://res.cloudinary.com/cde/image/upload/v1638102360/Icon/lock_try5mw.png'
 export const correctIcon =
   'https://res.cloudinary.com/cde/image/upload/v1638333883/Icon/correct_gunfrz.png'
-//flag
 export const vietNamFlag =
   'https://res.cloudinary.com/cde/image/upload/v1638333255/Icon/Flag_of_Vietnam_g3lnjf.png'
-
 export const englandFlag =
   'https://res.cloudinary.com/cde/image/upload/v1638333254/Icon/Flag-England_y19mv7.jpg'
 export const warningIcon =
@@ -78,9 +75,20 @@ export const cameraIcon =
   'https://res.cloudinary.com/cde/image/upload/v1646979113/Icon/camera_icon_tacijj.png'
 export const birthIcon =
   'https://res.cloudinary.com/cde/image/upload/v1646981096/Icon/birth_anw3i7.png'
-export const mapIcon =
-  'https://res.cloudinary.com/cde/image/upload/v1646981096/Icon/map_ur9tyb.png'
+export const mapIcon = 'https://res.cloudinary.com/cde/image/upload/v1646981096/Icon/map_ur9tyb.png'
 export const lookIcon =
   'https://res.cloudinary.com/cde/image/upload/v1646980331/Icon/look_ery4iu.png'
-
-
+export const fillHeartIcon =
+  'https://res.cloudinary.com/cde/image/upload/v1638681442/Icon/fill-heart_jrunke.png'
+export const backNavigationIcon =
+  'https://res.cloudinary.com/cde/image/upload/a_0180/v1638710301/Icon/res-console.cloudinary_i8yami.png'
+export const nextNavigationIcon =
+  'https://res.cloudinary.com/cde/image/upload/v1638710301/Icon/res-console.cloudinary_i8yami.png'
+export const nextArrow =
+  'https://res.cloudinary.com/cde/image/upload/v1638113048/Icon/next_oymfe5.png'
+export const backArrow =
+  'https://res.cloudinary.com/cde/image/upload/v1638113050/Icon/back_sxsk5v.png'
+export const filterIcon =
+  'https://res.cloudinary.com/cde/image/upload/v1638683346/Icon/sort_jn62l4.png'
+export const searchIcon =
+  'https://res.cloudinary.com/cde/image/upload/v1638682996/Icon/search_unbyoc.png'

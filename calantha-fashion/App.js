@@ -11,6 +11,7 @@ import {store} from './src/redux/store/store'
 import en from './src/translations/en.json'
 import vi from './src/translations/vi.json'
 import Container from './src/navigation/Container'
+import Category from './src/pages/Category/section/Category'
 
 const queryClient = new QueryClient({
   defaultOptions: {
