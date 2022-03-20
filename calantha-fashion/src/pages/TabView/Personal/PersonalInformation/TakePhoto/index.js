@@ -55,6 +55,7 @@ export default function App() {
       setFlashMode(Camera.Constants.FlashMode.auto)
     }
   }
+
   const __switchCamera = () => {
     if (cameraType === 'back') {
       setCameraType(Camera.Constants.Type.front)
