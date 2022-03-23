@@ -5,6 +5,7 @@ import {
   greyTextColor,
   largeRadius,
   largeTextSize,
+  primaryColor,
   primaryTextColor,
   primaryTextSize,
   textBold,
@@ -47,8 +48,8 @@ export default StyleSheet.create({
   },
   buttonCamera: {
     position: 'absolute',
-    bottom: 5,
-    right: 5
+    bottom: 0,
+    right: 0
   },
   information: {
     backgroundColor: whiteColor,
@@ -152,8 +153,8 @@ export default StyleSheet.create({
     tintColor: primaryTextColor,
   },
   iconCamera: {
-    width: 20,
-    height: 20,
+    width: 25,
+    height: 25,
     tintColor: primaryTextColor,
   },
   buttonText: {
@@ -179,7 +180,7 @@ export default StyleSheet.create({
   panelButton: {
     padding: 13,
     borderRadius: 10,
-    backgroundColor: '#FF6347',
+    backgroundColor: primaryColor,
     alignItems: 'center',
     marginVertical: 7,
   },

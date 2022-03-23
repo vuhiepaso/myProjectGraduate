@@ -92,3 +92,7 @@ export const filterIcon =
   'https://res.cloudinary.com/cde/image/upload/v1638683346/Icon/sort_jn62l4.png'
 export const searchIcon =
   'https://res.cloudinary.com/cde/image/upload/v1638682996/Icon/search_unbyoc.png'
+export const switchCameraIcon = 
+  'https://res.cloudinary.com/cde/image/upload/v1647844196/Icon/switch-camera-2_kgsjzl.png'
+  export const flashCameraIcon = 
+    'https://res.cloudinary.com/cde/image/upload/v1647844423/Icon/flash_camera_icon_kmjk2e.png'
