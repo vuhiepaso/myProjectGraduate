@@ -73,7 +73,8 @@
     "title": "Phân loại"
   },
   "Contact": {
-    "title": "Liên hệ cửa hàng"
+    "title": "Liên hệ cửa hàng",
+    "name": "Liên hệ cửa hàng"
   },
   "Search": {
     "search-product": "Từ tìm kiếm",

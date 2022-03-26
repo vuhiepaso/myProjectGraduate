@@ -92,3 +92,5 @@ export const filterIcon =
   'https://res.cloudinary.com/cde/image/upload/v1638683346/Icon/sort_jn62l4.png'
 export const searchIcon =
   'https://res.cloudinary.com/cde/image/upload/v1638682996/Icon/search_unbyoc.png'
+export const sendIcon =
+  'https://res.cloudinary.com/cde/image/upload/v1647493833/Icon/3682321_k6qj7t.png'

@@ -1,5 +1,6 @@
 import React, {useCallback, useMemo, useRef, useState} from 'react'
 import {View, Image, Text, ScrollView, TouchableOpacity} from 'react-native'
+import {useDispatch} from 'react-redux'
 import {BottomSheetModal, BottomSheetModalProvider} from '@gorhom/bottom-sheet'
 
 import {
@@ -21,6 +22,7 @@ import {handleError} from '../../../../utils/middleware'
 import {LoadingIndicator} from '../../../../component/loading'
 
 export default function PersonalInformation({navigation}) {
+  const dispatch = useDispatch()
   const bottomSheetModalRef = useRef(null)
   const snapPoints = useMemo(() => ['25%', '50%'], [])
 

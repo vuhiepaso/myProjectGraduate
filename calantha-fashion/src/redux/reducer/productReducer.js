@@ -1,4 +1,4 @@
-import {PRODUCT_NAVIGATE_PRODUCT_DETAIL} from '../constant'
+import { PRODUCT_NAVIGATE_PRODUCT_DETAIL } from '../constant'
 
 const initialState = {
   product: {
@@ -11,7 +11,7 @@ const initialState = {
 export default (state = initialState, action) => {
   switch (action.type) {
     case PRODUCT_NAVIGATE_PRODUCT_DETAIL:
-      return {...state, product: action.payload, isNavigateToProductDetail: true}
+      return { ...state, product: action.payload, isNavigateToProductDetail: true }
     default:
       return state
   }

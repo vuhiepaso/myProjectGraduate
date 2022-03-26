@@ -1,6 +1,7 @@
 import React, {useCallback, useState} from 'react'
 import {View, Image, Text, ScrollView, TouchableOpacity} from 'react-native'
 import {useTranslation} from 'react-i18next'
+import {useDispatch} from 'react-redux'
 
 import {
   anonymousAvatar,
@@ -20,12 +21,13 @@ import {Dialog} from '../../../component/view'
 import {LoadingIndicator} from '../../../component/loading'
 import client from '../../../config/axios'
 import {useQuery} from 'react-query'
-import {isEmpty} from '../../../utils/validate'
 import {handleError} from '../../../utils/middleware'
 import styles from '../../../assets/styles/pages/Personal'
+import {setNavigateContact} from '../../../redux/action/contactAction'
 
 export default function Personal({navigation}) {
   const {t} = useTranslation()
+  const dispatch = useDispatch()
   const [modalVisible, setModalVisible] = useState(false)
   const [dialogTitle, setDialogTitle] = useState('')
   const [dialogContent, setDialogContent] = useState('')
@@ -40,7 +42,10 @@ export default function Personal({navigation}) {
   const handleNavigatePersonalInformation = () => navigation.navigate('PersonalInformation')
   const handleNavigateLanguage = () => navigation.navigate('Language')
   const handleNavigateWelcome = () => navigation.navigate('Welcome')
-  const handleNavigateContact = () => navigation.navigate('Contact')
+  const handleNavigateContact = () => {
+    dispatch(setNavigateContact({user_id: user?.data?.data?.user_id, avatar: user?.data?.avatar}))
+    navigation.navigate('Contact')
+  }
   const handleClose = useCallback(() => {
     setModalVisible(false)
     setDialogTitle('')

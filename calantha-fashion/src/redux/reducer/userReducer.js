@@ -1,23 +1,33 @@
-import * as type from '../constant'
+import {
+  USER_CHANGE_AFTER_GOOGLE_REGISTER,
+  USER_CHANGE_AFTER_REGISTER,
+  USER_NAVIGATE_PAGE,
+  USER_CLEAR,
+} from '../constant'
 
 const initialState = {
-  user_id: '',
-  phone: '',
-  email: '',
-  email_token: '',
-  avatar: '',
-  date_of_bird: '',
-  full_name: '',
-  create_date: '',
-  update_date: '',
+  user: {
+    phone: '',
+    password: '',
+    email: '',
+    otp_token: '',
+    navigate: '',
+  },
+  isAfterGoogleRegister: false,
+  isAfterRegister: false,
+  isNavigatePage: false,
 }
 
 export default (state = initialState, action) => {
   switch (action.type) {
-    case type.USER_CHANGE:
-      return {...state, ...action.user}
-    case type.USER_CLEAR:
-      return {...state, ...initialState}
+    case USER_CHANGE_AFTER_GOOGLE_REGISTER:
+      return { ...state, user: action.payload, isAfterGoogleRegister: true }
+    case USER_CHANGE_AFTER_REGISTER:
+      return { ...state, user: action.payload, isAfterRegister: true }
+    case USER_NAVIGATE_PAGE:
+      return { ...state, user: action.payload, isNavigatePage: true }
+    case USER_CLEAR:
+      return { ...initialState }
     default:
       return state
   }

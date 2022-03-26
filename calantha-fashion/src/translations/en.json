@@ -73,7 +73,8 @@
     "title": "Category"
   },
   "Contact": {
-    "title": "Contact store"
+    "title": "Contact store",
+    "name": "Contact store"
   },
   "Add-to-cart": "Add to cart",
   "Added-to-cart": "Added to cart",
