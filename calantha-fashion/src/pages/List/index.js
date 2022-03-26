@@ -1,27 +1,38 @@
 import React, {useCallback, useEffect, useState} from 'react'
 import {useDispatch, useSelector} from 'react-redux'
 
-import {addToCart, addToFavorite, getListProduct, removeToFavorite} from '../../api/listApi'
-import {DefaultLayout, ScrollLayout} from '../../component/layout'
+import {addToFavorite, getListProduct, removeToFavorite} from '../../api/listApi'
+import {DefaultLayout} from '../../component/layout'
 import {LoadingIndicator} from '../../component/loading'
 import {Dialog} from '../../component/view'
 import {setNavigateProduct} from '../../redux/action/productAction'
 import {handleError} from '../../utils/middleware'
 import ProductList from './section/ProductList'
+import {pagination} from '../../themes/default'
 
 function List({navigation}) {
   // @ts-ignore
-  const category = useSelector((state) => state.category)
+  const category = useSelector((state) => state.category.category)
   const dispatch = useDispatch()
+  const [times, setTimes] = useState(1)
   const [modalVisible, setModalVisible] = useState(false)
   const [dialogTitle, setDialogTitle] = useState('')
   const [dialogContent, setDialogContent] = useState('')
   const [productLoadingId, setProductLoadingId] = useState('')
 
-  const {data: products, isLoading, refetch} = getListProduct(category?.category?.category_id, 6)
+  const {
+    data: products,
+    isLoading,
+    refetch,
+    isFetching,
+  } = getListProduct(category.category_id, times * pagination)
   const {mutateAsync: addFavorite, isLoading: addFavoriteLoading} = addToFavorite()
   const {mutateAsync: removeFavorite, isLoading: removeFavoriteLoading} = removeToFavorite()
-  const {mutateAsync: addCart, isLoading: addCartLoading} = addToCart()
+
+  useEffect(() => navigation.setOptions({title: category?.category_name || ''}), [])
+  useEffect(() => {
+    refetch()
+  }, [times])
 
   const handleNavigateProduct = (product_id, product_name) => {
     dispatch(setNavigateProduct({product_id, product_name}))
@@ -46,22 +57,11 @@ function List({navigation}) {
       .finally(() => setProductLoadingId(''))
   }, [])
 
-  const handleAddToCart = useCallback((product_id) => {
-    setProductLoadingId(product_id)
-    // @ts-ignore
-    addCart({product_id})
-      .then(() => refetch())
-      .catch((error) => handleError(error, setModalVisible, setDialogTitle, setDialogContent))
-      .finally(() => setProductLoadingId(''))
-  }, [])
-
   const handleCloseDialog = useCallback(() => {
     setModalVisible(false)
     setDialogTitle('')
     setDialogContent('')
   }, [])
-
-  useEffect(() => navigation.setOptions({title: category?.category?.category_name || ''}), [])
 
   if (isLoading) {
     return <LoadingIndicator />
@@ -75,18 +75,16 @@ function List({navigation}) {
         handleClose={handleCloseDialog}
         setModalVisible={setModalVisible}
       />
-      <ScrollLayout>
-        <ProductList
-          addCart={handleAddToCart}
-          addFavorite={handleAddToFavorite}
-          removeFavorite={handleRemoveToFavorite}
-          productLoadingId={productLoadingId}
-          cartLoading={addCartLoading}
-          favoriteLoading={addFavoriteLoading || removeFavoriteLoading}
-          onNavigateProduct={handleNavigateProduct}
-          products={products?.data?.data || []}
-        />
-      </ScrollLayout>
+      <ProductList
+        onSetTimes={setTimes}
+        onAddFavorite={handleAddToFavorite}
+        onRemoveFavorite={handleRemoveToFavorite}
+        productLoadingId={productLoadingId}
+        favoriteLoading={addFavoriteLoading || removeFavoriteLoading}
+        onNavigateProduct={handleNavigateProduct}
+        products={products?.data || []}
+        loading={isFetching}
+      />
     </DefaultLayout>
   )
 }

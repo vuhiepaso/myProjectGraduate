@@ -6,7 +6,7 @@
   },
   "Welcome": {
     "name": "Welcome",
-    "title":"Welcome",
+    "title": "Welcome",
     "caption": "To the world’s no.1 shopping app for Android and IOS. We deliver everything on time.",
     "link-caption": "Already have an account?",
     "link-button": "Login",
@@ -15,11 +15,11 @@
   },
   "Register": {
     "name": "Register",
-    "title":"Create account",
+    "title": "Create account",
     "caption": "Quickly create account",
-    "link-caption":"Already have an account?",
+    "link-caption": "Already have an account?",
     "link-button": "Login",
-    "button":"Create account",
+    "button": "Create account",
     "placeholder": {
       "email": "Email",
       "phone": "Phone number",
@@ -28,22 +28,22 @@
     }
   },
   "Login": {
-    "title":"Login",
+    "title": "Login",
     "caption": "Sign in to your account.",
     "remember-me": "Remember me",
     "forgot-password": "Forgot Password?",
-    "login-button":"Login",
+    "login-button": "Login",
     "button-caption": "Don’t have an account?",
     "button-title": "Sign up",
     "placeholder": {
       "phone": "Phone number",
       "password": "Password"
     },
-    "validate":{
-      "phone-invalid":"Your phone is invalid",
-      "password-length":"Your password at least 6 characters",
-      "phone-empty":"Your phone name is empty",
-      "password-empty":"Your password name is empty"
+    "validate": {
+      "phone-invalid": "Your phone is invalid",
+      "password-length": "Your password at least 6 characters",
+      "phone-empty": "Your phone name is empty",
+      "password-empty": "Your password name is empty"
     },
     "Alert": {
       "title": "Login unsuccessful",
@@ -55,12 +55,12 @@
     "instruct": "Enter your phone and we will send you instructions on how to reset it",
     "Button": "Verify",
     "PhoneNumber": "Phone Number",
-    "placeholder":{
-      "phone":"Phone number"
+    "placeholder": {
+      "phone": "Phone number"
     },
-    "validate":{
-      "phone-invalid":"Your phone is invalid",
-      "phone-empty":"Your phone name is empty"
+    "validate": {
+      "phone-invalid": "Your phone is invalid",
+      "phone-empty": "Your phone name is empty"
     }
   },
   "Dashboard": {
@@ -107,9 +107,9 @@
     "title": "Purchase history"
   },
   "Product": {
-    "Remain": "Remain",
-    "Quantity": "Quantity",
-    "Add-to-cart": "Add to cart",
+    "remain": "Remain",
+    "quantity": "Quantity",
+    "add-to-cart": "Add to cart",
     "more": "more",
     "hide": "hide"
   },
@@ -118,7 +118,6 @@
     "title": "Change Language",
     "message": "Please choose your langue"
   },
-  
   "Cart": {
     "title": "Shopping cart",
     "Checkout": "Checkout",
@@ -128,7 +127,6 @@
   "Checkout": {
     "title": "Checkout"
   },
-  
   "EnterPassword": {
     "title": "Forgot password",
     "instruct": "Enter your new password and make sure it strong enough",
@@ -136,7 +134,6 @@
     "Password": "Password",
     "confirmPassword": "Confirm password"
   },
-  
   "Login with Facebook": "Login with Facebook",
   "Login with Google": "Login with Google",
   "Language": {
