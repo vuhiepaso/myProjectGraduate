@@ -1,4 +1,4 @@
-import { StyleSheet, Dimensions } from 'react-native'
+import {StyleSheet, Dimensions} from 'react-native'
 import {
   greyTextColor,
   lightGreyTextColor,
@@ -9,7 +9,7 @@ import {
   whiteColor,
 } from '../../../assets/styles'
 
-const { width } = Dimensions.get('screen')
+const {width} = Dimensions.get('screen')
 
 export default StyleSheet.create({
   itemView: {
@@ -33,7 +33,7 @@ export default StyleSheet.create({
   },
   discountText: {
     color: whiteColor,
-    fontWeight: '500',
+    fontWeight: textBold,
   },
   icon: {
     width: 20,
@@ -83,7 +83,7 @@ export default StyleSheet.create({
     textDecorationLine: 'line-through',
   },
   name: {
-    fontWeight: '500',
+    fontWeight: textBold,
     textAlign: 'center',
     paddingLeft: 4,
     paddingRight: 4,

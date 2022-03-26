@@ -27,4 +27,6 @@ const slider = [
   },
 ]
 
-export {images, slider}
+const pagination = 6
+
+export {images, slider, pagination}

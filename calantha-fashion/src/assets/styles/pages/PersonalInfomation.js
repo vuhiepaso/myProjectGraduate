@@ -32,11 +32,23 @@ export default StyleSheet.create({
     alignItems: 'center',
     marginTop: 16,
   },
+  wrapAvatar: {
+    flex: 1,
+    width: 100,
+    alignItems: 'center',
+    marginTop: 16,
+    position: 'relative'
+  },
   avatar: {
     width: 100,
     height: 100,
     borderRadius: largeRadius,
-    zIndex: 1,
+    // zIndex: 1,
+  },
+  buttonCamera: {
+    position: 'absolute',
+    bottom: 5,
+    right: 5
   },
   information: {
     backgroundColor: whiteColor,
@@ -130,7 +142,7 @@ export default StyleSheet.create({
     backgroundColor: whiteColor,
     alignItems: 'center',
     justifyContent: 'space-between',
-    borderRadius: tinyRadius,
+    borderRadius: largeRadius,
     flexDirection: 'row',
     marginBottom: 12,
   },
@@ -139,9 +151,41 @@ export default StyleSheet.create({
     height: 20,
     tintColor: primaryTextColor,
   },
+  iconCamera: {
+    width: 20,
+    height: 20,
+    tintColor: primaryTextColor,
+  },
   buttonText: {
-    paddingLeft: 8,
+    paddingLeft: 12,
     fontSize: primaryTextSize,
     color: primaryTextColor,
+  },
+  panel: {
+    padding: 20,
+    backgroundColor: '#FFFFFF',
+    paddingTop: 20,
+  },
+  panelTitle: {
+    fontSize: 27,
+    height: 35,
+  },
+  panelSubtitle: {
+    fontSize: 14,
+    color: 'gray',
+    height: 30,
+    marginBottom: 10,
+  },
+  panelButton: {
+    padding: 13,
+    borderRadius: 10,
+    backgroundColor: '#FF6347',
+    alignItems: 'center',
+    marginVertical: 7,
+  },
+  panelButtonTitle: {
+    fontSize: 17,
+    fontWeight: 'bold',
+    color: 'white',
   },
 })

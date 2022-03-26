@@ -10,7 +10,7 @@ import Welcome from '../pages/Welcome'
 import Register from '../pages/Register'
 import Language from '../pages/Language'
 import DashboardTab from './DashboardTab'
-import Category from '../pages/Category/section/Category'
+import Category from '../pages/Category/'
 
 const Stack = createStackNavigator()
 const Container = () => {

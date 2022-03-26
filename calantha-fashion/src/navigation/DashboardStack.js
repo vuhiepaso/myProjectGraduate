@@ -4,6 +4,7 @@ import {useTranslation} from 'react-i18next'
 
 import Dashboard from '../pages/Dashboard'
 import List from '../pages/List'
+import Product from '../pages/Product'
 
 const Stack = createStackNavigator()
 
@@ -21,6 +22,13 @@ const DashboardStack = () => {
       <Stack.Screen
         name="List"
         component={List}
+        options={{
+          title: '',
+        }}
+      />
+      <Stack.Screen
+        name="Product"
+        component={Product}
         options={{
           title: '',
         }}

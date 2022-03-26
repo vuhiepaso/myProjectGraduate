@@ -5,7 +5,7 @@
     "next": "Tiếp"
   },
   "Welcome": {
-    "name":"Xin chào",
+    "name": "Xin chào",
     "title": "Xin chào",
     "caption": "Đến ứng dụng mua sắm số 1 thế giới dành cho Android và IOS. Chúng tôi cung cấp mọi thứ mọi thời gian.",
     "link-caption": "Đã có tài khoản?",
@@ -17,9 +17,9 @@
     "name": "Đăng ký",
     "title": "Tạo tài khoản",
     "caption": "Tạo tài khoản nhanh",
-    "link-caption":"Đã có tài khoản?",
+    "link-caption": "Đã có tài khoản?",
     "link-button": "Đăng nhập",
-    "button":"Tạo tài khoản",
+    "button": "Tạo tài khoản",
     "placeholder": {
       "email": "Email",
       "phone": "Số điện thoại",
@@ -27,23 +27,23 @@
       "confirm-password": "Nhập lại mật khẩu"
     }
   },
-   "Login": {
-    "title":"Đăng nhập",
+  "Login": {
+    "title": "Đăng nhập",
     "caption": "Đăng nhập vào tài khoản của bạn.",
     "remember-me": "Nhớ mật khẩu",
     "forgot-password": "Quên mật khẩu?",
-    "login-button":"Đăng nhậ",
+    "login-button": "Đăng nhậ",
     "button-caption": "Không có tài khoản?",
     "button-title": "Đăng ký",
     "placeholder": {
       "phone": "Số điện thoại",
       "password": "Mật khẩu"
     },
-    "validate":{
-      "phone-invalid":"Vui lòng nhập số điện thoại hợp lệ",
-      "password-length":"Vui lòng nhập mật khẩu ít nhất 6 ký tự",
-      "phone-empty":"Vui lòng nhập số điện thoại",
-      "password-empty":"ui lòng nhập mật khẩu"
+    "validate": {
+      "phone-invalid": "Vui lòng nhập số điện thoại hợp lệ",
+      "password-length": "Vui lòng nhập mật khẩu ít nhất 6 ký tự",
+      "phone-empty": "Vui lòng nhập số điện thoại",
+      "password-empty": "ui lòng nhập mật khẩu"
     },
     "Alert": {
       "title": "Đăng nhập không thành công",
@@ -55,12 +55,12 @@
     "instruct": "Nhập số điện thoại của bạn và chúng tôi sẽ gửi cho bạn hướng dẫn về cách đặt lại điện thoại",
     "Button": "Xác nhận",
     "PhoneNumber": "Số điện thoại",
-    "placeholder":{
-      "phone":"Số điện thoại"
+    "placeholder": {
+      "phone": "Số điện thoại"
     },
-    "validate":{
-      "phone-invalid":"Vui lòng nhập số điện thoại hợp lệ",
-      "phone-empty":"Vui lòng nhập số điện thoại"
+    "validate": {
+      "phone-invalid": "Vui lòng nhập số điện thoại hợp lệ",
+      "phone-empty": "Vui lòng nhập số điện thoại"
     }
   },
   "Dashboard": {
@@ -75,9 +75,6 @@
   "Contact": {
     "title": "Liên hệ cửa hàng"
   },
-  "Add-to-cart": "Thêm vào giỏ",
-  "Added-to-cart": "Đã thêm vào giỏ",
-  "Favorite": "Yêu thích",
   "Search": {
     "search-product": "Từ tìm kiếm",
     "history": "Lịch sử",
@@ -85,11 +82,17 @@
   },
   "Personal": {
     "title": "Cá nhân",
-    "PersonalInformation": "Thông tin cá nhân",
+    "PersonalInformation": {
+      "title": "Thông tin cá nhân",
+      "Button-verify": "xác nhận"
+    },
+    "TakePhoto": {
+      "title": "Camera"
+    },
     "DeliveryAddress": "Địa chỉ giao hàng",
     "StoreContact": "Liên hệ cửa hàng",
     "Language": "Ngôn ngữ",
-    "My-order": "Đơn hàng của tôi",
+    "My-order": "Đơn hàng",
     "Purchase-history": "Lịch sử mua hàng",
     "Logout": "Đăng xuất",
     "Order": "Đặt hàng",
@@ -101,9 +104,9 @@
     "title": "Lịch sử mua hàng"
   },
   "Product": {
-    "Remain": "Còn lại",
-    "Quantity": "Số lượng",
-    "Add-to-cart": "Thêm vào giỏ",
+    "remain": "Còn lại",
+    "quantity": "Số lượng",
+    "add-to-cart": "Thêm vào giỏ hàng",
     "more": "hiển thị thêm",
     "hide": "ẩn"
   },

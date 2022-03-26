@@ -37,10 +37,8 @@ export const lockIcon =
   'https://res.cloudinary.com/cde/image/upload/v1638102360/Icon/lock_try5mw.png'
 export const correctIcon =
   'https://res.cloudinary.com/cde/image/upload/v1638333883/Icon/correct_gunfrz.png'
-//flag
 export const vietNamFlag =
   'https://res.cloudinary.com/cde/image/upload/v1638333255/Icon/Flag_of_Vietnam_g3lnjf.png'
-
 export const englandFlag =
   'https://res.cloudinary.com/cde/image/upload/v1638333254/Icon/Flag-England_y19mv7.jpg'
 export const warningIcon =
@@ -73,6 +71,13 @@ export const shipIcon =
   'https://res.cloudinary.com/cde/image/upload/v1638341460/Icon/delivery_n9ngbb.png'
 export const reviewIcon =
   'https://res.cloudinary.com/cde/image/upload/v1638341458/Icon/review_q481ux.png'
+export const cameraIcon =
+  'https://res.cloudinary.com/cde/image/upload/v1646979113/Icon/camera_icon_tacijj.png'
+export const birthIcon =
+  'https://res.cloudinary.com/cde/image/upload/v1646981096/Icon/birth_anw3i7.png'
+export const mapIcon = 'https://res.cloudinary.com/cde/image/upload/v1646981096/Icon/map_ur9tyb.png'
+export const lookIcon =
+  'https://res.cloudinary.com/cde/image/upload/v1646980331/Icon/look_ery4iu.png'
 export const fillHeartIcon =
   'https://res.cloudinary.com/cde/image/upload/v1638681442/Icon/fill-heart_jrunke.png'
 export const backNavigationIcon =
