@@ -5,6 +5,7 @@ import {useTranslation} from 'react-i18next'
 import Dashboard from '../pages/Dashboard'
 import List from '../pages/List'
 import Product from '../pages/Product'
+import Search from '../pages/Search'
 
 const Stack = createStackNavigator()
 
@@ -15,6 +16,13 @@ const DashboardStack = () => {
       <Stack.Screen
         name="Dashboard"
         component={Dashboard}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="Search"
+        component={Search}
         options={{
           headerShown: false,
         }}
