@@ -1,4 +1,4 @@
-import React, {useCallback, useEffect, useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import i18next from 'i18next'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 

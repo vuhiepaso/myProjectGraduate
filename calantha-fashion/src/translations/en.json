@@ -76,9 +76,6 @@
     "title": "Contact store",
     "name": "Contact store"
   },
-  "Add-to-cart": "Add to cart",
-  "Added-to-cart": "Added to cart",
-  "Favorite": "Favorite",
   "Search": {
     "search-product": "Search keyword",
     "history": "History",
@@ -107,6 +104,36 @@
   "History": {
     "title": "Purchase history"
   },
+  "Address": {
+    "title": "Address",
+    "name": "Address",
+    "button-name": "Add new address",
+    "default": "Default"
+  },
+  "AddAddress": {
+    "title": "Add Address",
+    "name": "Add Address",
+    "button-name": "Verify",
+    "placeholder": {
+      "name": "Recipient name",
+      "phone": "Phone number",
+      "address": "Address"
+    },
+    "switch-button": "Set as default address",
+    "note": "* If you do not use the default phone number we will have to call to confirm. This will take an extra delivery time."
+  },
+  "ModifyAddress": {
+    "title": "Modify Address",
+    "name": "Modify Address",
+    "button-name": "Verify",
+    "placeholder": {
+      "name": "Recipient name",
+      "phone": "Phone number",
+      "address": "Address"
+    },
+    "switch-button": "Set as default address",
+    "note": "* If you do not use the default phone number we will have to call to confirm. This will take an extra delivery time."
+  },
   "Product": {
     "remain": "Remain",
     "quantity": "Quantity",
@@ -114,7 +141,6 @@
     "more": "more",
     "hide": "hide"
   },
-  "Password Recovery": "Password Recovery",
   "ChangeLanguage": {
     "title": "Change Language",
     "message": "Please choose your langue"
@@ -135,8 +161,6 @@
     "Password": "Password",
     "confirmPassword": "Confirm password"
   },
-  "Login with Facebook": "Login with Facebook",
-  "Login with Google": "Login with Google",
   "Language": {
     "title": "Language",
     "submit": "Submit"
