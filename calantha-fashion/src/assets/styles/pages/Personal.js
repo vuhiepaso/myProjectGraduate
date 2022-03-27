@@ -2,6 +2,7 @@ import {Dimensions, StyleSheet} from 'react-native'
 import {
   backgroundColor,
   buttonHeight,
+  errorColor,
   greyTextColor,
   largeRadius,
   largeTextSize,
@@ -102,6 +103,22 @@ export default StyleSheet.create({
   purchaseContainer: {
     justifyContent: 'space-around',
     alignItems: 'center',
+  },
+  badgeContainer: {
+    backgroundColor: errorColor,
+    width: 16,
+    height: 16,
+    borderRadius: 10,
+    position: 'absolute',
+    right: 0,
+    top: 0,
+    zIndex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  badgeText: {
+    color: 'white',
+    lineHeight: 16,
   },
   purchaseIcon: {
     width: 0.1 * width,
