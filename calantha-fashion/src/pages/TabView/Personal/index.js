@@ -25,6 +25,7 @@ import {useQuery} from 'react-query'
 import {handleError} from '../../../utils/middleware'
 import styles from '../../../assets/styles/pages/Personal'
 import {setNavigateContact} from '../../../redux/action/contactAction'
+import {getBadges} from '../../../api/personalApi'
 
 export default function Personal({navigation}) {
   const {t} = useTranslation()
@@ -39,7 +40,12 @@ export default function Personal({navigation}) {
     {onError: (e) => handleError(e, setModalVisible, setDialogTitle, setDialogContent)},
   )
 
-  const handleNavigateHistory = () => navigation.navigate('History')
+  const {data: badges, isLoading: billsLoading} = getBadges()
+
+  const handleNavigateOrder = () => navigation.navigate('History', {screen: 'Order'})
+  const handleNavigatePack = () => navigation.navigate('History', {screen: 'Pack'})
+  const handleNavigateShip = () => navigation.navigate('History', {screen: 'Ship'})
+  const handleNavigateReceive = () => navigation.navigate('History', {screen: 'Receive'})
   const handleNavigateAddress = () => navigation.navigate('Address')
   const handleNavigatePersonalInformation = () => navigation.navigate('PersonalInformation')
   const handleNavigateLanguage = () => navigation.navigate('Language')
@@ -93,34 +99,74 @@ export default function Personal({navigation}) {
           <View style={styles.purchaseView}>
             <View style={styles.title}>
               <Text style={styles.titleText}>{t('Personal.My-order')}</Text>
-              <TouchableOpacity onPress={handleNavigateHistory} style={styles.historyButton}>
+              <TouchableOpacity onPress={handleNavigateOrder} style={styles.historyButton}>
                 <Text style={styles.historyText}>{t('Personal.Purchase-history')}</Text>
                 <Image source={{uri: navigationIcon}} style={styles.historyIcon} />
               </TouchableOpacity>
             </View>
             <View style={styles.purchase}>
-              <TouchableOpacity onPress={handleNavigateHistory} style={styles.purchaseContainer}>
-                <Image resizeMode="stretch" source={{uri: billIcon}} style={styles.purchaseIcon} />
-                <Text style={styles.purchaseText}>{t('Personal.Order')}</Text>
+              <TouchableOpacity onPress={handleNavigateOrder} style={styles.purchaseContainer}>
+                <View>
+                  {badges?.data?.data?.orderBadge > 0 && (
+                    <View style={styles.badgeContainer}>
+                      <Text style={styles.badgeText}>{badges?.data?.data?.orderBadge}</Text>
+                    </View>
+                  )}
+                  <Image
+                    resizeMode="stretch"
+                    source={{uri: billIcon}}
+                    style={styles.purchaseIcon}
+                  />
+                </View>
+                <Text style={styles.purchaseText}>{t('Personal.order')}</Text>
               </TouchableOpacity>
-              <TouchableOpacity onPress={handleNavigateHistory} style={styles.purchaseContainer}>
-                <Image resizeMode="stretch" source={{uri: packIcon}} style={styles.purchaseIcon} />
-                <Text style={styles.purchaseText}>{t('Personal.Pack')}</Text>
+
+              <TouchableOpacity onPress={handleNavigatePack} style={styles.purchaseContainer}>
+                <View>
+                  {badges?.data?.data?.packBadge > 0 && (
+                    <View style={styles.badgeContainer}>
+                      <Text style={styles.badgeText}>{badges?.data?.data?.packBadge}</Text>
+                    </View>
+                  )}
+                  <Image
+                    resizeMode="stretch"
+                    source={{uri: packIcon}}
+                    style={styles.purchaseIcon}
+                  />
+                </View>
+                <Text style={styles.purchaseText}>{t('Personal.pack')}</Text>
               </TouchableOpacity>
-              <TouchableOpacity onPress={handleNavigateHistory} style={styles.purchaseContainer}>
-                <Image source={{uri: shipIcon}} resizeMode="stretch" style={styles.purchaseIcon} />
-                <Text style={styles.purchaseText}>{t('Personal.Ship')}</Text>
+
+              <TouchableOpacity onPress={handleNavigateShip} style={styles.purchaseContainer}>
+                <View>
+                  {badges?.data?.data?.shipBadge > 0 && (
+                    <View style={styles.badgeContainer}>
+                      <Text style={styles.badgeText}>{badges?.data?.data?.shipBadge}</Text>
+                    </View>
+                  )}
+                  <Image
+                    resizeMode="stretch"
+                    source={{uri: shipIcon}}
+                    style={styles.purchaseIcon}
+                  />
+                </View>
+                <Text style={styles.purchaseText}>{t('Personal.ship')}</Text>
               </TouchableOpacity>
-              <TouchableOpacity
-                onPress={() => handleNavigateHistory}
-                style={styles.purchaseContainer}
-              >
-                <Image
-                  resizeMode="stretch"
-                  source={{uri: reviewIcon}}
-                  style={styles.purchaseIcon}
-                />
-                <Text style={styles.purchaseText}>{t('Personal.Review')}</Text>
+
+              <TouchableOpacity onPress={handleNavigateReceive} style={styles.purchaseContainer}>
+                <View>
+                  {badges?.data?.data?.receiveBadge > 0 && (
+                    <View style={styles.badgeContainer}>
+                      <Text style={styles.badgeText}>{badges?.data?.data?.receiveBadge}</Text>
+                    </View>
+                  )}
+                  <Image
+                    resizeMode="stretch"
+                    source={{uri: reviewIcon}}
+                    style={styles.purchaseIcon}
+                  />
+                </View>
+                <Text style={styles.purchaseText}>{t('Personal.receive')}</Text>
               </TouchableOpacity>
             </View>
           </View>

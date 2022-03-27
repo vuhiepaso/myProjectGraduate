@@ -9,6 +9,7 @@ import Contact from '../pages/Contact'
 import Address from '../pages/Address'
 import AddAddress from '../pages/AddAddress'
 import ModifyAddress from '../pages/ModifyAddress'
+import TopTab from './TopTab'
 
 const Stack = createStackNavigator()
 
@@ -66,6 +67,7 @@ const PersonalStack = () => {
           headerTitle: t('Personal.TakePhoto.title'),
         }}
       />
+      <Stack.Screen name="History" component={TopTab} options={{headerShown: false}} />
     </Stack.Navigator>
   )
 }

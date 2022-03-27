@@ -96,10 +96,38 @@
     "My-order": "My order",
     "Purchase-history": "Purchase history",
     "Logout": "Logout",
-    "Order": "Order",
-    "Pack": "Pack",
-    "Ship": "Ship",
-    "Review": "Review"
+    "order": "Order",
+    "pack": "Pack",
+    "ship": "Ship",
+    "receive": "Receive"
+  },
+  "Order": {
+    "name": "Order",
+    "title": "Order",
+    "product-title": "Order Success",
+    "left-button": "Product detail",
+    "right-button": "Cancel"
+  },
+  "Pack": {
+    "name": "Pack",
+    "title": "Pack",
+    "product-title": "Pack Success",
+    "left-button": "Product detail",
+    "right-button": "Re-order"
+  },
+  "Ship": {
+    "name": "Ship",
+    "title": "Ship",
+    "product-title": "Ship Success",
+    "left-button": "Product detail",
+    "right-button": "Re-order"
+  },
+  "Receive": {
+    "name": "Receive",
+    "title": "Receive",
+    "product-title": "Receive Success",
+    "left-button": "Product detail",
+    "right-button": "Re-order"
   },
   "History": {
     "title": "Purchase history"
