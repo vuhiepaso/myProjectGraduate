@@ -101,3 +101,6 @@ export const editIcon =
   'https://res.cloudinary.com/cde/image/upload/v1639989180/Icon/edit_pobyyp.png'
 export const minusIcon =
   'https://res.cloudinary.com/cde/image/upload/v1647599219/Icon/minus_nnmvsz.png'
+export const xIcon = 'https://res.cloudinary.com/cde/image/upload/v1648024065/Icon/xicon_jegndz.png'
+export const clockIcon =
+  'https://res.cloudinary.com/cde/image/upload/v1638719815/Icon/12_kesx7y.png'
