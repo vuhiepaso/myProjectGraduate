@@ -134,6 +134,10 @@
     "switch-button": "Đặt làm địa chỉ mặc định",
     "note": "* Nếu bạn không dùng số điện thoại mặc định chúng tôi sẽ phải gọi điện thoại xác nhận. Sẽ mất thêm một khoảng thời gian giao hàng cho việc này."
   },
+  "Favorite": {
+    "name": "Yêu thích",
+    "title": "Yêu thích"
+  },
   "Product": {
     "remain": "Còn lại",
     "quantity": "Số lượng",

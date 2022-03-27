@@ -7,6 +7,7 @@ import PersonalStack from './PersonalStack'
 import {greyTextColor, primaryColor, whiteColor} from '../assets/styles'
 import {cartBoldIcon, heartIcon, homeIcon, personalIcon} from '../assets/images'
 import DashboardStack from './DashboardStack'
+import FavoriteStack from './FavoriteStack'
 
 const Tab = createBottomTabNavigator()
 
@@ -29,6 +30,27 @@ const DashboardTab = () => {
             <Image
               source={{
                 uri: homeIcon,
+              }}
+              resizeMode="contain"
+              width={28}
+              height={28}
+              style={{
+                width: focused ? 28 : 24,
+                height: focused ? 28 : 24,
+                tintColor: focused ? primaryColor : greyTextColor,
+              }}
+            />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="FavoriteStack"
+        component={FavoriteStack}
+        options={{
+          tabBarIcon: ({focused}) => (
+            <Image
+              source={{
+                uri: heartIcon,
               }}
               resizeMode="contain"
               width={28}
