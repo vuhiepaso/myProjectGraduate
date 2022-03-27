@@ -134,6 +134,10 @@
     "switch-button": "Set as default address",
     "note": "* If you do not use the default phone number we will have to call to confirm. This will take an extra delivery time."
   },
+  "Favorite": {
+    "name": "Favorite",
+    "title": "Favorite"
+  },
   "Product": {
     "remain": "Remain",
     "quantity": "Quantity",

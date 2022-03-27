@@ -23,7 +23,6 @@ function VerifyOTPForm({
   value6,
 }) {
   const {t} = useTranslation()
-
   return (
     <>
       <View style={styles.formContainer}>
