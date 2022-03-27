@@ -16,6 +16,7 @@ import {
   packIcon,
   shipIcon,
   reviewIcon,
+  birthIcon,
 } from '../../../assets/images'
 import {Dialog} from '../../../component/view'
 import {LoadingIndicator} from '../../../component/loading'
@@ -39,6 +40,7 @@ export default function Personal({navigation}) {
   )
 
   const handleNavigateHistory = () => navigation.navigate('History')
+  const handleNavigateAddress = () => navigation.navigate('Address')
   const handleNavigatePersonalInformation = () => navigation.navigate('PersonalInformation')
   const handleNavigateLanguage = () => navigation.navigate('Language')
   const handleNavigateWelcome = () => navigation.navigate('Welcome')
@@ -82,8 +84,8 @@ export default function Personal({navigation}) {
                 <Text style={styles.informationText}>{user?.data?.data?.phone}</Text>
               </View>
               <View style={styles.row}>
-                <Image source={{uri: locationIcon}} style={styles.icon} />
-                <Text style={styles.informationText}>{user?.data?.data?.address}</Text>
+                <Image source={{uri: birthIcon}} style={styles.icon} />
+                <Text style={styles.informationText}>{user?.data?.data?.date_of_birth}</Text>
               </View>
             </View>
           </View>
@@ -140,7 +142,7 @@ export default function Personal({navigation}) {
               />
             </TouchableOpacity>
 
-            <TouchableOpacity style={styles.button}>
+            <TouchableOpacity onPress={handleNavigateAddress} style={styles.button}>
               <View style={styles.buttonData}>
                 <Image
                   resizeMode="contain"

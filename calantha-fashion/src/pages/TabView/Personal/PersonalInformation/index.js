@@ -14,7 +14,7 @@ import {
   mapIcon,
   lockIcon,
 } from '../../../../assets/images'
-import styles from '../../../../assets/styles/pages/PersonalInfomation'
+import styles from '../../../../assets/styles/pages/PersonalInformationStyles'
 import {DefaultButton, DefaultInput, Dialog} from '../../../../component/view'
 import {useQuery} from 'react-query'
 import client from '../../../../config/axios'

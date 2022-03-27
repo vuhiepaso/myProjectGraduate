@@ -104,6 +104,36 @@
   "History": {
     "title": "Lịch sử mua hàng"
   },
+  "Address": {
+    "title": "Địa chỉ",
+    "name": "Địa chỉ",
+    "button-name": "Thêm địa chỉ mới",
+    "default": "Mặc định"
+  },
+  "AddAddress": {
+    "title": "Thêm Địa chỉ",
+    "name": "Thêm Địa chỉ",
+    "button-name": "Xác nhận",
+    "placeholder": {
+      "name": "Tên người nhận",
+      "phone": "Số điện thoại",
+      "address": "Address"
+    },
+    "switch-button": "Đặt làm địa chỉ mặc định",
+    "note": "* Nếu bạn không dùng số điện thoại mặc định chúng tôi sẽ phải gọi điện thoại xác nhận. Sẽ mất thêm một khoảng thời gian giao hàng cho việc này."
+  },
+  "ModifyAddress": {
+    "title": "Thay đổi địa chỉ",
+    "name": "Thay đổi địa chỉ",
+    "button-name": "Xác nhận",
+    "placeholder": {
+      "name": "Tên người nhận",
+      "phone": "Số điện thoại",
+      "address": "Address"
+    },
+    "switch-button": "Đặt làm địa chỉ mặc định",
+    "note": "* Nếu bạn không dùng số điện thoại mặc định chúng tôi sẽ phải gọi điện thoại xác nhận. Sẽ mất thêm một khoảng thời gian giao hàng cho việc này."
+  },
   "Product": {
     "remain": "Còn lại",
     "quantity": "Số lượng",
@@ -111,7 +141,6 @@
     "more": "hiển thị thêm",
     "hide": "ẩn"
   },
-  "Password Recovery": "Quên mật khẩu",
   "ChangeLanguage": {
     "title": "Thay đổi ngôn ngữ",
     "message": "Vui lòng chọn ngôn ngữ bạn muốn"
@@ -132,8 +161,6 @@
     "Password": "Mật khẩu",
     "confirmPassword": "Xác nhận mật khẩu"
   },
-  "Login with Facebook": "Đăng nhập với Facebook",
-  "Login with Google": "Đăng nhập với Google",
   "Language": {
     "title": "Ngôn ngữ",
     "submit": "Xác nhận"
