@@ -5,8 +5,9 @@ const warningColor = '#FFD148'
 const errorColor = '#FE5758' // RedColor
 const redColor = '#E4455B' // DeepRedColor
 const whiteColor = '#FFFFFF'
+const blueColor = '#548DD0'
 const blackColor = '#000000'
-const greyColor = '#444444'
+const greyColor = '#ABAEAC'
 
 // text color
 const primaryTextColor = '#001E0D'
@@ -25,6 +26,7 @@ const titleTextSize = 24
 
 // text bold
 const textBold = '500'
+const textSupperBold = '700'
 
 // screen width
 const maxWidth = 400
@@ -39,11 +41,11 @@ const largeRadius = 50
 
 // customize switch button
 const switchColor = {
-  backgroundColor: disableTextColor,
-  backgroundActive: blueTextColor,
-  backgroundInactive: backgroundColor,
+  backgroundColor: greyColor,
+  backgroundActive: blueColor,
+  backgroundInactive: greyColor,
   circleActiveColor: whiteColor,
-  circleInActiveColor: disableTextColor,
+  circleInActiveColor: whiteColor,
   backgroundColorBorder: greyTextColor,
 }
 
@@ -83,6 +85,7 @@ export {
   warningColor,
   errorColor,
   redColor,
+  blueColor,
   greyColor,
   primaryTextColor,
   secondaryTextColor,
@@ -96,6 +99,7 @@ export {
   buttonTextSize,
   titleTextSize,
   textBold,
+  textSupperBold,
   maxWidth,
   buttonHeight,
   tinyRadius,

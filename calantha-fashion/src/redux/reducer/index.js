@@ -1,10 +1,16 @@
-import {combineReducers} from 'redux'
+import { combineReducers } from 'redux'
 import user from './userReducer'
-import category from './categoryReducer'
 import product from './productReducer'
+import category from './categoryReducer'
+import address from './addressReducer'
+import contact from './contactReducer'
+import bill from './billReducer'
 
 export default combineReducers({
   user,
-  category,
   product,
+  category,
+  address,
+  contact,
+  bill,
 })

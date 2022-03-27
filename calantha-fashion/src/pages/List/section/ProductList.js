@@ -1,41 +1,46 @@
-import React, {useCallback} from 'react'
-import {View} from 'react-native'
+import React from 'react'
+import {View, FlatList} from 'react-native'
 import {ProductItem} from '../../../component/view'
 
 import styles from '../../../assets/styles/pages/ListStyles'
+import {LoadingIndicator} from '../../../component/loading'
 
 function ProductList({
   products,
   productLoadingId,
   onNavigateProduct,
-  addFavorite,
-  addCart,
-  removeFavorite,
+  onAddFavorite,
+  onRemoveFavorite,
   favoriteLoading,
-  cartLoading,
+  onSetTimes,
+  loading,
 }) {
   return (
-    <View style={styles.item}>
-      {products.map((product, index) => (
-        <ProductItem
-          key={index}
-          discount={product.sale_off}
-          uri={product.image}
-          rootPrice={product.price}
-          discountPrice={(product.price * (100 - product.sale_off)) / 100}
-          name={product.product_name}
-          favorite={product.favorite}
-          onNavigateProduct={useCallback(
-            () => onNavigateProduct(product.product_id, product.product_name),
-            [],
-          )}
-          cartLoading={productLoadingId === product.product_id ? cartLoading : false}
-          favoriteLoading={productLoadingId === product.product_id ? favoriteLoading : false}
-          addFavorite={useCallback(() => addFavorite(product.product_id), [])}
-          addCart={useCallback(() => addCart(product.product_id), [])}
-          removeFavorite={useCallback(() => removeFavorite(product.product_id), [])}
-        />
-      ))}
+    <View style={[styles.item]}>
+      {loading && <LoadingIndicator />}
+      <FlatList
+        onEndReached={() => onSetTimes((times) => times + 1)}
+        style={styles.list}
+        columnWrapperStyle={styles.wrap}
+        showsVerticalScrollIndicator={false}
+        numColumns={2}
+        data={products}
+        renderItem={({item, index}) => (
+          <ProductItem
+            key={index}
+            discount={item.sale_off}
+            uri={item.image}
+            rootPrice={item.price}
+            discountPrice={(item.price * (100 - item.sale_off)) / 100}
+            name={item.product_name}
+            favorite={item.favorite}
+            onNavigateProduct={() => onNavigateProduct(item.product_id, item.product_name)}
+            favoriteLoading={productLoadingId === item.product_id ? favoriteLoading : false}
+            addFavorite={() => onAddFavorite(item.product_id)}
+            removeFavorite={() => onRemoveFavorite(item.product_id)}
+          />
+        )}
+      />
     </View>
   )
 }

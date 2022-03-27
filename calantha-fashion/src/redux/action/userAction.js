@@ -1,10 +1,27 @@
-import {USER_CHANGE, USER_CLEAR} from '../constant'
+import {
+  USER_CHANGE_AFTER_GOOGLE_REGISTER,
+  USER_CHANGE_AFTER_REGISTER,
+  USER_NAVIGATE_PAGE,
+  USER_CLEAR,
+} from '../constant'
 
-export const setUser = (email) => ({
-  type: USER_CHANGE,
-  email,
+const setUserAfterGoogleRegister = (user) => ({
+  type: USER_CHANGE_AFTER_GOOGLE_REGISTER,
+  payload: user,
 })
 
-export const clearUser = () => ({
+const setUserAfterRegister = (user) => ({
+  type: USER_CHANGE_AFTER_REGISTER,
+  payload: user,
+})
+
+const setUserNavigatePage = (user) => ({
+  type: USER_NAVIGATE_PAGE,
+  payload: user,
+})
+
+const clearUser = () => ({
   type: USER_CLEAR,
 })
+
+export { setUserAfterGoogleRegister, setUserAfterRegister, setUserNavigatePage, clearUser }

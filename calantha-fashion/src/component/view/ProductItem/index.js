@@ -14,9 +14,7 @@ function ProductItem({
   name,
   favorite,
   favoriteLoading,
-  cartLoading,
   onNavigateProduct,
-  addCart,
   removeFavorite,
   addFavorite,
 }) {
@@ -56,18 +54,12 @@ function ProductItem({
         </Pressable>
       </View>
       <View style={styles.divide} />
-      {cartLoading ? (
-        <View style={styles.pay}>
-          <ActivityIndicator color="#FFFFFF" />
-        </View>
-      ) : (
-        <View>
-          <TouchableOpacity onPress={addCart} style={styles.pay}>
-            <Image style={[styles.icon, styles.addIcon]} source={{uri: cartBoldIcon}} />
-            <Text style={styles.payText}>{t('Add-to-cart')}</Text>
-          </TouchableOpacity>
-        </View>
-      )}
+      <View>
+        <TouchableOpacity onPress={onNavigateProduct} style={styles.pay}>
+          <Image style={[styles.icon, styles.addIcon]} source={{uri: cartBoldIcon}} />
+          <Text style={styles.payText}>{t('Product.add-to-cart')}</Text>
+        </TouchableOpacity>
+      </View>
     </View>
   )
 }

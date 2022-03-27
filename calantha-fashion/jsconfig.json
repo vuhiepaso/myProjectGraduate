@@ -3,7 +3,6 @@
     "jsx": "react-native",
     "target": "es6",
     "module": "CommonJS",
-    // "baseUrl": "./src",
     "allowJs": true,
     "checkJs": true,
     "moduleResolution": "node",
@@ -12,5 +11,4 @@
     "skipLibCheck": true
   },
   "include": ["./src"]
-  // "exclude": ["node_modules"]
 }

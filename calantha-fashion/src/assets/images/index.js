@@ -74,7 +74,7 @@ export const reviewIcon =
 export const cameraIcon =
   'https://res.cloudinary.com/cde/image/upload/v1646979113/Icon/camera_icon_tacijj.png'
 export const birthIcon =
-  'https://res.cloudinary.com/cde/image/upload/v1646981096/Icon/birth_anw3i7.png'
+  'https://res.cloudinary.com/cde/image/upload/v1647237883/Icon/cake_tlqhqt.png'
 export const mapIcon = 'https://res.cloudinary.com/cde/image/upload/v1646981096/Icon/map_ur9tyb.png'
 export const lookIcon =
   'https://res.cloudinary.com/cde/image/upload/v1646980331/Icon/look_ery4iu.png'
@@ -96,3 +96,15 @@ export const switchCameraIcon =
   'https://res.cloudinary.com/cde/image/upload/v1647844196/Icon/switch-camera-2_kgsjzl.png'
   export const flashCameraIcon = 
     'https://res.cloudinary.com/cde/image/upload/v1647844423/Icon/flash_camera_icon_kmjk2e.png'
+export const sendIcon =
+  'https://res.cloudinary.com/cde/image/upload/v1647493833/Icon/3682321_k6qj7t.png'
+export const addIcon = 'https://res.cloudinary.com/cde/image/upload/v1640344652/Icon/add_xeod7y.png'
+export const trashIcon =
+  'https://res.cloudinary.com/cde/image/upload/v1638168896/Icon/trash_m2hzvc.png'
+export const editIcon =
+  'https://res.cloudinary.com/cde/image/upload/v1639989180/Icon/edit_pobyyp.png'
+export const minusIcon =
+  'https://res.cloudinary.com/cde/image/upload/v1647599219/Icon/minus_nnmvsz.png'
+export const xIcon = 'https://res.cloudinary.com/cde/image/upload/v1648024065/Icon/xicon_jegndz.png'
+export const clockIcon =
+  'https://res.cloudinary.com/cde/image/upload/v1638719815/Icon/12_kesx7y.png'
