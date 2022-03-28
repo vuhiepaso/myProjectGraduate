@@ -1,7 +1,9 @@
 import React, {useCallback, useEffect, useRef, useState} from 'react'
 import {View, Image, Text, ScrollView, TouchableOpacity, TextInput, Pressable} from 'react-native'
-import {useDispatch} from 'react-redux'
+import {useDispatch, useSelector} from 'react-redux'
 import {BottomSheetModal, BottomSheetModalProvider} from '@gorhom/bottom-sheet'
+import * as ImagePicker from 'expo-image-picker'
+import * as MediaLibrary from 'expo-media-library'
 
 import {
   anonymousAvatar,
@@ -27,9 +29,12 @@ import {
 } from '../../api/personalInformationApi'
 import validate from '../../utils/validate/personalInformationValidate'
 import {t} from 'i18next'
-import {setUserNavigatePage} from '../../redux/action/userAction'
+import {clearUser, setUserNavigatePage} from '../../redux/action/userAction'
+import CropImage from '../../component/view/CropImage'
 
 function PersonalInformation({navigation}) {
+  // @ts-ignore
+  const userStore = useSelector((state) => state.user)
   const dispatch = useDispatch()
   const bottomSheetModalRef = useRef(null)
 
@@ -42,6 +47,8 @@ function PersonalInformation({navigation}) {
   const [modalVisible, setModalVisible] = useState(false)
   const [dialogTitle, setDialogTitle] = useState('')
   const [dialogContent, setDialogContent] = useState('')
+  const [hasPermission, setHasPermission] = useState(null)
+  const [previewVisible, setPreviewVisible] = useState(false)
 
   const {
     data: user,
@@ -71,7 +78,10 @@ function PersonalInformation({navigation}) {
         date_of_birth: birthday,
         avatar: avatar ? avatar : user?.data?.avatar,
       })
-        .then(() => refetch())
+        .then(() => {
+          // refetch()
+          navigation.push('Personal')
+        })
         .catch((error) => handleError(error, setModalVisible, setDialogTitle, setDialogContent))
     }
   }
@@ -84,13 +94,26 @@ function PersonalInformation({navigation}) {
     bottomSheetModalRef.current?.present()
     setIsOpen(true)
   }, [])
-  const handleSheetChanges = useCallback(() => {
-    setIsOpen(false)
-  }, [])
 
+  const handleSheetChanges = useCallback(() => setIsOpen(false), [])
   const handleCancelBottomSheet = () => bottomSheetModalRef.current?.dismiss()
-  const handleChooseGallery = () => navigation.navigate('ChooseFromGallery')
-  const handleTakePhoto = () => navigation.navigate('TakePhoto')
+  const handleChooseGallery = async () => {
+    bottomSheetModalRef.current?.dismiss()
+    const result = await ImagePicker.launchImageLibraryAsync({
+      mediaTypes: ImagePicker.MediaTypeOptions.Images,
+      aspect: [4, 3],
+      quality: 1,
+    })
+    if (!result.cancelled) {
+      // @ts-ignore
+      setAvatar(result?.uri)
+      setPreviewVisible(true)
+    }
+  }
+  const handleTakePhoto = () => {
+    bottomSheetModalRef.current?.dismiss()
+    navigation.navigate('TakePhoto')
+  }
   const handleNavigateAddress = () => navigation.navigate('Address')
 
   const handleChangeBirthday = (e) => {
@@ -115,6 +138,19 @@ function PersonalInformation({navigation}) {
     setFullName(user?.data?.data?.full_name || '')
     setBirthday(user?.data?.data?.date_of_birth || '')
   }, [user])
+
+  useEffect(() => {
+    if (userStore?.isAfterPreview) setAvatar(userStore?.user?.avatar || user?.data?.data?.avatar)
+    async function handleRequestPermission() {
+      const {status} = await MediaLibrary.requestPermissionsAsync()
+      setHasPermission(status === 'granted')
+    }
+    handleRequestPermission()
+
+    return () => {
+      dispatch(clearUser())
+    }
+  }, [])
 
   const handleNavigateModifyPassword = () => {
     send(user?.data?.phone)
@@ -148,6 +184,9 @@ function PersonalInformation({navigation}) {
       .catch((error) => handleError(error, setModalVisible, setDialogTitle, setDialogContent))
   }
 
+  if (!hasPermission) {
+    return <></>
+  }
   if (isLoading || addressLoading) {
     return <LoadingIndicator />
   } else {
@@ -161,6 +200,14 @@ function PersonalInformation({navigation}) {
           setModalVisible={setModalVisible}
           handleClose={handleClose}
         />
+        {avatar && (
+          <CropImage
+            setPhoto={setAvatar}
+            photo={avatar}
+            isVisible={previewVisible}
+            onDone={() => setPreviewVisible(false)}
+          />
+        )}
         <ScrollView
           showsVerticalScrollIndicator={false}
           style={[styles.flex, {opacity: isOpen ? 0.2 : 1}]}
@@ -168,7 +215,10 @@ function PersonalInformation({navigation}) {
           <Pressable onPress={() => (isOpen ? bottomSheetModalRef?.current?.dismiss() : {})}>
             <View style={styles.informationView}>
               <View style={styles.wrapAvatar}>
-                <Image source={{uri: anonymousAvatar}} style={styles.avatar} />
+                <Image
+                  source={{uri: avatar || user?.data?.data?.avatar || anonymousAvatar}}
+                  style={styles.avatar}
+                />
                 <TouchableOpacity onPress={handleChangeAvatar} style={styles.buttonCamera}>
                   <Image
                     resizeMode="contain"
@@ -190,6 +240,7 @@ function PersonalInformation({navigation}) {
               <DefaultInput
                 icon={birthIcon}
                 editable={!isOpen}
+                maxLength={10}
                 error={birthdayError}
                 onChange={handleChangeBirthday}
                 placeholder="PersonalInformation.placeholder.birthday"
@@ -208,7 +259,7 @@ function PersonalInformation({navigation}) {
                 </View>
               </View>
 
-              <TouchableOpacity style={styles.button}>
+              <TouchableOpacity onPress={handleNavigateModifyEmail} style={styles.button}>
                 <View style={styles.buttonData}>
                   <Image source={{uri: emailIcon}} resizeMode="contain" style={styles.buttonIcon} />
                   <Text style={styles.buttonText}>{user?.data?.data.email || ''}</Text>
@@ -232,7 +283,7 @@ function PersonalInformation({navigation}) {
                 />
               </TouchableOpacity>
 
-              <TouchableOpacity style={styles.button}>
+              <TouchableOpacity onPress={handleNavigateModifyPassword} style={styles.button}>
                 <View style={styles.buttonData}>
                   <Image resizeMode="contain" source={{uri: lockIcon}} style={styles.buttonIcon} />
                   <Text style={styles.buttonText}>********</Text>

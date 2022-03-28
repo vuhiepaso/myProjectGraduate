@@ -7,6 +7,7 @@ import {
   greyTextColor,
   largeRadius,
   largeTextSize,
+  maxWidth,
   primaryColor,
   primaryTextColor,
   primaryTextSize,
@@ -134,6 +135,7 @@ export default StyleSheet.create({
   buttonView: {
     marginTop: 24,
     marginBottom: 80,
+    alignItems: 'center',
   },
   buttonData: {
     flexDirection: 'row',
@@ -141,6 +143,7 @@ export default StyleSheet.create({
   },
   button: {
     height: buttonHeight,
+    maxWidth: maxWidth,
     paddingLeft: 20,
     paddingRight: 20,
     width: '100%',

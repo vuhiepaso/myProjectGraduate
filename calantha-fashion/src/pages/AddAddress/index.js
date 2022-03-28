@@ -54,19 +54,17 @@ function AddAddress({navigation}) {
         setModalVisible={setModalVisible}
       />
       {isLoading && <OverlayIndicator />}
-      <ScrollLayout>
-        <AddAddressForm
-          nameError={nameError}
-          onChangeName={handleChangeName}
-          phoneError={phoneError}
-          onChangePhone={handleChangePhone}
-          addressError={addressError}
-          onChangeAddress={handleChangeAddress}
-          switchEnabled={switchEnabled}
-          setSwitchEnabled={setSwitchEnabled}
-          onAddAddress={handleAddAddress}
-        />
-      </ScrollLayout>
+      <AddAddressForm
+        nameError={nameError}
+        onChangeName={handleChangeName}
+        phoneError={phoneError}
+        onChangePhone={handleChangePhone}
+        addressError={addressError}
+        onChangeAddress={handleChangeAddress}
+        switchEnabled={switchEnabled}
+        setSwitchEnabled={setSwitchEnabled}
+        onAddAddress={handleAddAddress}
+      />
     </DefaultLayout>
   )
 }

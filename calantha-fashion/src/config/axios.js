@@ -4,7 +4,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage'
 
 const client = axios.create({
   baseURL: api,
-  timeout: 5000,
+  timeout: 10000,
 })
 
 client.interceptors.request.use(

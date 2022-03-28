@@ -52,12 +52,14 @@ function SearchList({
     <View style={[styles.item]}>
       {(searchesLoading || isFetching) && <LoadingIndicator />}
       <FlatList
-        onEndReached={() => setTimes((times) => times + 1)}
+        onEndReached={() =>
+          searches?.data?.data.length > pagination ? setTimes((times) => times + 1) : {}
+        }
         style={styles.list}
         columnWrapperStyle={styles.wrap}
         showsVerticalScrollIndicator={false}
         numColumns={2}
-        data={searches?.data || []}
+        data={searches?.data?.data || []}
         renderItem={({item, index}) => (
           <ProductItem
             key={index}

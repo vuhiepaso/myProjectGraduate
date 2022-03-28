@@ -1,14 +1,21 @@
 import React, {useEffect, useRef, useState} from 'react'
-import {View, TouchableOpacity, Image} from 'react-native'
+import {View, TouchableOpacity, Image, StatusBar} from 'react-native'
 import {Camera} from 'expo-camera'
 import * as MediaLibrary from 'expo-media-library'
-import * as FileSystem from 'expo-file-system'
-import {flashCameraIcon, switchCameraIcon} from '../../assets/images'
-import CameraPreview from '../../component/view/CameraPreview'
-import Styles from '../../assets/styles/pages/TakePhotoStyle'
+import {
+  backNavigationIcon,
+  flashCameraIcon,
+  noFlashCameraIcon,
+  switchCameraIcon,
+} from '../../assets/images'
+import styles from '../../assets/styles/pages/TakePhotoStyle'
+import CropImage from '../../component/view/CropImage'
+import {useDispatch} from 'react-redux'
+import {setUserAfterPreview} from '../../redux/action/userAction'
 
-export default function App() {
+function TakePhoto({navigation}) {
   const cameraRef = useRef(null)
+  const dispatch = useDispatch()
   const [previewVisible, setPreviewVisible] = useState(false)
   const [capturedImage, setCapturedImage] = useState(null)
   const [cameraType, setCameraType] = useState(Camera.Constants.Type.back)
@@ -24,28 +31,15 @@ export default function App() {
     handleRequestPermission()
   }, [])
 
-  const startCamera = async () => {
-    const {status} = await Camera.requestCameraPermissionsAsync()
-    setHasPermission(status === 'granted')
-  }
-  const takePicture = async () => {
+  const goBack = () => navigation.goBack()
+
+  const handleTakingPhoto = async () => {
     const photo = await cameraRef?.current?.takePictureAsync()
-
+    setCapturedImage(photo.uri)
     setPreviewVisible(true)
-    setCapturedImage(photo)
   }
 
-  const choosePhoto = async (uri) => {
-    const newPhoto = await FileSystem.readAsStringAsync(uri, {encoding: 'base64'})
-    console.log('data:image/png;base64,' + newPhoto)
-  }
-
-  const retakePicture = () => {
-    setCapturedImage(null)
-    setPreviewVisible(false)
-    startCamera()
-  }
-  const handleFlashMode = () => {
+  const handleSwitchFlashMode = () => {
     if (flashMode === Camera.Constants.FlashMode.on) {
       setFlashMode(Camera.Constants.FlashMode.off)
     } else if (flashMode === Camera.Constants.FlashMode.off) {
@@ -55,7 +49,19 @@ export default function App() {
     }
   }
 
-  const switchCamera = () => {
+  const handleSetPhoto = (avatar) => {
+    dispatch(setUserAfterPreview({avatar}))
+    navigation.push('Dashboard', {
+      screen: 'PersonalStack',
+      params: {
+        screen: 'PersonalInformation',
+      },
+    })
+  }
+
+  const handleNavigatePersonalInformation = () => setPreviewVisible(false)
+
+  const handleSwitchCamera = () => {
     if (cameraType === Camera.Constants.Type.back) {
       setCameraType(Camera.Constants.Type.front)
     } else {
@@ -67,43 +73,49 @@ export default function App() {
     return <></>
   }
   return (
-    <View style={Styles.container}>
-      <View style={Styles.wrapStartCamera}>
-        {previewVisible && capturedImage ? (
-          <CameraPreview
-            photo={capturedImage}
-            savePhoto={choosePhoto}
-            retakePicture={retakePicture}
-          />
-        ) : (
-          <Camera type={cameraType} flashMode={flashMode} style={Styles.camera} ref={cameraRef}>
-            <View style={Styles.containCamera}>
-              <View style={Styles.containCamera2}>
-                <TouchableOpacity
-                  onPress={handleFlashMode}
-                  style={[
-                    Styles.flashBtn,
-                    {
-                      backgroundColor:
-                        flashMode === Camera.Constants.FlashMode.off ? '#000' : '#fff',
-                    },
-                  ]}
-                >
-                  <Image source={{uri: flashCameraIcon}} style={Styles.flashBtnImage} />
-                </TouchableOpacity>
-                <TouchableOpacity onPress={switchCamera} style={Styles.switchCameraBtn}>
-                  <Image source={{uri: switchCameraIcon}} style={Styles.switchCameraBtnImage} />
-                </TouchableOpacity>
+    <View style={styles.container}>
+      <StatusBar translucent backgroundColor="transparent" barStyle="light-content" />
+      {previewVisible && capturedImage ? (
+        <CropImage
+          setPhoto={handleSetPhoto}
+          photo={capturedImage}
+          isVisible={previewVisible}
+          onDone={handleNavigatePersonalInformation}
+        />
+      ) : (
+        <Camera type={cameraType} flashMode={flashMode} style={styles.camera} ref={cameraRef}>
+          <View style={styles.header}>
+            <TouchableOpacity onPress={goBack}>
+              <Image source={{uri: backNavigationIcon}} style={styles.backIcon} />
+            </TouchableOpacity>
+          </View>
+          <View style={styles.footer}>
+            <TouchableOpacity onPress={handleSwitchFlashMode}>
+              <Image
+                source={{
+                  uri:
+                    flashMode === Camera.Constants.FlashMode.on
+                      ? flashCameraIcon
+                      : noFlashCameraIcon,
+                }}
+                style={styles.flashIcon}
+              />
+            </TouchableOpacity>
+
+            <TouchableOpacity onPress={handleTakingPhoto}>
+              <View style={styles.captureBorder}>
+                <View style={styles.capture} />
               </View>
-              <View style={Styles.wrapTakePhoto}>
-                <View style={Styles.wrapTakePhoto2}>
-                  <TouchableOpacity onPress={takePicture} style={Styles.takePhotoBtn} />
-                </View>
-              </View>
-            </View>
-          </Camera>
-        )}
-      </View>
+            </TouchableOpacity>
+
+            <TouchableOpacity onPress={handleSwitchCamera}>
+              <Image source={{uri: switchCameraIcon}} style={styles.switchIcon} />
+            </TouchableOpacity>
+          </View>
+        </Camera>
+      )}
     </View>
   )
 }
+
+export default TakePhoto

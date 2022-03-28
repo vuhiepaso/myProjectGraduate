@@ -7,15 +7,7 @@ import styles from './styles'
 function DefaultButton({buttonName, onClick, ...other}) {
   const {t} = useTranslation()
   return (
-    <TouchableOpacity
-      // onPressIn={(e) => {
-      //   e.preventDefault()
-      //   e.stopPropagation()
-      // }}
-      style={styles.button}
-      onPress={onClick}
-      {...other}
-    >
+    <TouchableOpacity style={styles.button} onPress={onClick} {...other}>
       <Text style={styles.buttonText}>{t(buttonName)}</Text>
     </TouchableOpacity>
   )

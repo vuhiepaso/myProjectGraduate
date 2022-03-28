@@ -1,5 +1,5 @@
 import {StyleSheet} from 'react-native'
-import {buttonHeight, buttonTextSize, largeRadius, primaryTextColor, whiteColor} from '..'
+import {buttonHeight, buttonTextSize, largeRadius, maxWidth, primaryTextColor, whiteColor} from '..'
 
 export default StyleSheet.create({
   container: {
@@ -28,5 +28,9 @@ export default StyleSheet.create({
     paddingLeft: 8,
     color: primaryTextColor,
     fontSize: buttonTextSize,
+  },
+  scrollContainer: {
+    maxWidth: maxWidth,
+    paddingTop: 16,
   },
 })

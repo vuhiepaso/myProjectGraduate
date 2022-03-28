@@ -11,6 +11,7 @@ import Register from '../pages/Register'
 import Language from '../pages/Language'
 import DashboardTab from './DashboardTab'
 import Category from '../pages/Category/'
+import TakePhoto from '../pages/TakePhoto'
 
 const Stack = createStackNavigator()
 const Container = () => {
@@ -85,6 +86,13 @@ const Container = () => {
         component={Category}
         options={{
           title: t('Category.title'),
+        }}
+      />
+      <Stack.Screen
+        name="TakePhoto"
+        component={TakePhoto}
+        options={{
+          headerShown: false,
         }}
       />
     </Stack.Navigator>

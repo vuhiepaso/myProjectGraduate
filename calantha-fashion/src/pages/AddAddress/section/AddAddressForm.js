@@ -1,6 +1,8 @@
 import React from 'react'
-import { locationIcon, personalIcon, phoneIcon } from '../../../assets/images'
-import { DefaultButton, DefaultInput, SwitchButton, Note } from '../../../component/view'
+import {ScrollView} from 'react-native'
+import {locationIcon, personalIcon, phoneIcon} from '../../../assets/images'
+import {DefaultButton, DefaultInput, SwitchButton, Note} from '../../../component/view'
+import styles from '../../../assets/styles/pages/AddressStyles'
 
 function AddAddressForm({
   nameError,
@@ -14,7 +16,7 @@ function AddAddressForm({
   onAddAddress,
 }) {
   return (
-    <>
+    <ScrollView style={styles.scrollContainer}>
       <DefaultInput
         error={nameError}
         icon={personalIcon}
@@ -41,7 +43,7 @@ function AddAddressForm({
         setSwitchEnabled={setSwitchEnabled}
       />
       <DefaultButton buttonName="AddAddress.button-name" onClick={onAddAddress} />
-    </>
+    </ScrollView>
   )
 }
 

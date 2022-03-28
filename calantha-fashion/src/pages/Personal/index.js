@@ -47,7 +47,7 @@ export default function Personal({navigation}) {
   const handleNavigateShip = () => navigation.navigate('History', {screen: 'Ship'})
   const handleNavigateReceive = () => navigation.navigate('History', {screen: 'Receive'})
   const handleNavigateAddress = () => navigation.navigate('Address')
-  const handleNavigatePersonalInformation = () => navigation.navigate('PersonalInformation')
+  const handleNavigatePersonalInformation = () => navigation.push('PersonalInformation')
   const handleNavigateLanguage = () => navigation.navigate('Language')
   const handleNavigateWelcome = () => navigation.navigate('Welcome')
   const handleNavigateContact = () => {
@@ -60,7 +60,7 @@ export default function Personal({navigation}) {
     setDialogContent('')
   }, [])
 
-  if (isLoading) {
+  if (isLoading || billsLoading) {
     return <LoadingIndicator />
   } else {
     return (

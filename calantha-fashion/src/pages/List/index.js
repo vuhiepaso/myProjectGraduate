@@ -82,7 +82,7 @@ function List({navigation}) {
         productLoadingId={productLoadingId}
         favoriteLoading={addFavoriteLoading || removeFavoriteLoading}
         onNavigateProduct={handleNavigateProduct}
-        products={products?.data || []}
+        products={products?.data?.data || []}
         loading={isFetching}
       />
     </DefaultLayout>

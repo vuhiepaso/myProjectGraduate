@@ -3,6 +3,7 @@ import {View, FlatList} from 'react-native'
 
 import styles from '../../../assets/styles/pages/FavoriteStyles'
 import {ProductItem} from '../../../component/view'
+import {pagination} from '../../../themes/default'
 
 function FavoriteList({
   favorites,
@@ -16,7 +17,7 @@ function FavoriteList({
   return (
     <View style={styles.item}>
       <FlatList
-        onEndReached={() => onSetTimes((times) => times + 1)}
+        onEndReached={() => (favorites.length > pagination ? onSetTimes((times) => times + 1) : {})}
         style={styles.list}
         columnWrapperStyle={styles.wrap}
         showsVerticalScrollIndicator={false}

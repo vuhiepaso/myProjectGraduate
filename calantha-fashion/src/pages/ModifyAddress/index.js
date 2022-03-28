@@ -76,22 +76,20 @@ function ModifyAddress({navigation}) {
         setModalVisible={setModalVisible}
       />
       {isLoading && <OverlayIndicator />}
-      <ScrollLayout>
-        <ModifyAddressForm
-          name={name}
-          nameError={nameError}
-          onChangeName={handleChangeName}
-          phone={phone}
-          phoneError={phoneError}
-          onChangePhone={handleChangePhone}
-          address={address}
-          addressError={addressError}
-          onChangeAddress={handleChangeAddress}
-          switchEnabled={switchEnabled}
-          setSwitchEnabled={setSwitchEnabled}
-          onAddAddress={handleAddAddress}
-        />
-      </ScrollLayout>
+      <ModifyAddressForm
+        name={name}
+        nameError={nameError}
+        onChangeName={handleChangeName}
+        phone={phone}
+        phoneError={phoneError}
+        onChangePhone={handleChangePhone}
+        address={address}
+        addressError={addressError}
+        onChangeAddress={handleChangeAddress}
+        switchEnabled={switchEnabled}
+        setSwitchEnabled={setSwitchEnabled}
+        onAddAddress={handleAddAddress}
+      />
     </DefaultLayout>
   )
 }

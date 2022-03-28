@@ -4,8 +4,6 @@ import {useTranslation} from 'react-i18next'
 
 import Personal from '../pages/Personal'
 import PersonalInformation from '../pages/PersonalInformation'
-import TakePhoto from '../pages/TakePhoto'
-import ChooseFromGallery from '../pages/ChooseFromGallery'
 import Contact from '../pages/Contact'
 import Address from '../pages/Address'
 import AddAddress from '../pages/AddAddress'
@@ -17,7 +15,7 @@ const Stack = createStackNavigator()
 const PersonalStack = () => {
   const {t} = useTranslation()
   return (
-    <Stack.Navigator screenOptions={{headerTitleAlign: 'center'}}>
+    <Stack.Navigator screenOptions={{headerTitleAlign: 'center'}} initialRouteName="Personal">
       <Stack.Screen
         name="Personal"
         component={Personal}
@@ -59,20 +57,6 @@ const PersonalStack = () => {
         component={ModifyAddress}
         options={{
           headerTitle: t('ModifyAddress.name'),
-        }}
-      />
-      <Stack.Screen
-        name="TakePhoto"
-        component={TakePhoto}
-        options={{
-          headerTitle: t('Personal.TakePhoto.title'),
-        }}
-      />
-      <Stack.Screen
-        name="ChooseFromGallery"
-        component={ChooseFromGallery}
-        options={{
-          headerTitle: t('Personal.TakePhoto.title'),
         }}
       />
       <Stack.Screen name="History" component={TopTab} options={{headerShown: false}} />
