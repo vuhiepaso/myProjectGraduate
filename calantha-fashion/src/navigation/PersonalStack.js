@@ -2,9 +2,8 @@ import React from 'react'
 import {createStackNavigator} from '@react-navigation/stack'
 import {useTranslation} from 'react-i18next'
 
-import Personal from '../pages/TabView/Personal'
-import PersonalInformation from '../pages/TabView/Personal/PersonalInformation'
-import TakePhoto from '../pages/TabView/Personal/PersonalInformation/TakePhoto'
+import Personal from '../pages/Personal'
+import PersonalInformation from '../pages/PersonalInformation'
 import Contact from '../pages/Contact'
 import Address from '../pages/Address'
 import AddAddress from '../pages/AddAddress'
@@ -16,7 +15,7 @@ const Stack = createStackNavigator()
 const PersonalStack = () => {
   const {t} = useTranslation()
   return (
-    <Stack.Navigator screenOptions={{headerTitleAlign: 'center'}}>
+    <Stack.Navigator screenOptions={{headerTitleAlign: 'center'}} initialRouteName="Personal">
       <Stack.Screen
         name="Personal"
         component={Personal}
@@ -29,7 +28,7 @@ const PersonalStack = () => {
         name="PersonalInformation"
         component={PersonalInformation}
         options={{
-          headerTitle: t('Personal.PersonalInformation.title'),
+          headerTitle: t('PersonalInformation.title'),
         }}
       />
       <Stack.Screen
@@ -58,13 +57,6 @@ const PersonalStack = () => {
         component={ModifyAddress}
         options={{
           headerTitle: t('ModifyAddress.name'),
-        }}
-      />
-      <Stack.Screen
-        name="TakePhoto"
-        component={TakePhoto}
-        options={{
-          headerTitle: t('Personal.TakePhoto.title'),
         }}
       />
       <Stack.Screen name="History" component={TopTab} options={{headerShown: false}} />

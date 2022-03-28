@@ -83,10 +83,6 @@
   },
   "Personal": {
     "title": "Personal",
-    "PersonalInformation": {
-      "title": "Personal information",
-      "Button-verify": "Verify"
-    },
     "TakePhoto": {
       "title": "Open Camera"
     },
@@ -100,6 +96,20 @@
     "pack": "Pack",
     "ship": "Ship",
     "receive": "Receive"
+  },
+  "PersonalInformation": {
+    "title": "Personal information",
+    "Button-verify": "Verify",
+    "placeholder": {
+      "name": "Full name",
+      "birthday": "Date of birth"
+    },
+    "sheet-title": "Taking photo",
+    "sheet-caption": "Choose your profile picture",
+    "sheet-taking-photo": "Taking photo",
+    "sheet-pick-photo": "Pick a photo",
+    "sheet-cancel": "Cancel",
+    "button-verify": "Verify"
   },
   "Order": {
     "name": "Order",

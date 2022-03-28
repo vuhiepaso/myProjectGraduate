@@ -17,15 +17,15 @@ import {
   shipIcon,
   reviewIcon,
   birthIcon,
-} from '../../../assets/images'
-import {Dialog} from '../../../component/view'
-import {LoadingIndicator} from '../../../component/loading'
-import client from '../../../config/axios'
+} from '../../assets/images'
+import {Dialog} from '../../component/view'
+import {LoadingIndicator} from '../../component/loading'
+import client from '../../config/axios'
 import {useQuery} from 'react-query'
-import {handleError} from '../../../utils/middleware'
-import styles from '../../../assets/styles/pages/Personal'
-import {setNavigateContact} from '../../../redux/action/contactAction'
-import {getBadges} from '../../../api/personalApi'
+import {handleError} from '../../utils/middleware'
+import styles from '../../assets/styles/pages/Personal'
+import {setNavigateContact} from '../../redux/action/contactAction'
+import {getBadges} from '../../api/personalApi'
 
 export default function Personal({navigation}) {
   const {t} = useTranslation()
@@ -47,7 +47,7 @@ export default function Personal({navigation}) {
   const handleNavigateShip = () => navigation.navigate('History', {screen: 'Ship'})
   const handleNavigateReceive = () => navigation.navigate('History', {screen: 'Receive'})
   const handleNavigateAddress = () => navigation.navigate('Address')
-  const handleNavigatePersonalInformation = () => navigation.navigate('PersonalInformation')
+  const handleNavigatePersonalInformation = () => navigation.push('PersonalInformation')
   const handleNavigateLanguage = () => navigation.navigate('Language')
   const handleNavigateWelcome = () => navigation.navigate('Welcome')
   const handleNavigateContact = () => {
@@ -60,7 +60,7 @@ export default function Personal({navigation}) {
     setDialogContent('')
   }, [])
 
-  if (isLoading) {
+  if (isLoading || billsLoading) {
     return <LoadingIndicator />
   } else {
     return (
@@ -179,7 +179,7 @@ export default function Personal({navigation}) {
                   source={{uri: personalIcon}}
                   style={styles.buttonIcon}
                 />
-                <Text style={styles.buttonText}>{t('Personal.PersonalInformation.title')}</Text>
+                <Text style={styles.buttonText}>{t('PersonalInformation.title')}</Text>
               </View>
               <Image
                 resizeMode="contain"

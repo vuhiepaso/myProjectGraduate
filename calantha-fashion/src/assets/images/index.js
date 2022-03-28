@@ -92,6 +92,12 @@ export const filterIcon =
   'https://res.cloudinary.com/cde/image/upload/v1638683346/Icon/sort_jn62l4.png'
 export const searchIcon =
   'https://res.cloudinary.com/cde/image/upload/v1638682996/Icon/search_unbyoc.png'
+export const switchCameraIcon =
+  'https://res.cloudinary.com/cde/image/upload/v1647844196/Icon/switch-camera-2_kgsjzl.png'
+export const flashCameraIcon =
+  'https://res.cloudinary.com/cde/image/upload/v1648441539/Icon/flash_pykh8c.png'
+export const noFlashCameraIcon =
+  'https://res.cloudinary.com/cde/image/upload/v1648441538/Icon/noflash_je4owy.png'
 export const sendIcon =
   'https://res.cloudinary.com/cde/image/upload/v1647493833/Icon/3682321_k6qj7t.png'
 export const addIcon = 'https://res.cloudinary.com/cde/image/upload/v1640344652/Icon/add_xeod7y.png'

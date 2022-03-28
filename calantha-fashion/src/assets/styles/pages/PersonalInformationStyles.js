@@ -2,14 +2,20 @@ import {Dimensions, StyleSheet} from 'react-native'
 import {
   backgroundColor,
   buttonHeight,
+  buttonTextSize,
+  greyColor,
   greyTextColor,
   largeRadius,
   largeTextSize,
+  maxWidth,
+  primaryColor,
   primaryTextColor,
   primaryTextSize,
+  secondaryTextColor,
   textBold,
   tinyRadius,
   tinyTextSize,
+  titleTextSize,
   whiteColor,
 } from '..'
 const {width, height} = Dimensions.get('screen')
@@ -37,7 +43,7 @@ export default StyleSheet.create({
     width: 100,
     alignItems: 'center',
     marginTop: 16,
-    position: 'relative'
+    position: 'relative',
   },
   avatar: {
     width: 100,
@@ -47,8 +53,8 @@ export default StyleSheet.create({
   },
   buttonCamera: {
     position: 'absolute',
-    bottom: 5,
-    right: 5
+    bottom: 0,
+    right: 0,
   },
   information: {
     backgroundColor: whiteColor,
@@ -129,6 +135,7 @@ export default StyleSheet.create({
   buttonView: {
     marginTop: 24,
     marginBottom: 80,
+    alignItems: 'center',
   },
   buttonData: {
     flexDirection: 'row',
@@ -136,6 +143,7 @@ export default StyleSheet.create({
   },
   button: {
     height: buttonHeight,
+    maxWidth: maxWidth,
     paddingLeft: 20,
     paddingRight: 20,
     width: '100%',
@@ -152,14 +160,17 @@ export default StyleSheet.create({
     tintColor: primaryTextColor,
   },
   iconCamera: {
-    width: 20,
-    height: 20,
-    tintColor: primaryTextColor,
+    width: 24,
+    height: 24,
+    tintColor: greyTextColor,
   },
   buttonText: {
     paddingLeft: 12,
     fontSize: primaryTextSize,
     color: primaryTextColor,
+  },
+  phone: {
+    color: secondaryTextColor,
   },
   panel: {
     padding: 20,
@@ -167,25 +178,24 @@ export default StyleSheet.create({
     paddingTop: 20,
   },
   panelTitle: {
-    fontSize: 27,
-    height: 35,
+    fontSize: titleTextSize,
   },
   panelSubtitle: {
-    fontSize: 14,
-    color: 'gray',
+    fontSize: primaryTextSize,
+    color: greyColor,
     height: 30,
     marginBottom: 10,
   },
   panelButton: {
-    padding: 13,
+    padding: 12,
     borderRadius: 10,
-    backgroundColor: '#FF6347',
+    backgroundColor: primaryColor,
     alignItems: 'center',
-    marginVertical: 7,
+    marginVertical: 8,
   },
   panelButtonTitle: {
-    fontSize: 17,
-    fontWeight: 'bold',
-    color: 'white',
+    fontSize: buttonTextSize,
+    fontWeight: textBold,
+    color: whiteColor,
   },
 })

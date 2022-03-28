@@ -2,6 +2,7 @@ import {
   USER_CHANGE_AFTER_GOOGLE_REGISTER,
   USER_CHANGE_AFTER_REGISTER,
   USER_NAVIGATE_PAGE,
+  USER_CHANGE_AFTER_PREVIEW,
   USER_CLEAR,
 } from '../constant'
 
@@ -20,8 +21,19 @@ const setUserNavigatePage = (user) => ({
   payload: user,
 })
 
+const setUserAfterPreview = (user) => ({
+  type: USER_CHANGE_AFTER_PREVIEW,
+  payload: user,
+})
+
 const clearUser = () => ({
   type: USER_CLEAR,
 })
 
-export { setUserAfterGoogleRegister, setUserAfterRegister, setUserNavigatePage, clearUser }
+export {
+  setUserAfterGoogleRegister,
+  setUserAfterRegister,
+  setUserNavigatePage,
+  setUserAfterPreview,
+  clearUser,
+}

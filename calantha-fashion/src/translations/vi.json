@@ -83,10 +83,6 @@
   },
   "Personal": {
     "title": "Cá nhân",
-    "PersonalInformation": {
-      "title": "Thông tin cá nhân",
-      "Button-verify": "xác nhận"
-    },
     "TakePhoto": {
       "title": "Camera"
     },
@@ -100,6 +96,19 @@
     "pack": "Đóng gói",
     "ship": "Vận chuyển",
     "receive": "Nhận hàng"
+  },
+  "PersonalInformation": {
+    "title": "Thông tin cá nhân",
+    "placeholder": {
+      "name": "Họ và tên",
+      "birthday": "Ngày sinh"
+    },
+    "sheet-title": "Chụp ảnh",
+    "sheet-caption": "Chọn ảnh hồ sơ của bạn",
+    "sheet-taking-photo": "Chụp ảnh",
+    "sheet-pick-photo": "Chọn một bức ảnh",
+    "sheet-cancel": "Hủy",
+    "button-verify": "Xác nhận"
   },
   "Order": {
     "name": "Đặt hàng",

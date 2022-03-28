@@ -4,6 +4,7 @@ import {ProductItem} from '../../../component/view'
 
 import styles from '../../../assets/styles/pages/ListStyles'
 import {LoadingIndicator} from '../../../component/loading'
+import {pagination} from '../../../themes/default'
 
 function ProductList({
   products,
@@ -19,7 +20,7 @@ function ProductList({
     <View style={[styles.item]}>
       {loading && <LoadingIndicator />}
       <FlatList
-        onEndReached={() => onSetTimes((times) => times + 1)}
+        onEndReached={() => (products.length > pagination ? onSetTimes((times) => times + 1) : {})}
         style={styles.list}
         columnWrapperStyle={styles.wrap}
         showsVerticalScrollIndicator={false}
