@@ -2,6 +2,7 @@ import React from 'react'
 import {useTranslation} from 'react-i18next'
 import {createStackNavigator} from '@react-navigation/stack'
 import Cart from '../pages/Cart'
+import Checkout from '../pages/Checkout'
 
 const Stack = createStackNavigator()
 
@@ -14,8 +15,12 @@ const CartStack = () => {
       }}
       initialRouteName="Cart"
     >
-      <Stack.Screen name="Cart" component={Cart} options={{title: 'Cart.name', headerLeft: null}} />
-      {/* <Stack.Screen name="Checkout" component={Checkout} options={{title: 'Checkout.name'}} /> */}
+      <Stack.Screen
+        name="Cart"
+        component={Cart}
+        options={{title: t('Cart.name'), headerLeft: null}}
+      />
+      <Stack.Screen name="Checkout" component={Checkout} options={{title: t('Checkout.name')}} />
     </Stack.Navigator>
   )
 }

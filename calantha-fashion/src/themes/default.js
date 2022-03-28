@@ -29,4 +29,7 @@ const slider = [
 
 const pagination = 6
 
-export {images, slider, pagination}
+const payUrl =
+  'https://me.momo.vn/X5Iou8sXTBTpi2FGt6Tk?fbclid=IwAR0iV1khzP1ICaCsxdASGpFWPiomzWkvEo0KAMX3Jv0HZ4QeOg09BbgeoQE'
+
+export {images, slider, pagination, payUrl}

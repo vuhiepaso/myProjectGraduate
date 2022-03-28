@@ -195,7 +195,14 @@
     "total": "Total"
   },
   "Checkout": {
-    "title": "Checkout"
+    "title": "Checkout",
+    "name": "Checkout",
+    "total": "Total",
+    "change-address": "Change",
+    "button": "Checkout",
+    "momo-label": "Payment via momo",
+    "momo-caption": "* Please make payment within 2 hours of placing your order. The order will be canceled if the payment has not been received by the above time.",
+    "direct-label": "Payment direct"
   },
   "EnterPassword": {
     "title": "Forgot password",
