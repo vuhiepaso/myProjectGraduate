@@ -210,6 +210,56 @@
     "Password": "Mật khẩu",
     "confirmPassword": "Xác nhận mật khẩu"
   },
+
+  "PasswordRecovery": {
+    "name": "Quên mật khẩu",
+    "title": "Quên mật khẩu",
+    "caption": "Nhập điện thoại của bạn và chúng tôi sẽ gửi cho bạn hướng dẫn về cách đặt lại mật khẩu",
+    "button-title": "Xác nhận"
+  },
+  "VerifyOTP": {
+    "name": "Xác nhận OTP",
+    "title": "Xác nhận OTP",
+    "caption": "Vui lòng nhập mã xác nhận được gửi đến số điện thoại ",
+    "button-title": "Xác nhận",
+    "expire-front": "Mã xác minh hết hạn sau",
+    "expire-back": "giây"
+  },
+  "ResetPassword": {
+    "name": "Đặt lại mật khẩu",
+    "title": "Đặt lại mật khẩu",
+    "caption": "Nhập mật khẩu mới của bạn và đảm bảo mật khẩu đủ mạnh",
+    "button-title": "Xác nhận",
+    "placeholder": {
+      "password": "Mật khẩu",
+      "confirm-password": "Nhập lại mật khẩu"
+    }
+  },
+  "ModifyPassword": {
+    "title": "Thay đổi mật khẩu",
+    "name": "Thay đổi mật khẩu",
+    "caption": "Nhập mật khẩu mới của bạn và đảm bảo mật khẩu đủ mạnh",
+    "placeholder": {
+      "password": "Mật khẩu",
+      "confirm-password": "Nhập lại mật khẩu"
+    },
+    "button-title": "Xác nhận"
+  },
+  "Validate": {
+    "email-invalid": "Vui lòng nhập đúng định dạng email",
+    "email-empty": "Vui lòng nhập email",
+    "phone-invalid": "Vui lòng nhập đúng định dạng số điện thoại",
+    "phone-empty": "Vui lòng nhập số điện thoại",
+    "password-length": "Mật khẩu phải có ít nhất 6 ký tự",
+    "password-empty": "Vui lòng nhập mật khẩu",
+    "confirm-password-length": "Xác nhận mật khẩu phải có ít nhất 6 ký tự",
+    "confirm-password-empty": "Vui lòng nhập xác nhận mật khẩu",
+    "password-not-match": "Mật khẩu và xác nhận mật khẩu không trùng khớp",
+    "address-empty": "Vui lòng nhập địa chỉ",
+    "address-length": "Địa chỉ phải có ít nhất 6 ký tự",
+    "recipient-name-empty": "Vui lòng nhập tên người nhận",
+    "recipient-name-length": "Tên người nhận phải có ít nhất 6 ký tự"
+  },
   "Language": {
     "title": "Ngôn ngữ",
     "submit": "Xác nhận"

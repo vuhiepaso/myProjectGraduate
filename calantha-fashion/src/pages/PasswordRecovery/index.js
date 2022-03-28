@@ -2,6 +2,7 @@ import React, {useCallback, useState} from 'react'
 import {View, Text, ImageBackground, KeyboardAvoidingView, Platform, StatusBar} from 'react-native'
 import {useTranslation} from 'react-i18next'
 import {useMutation} from 'react-query'
+import {useDispatch} from 'react-redux'
 
 import {DefaultButton, DefaultInput, Dialog} from '../../component/view'
 import validatePhone from '../../utils/validate/phoneValidate'
@@ -10,8 +11,10 @@ import axios from '../../config/axios'
 import OverlayIndicator from '../../component/loading/OverlayIndicator'
 import {passwordRecoveryBackground, phoneIcon} from '../../assets/images'
 import {handleError} from '../../utils/middleware'
+import {setUserNavigatePage} from '../../redux/action/userAction'
 
 export default function PasswordRecovery({navigation}) {
+  const dispatch = useDispatch()
   const [phone, setPhone] = useState()
   const [phoneError, setPhoneError] = useState('')
   const [modalVisible, setModalVisible] = useState(false)
@@ -19,13 +22,25 @@ export default function PasswordRecovery({navigation}) {
   const [dialogContent, setDialogContent] = useState('')
   const {t} = useTranslation()
 
+  const {isLoading, mutateAsync: send} = useMutation('password-recovery', (values) =>
+    axios.post('/user/select-user', values),
+  )
+
   const handleForgotPassword = () => {
     const {errors, isValid} = validatePhone(phone)
-    if (isValid) {
-      // @ts-ignore
-      mutateAsync({phone})
-    } else {
+    if (!isValid) {
       setPhoneError(errors.phone)
+    } else {
+      // @ts-ignore
+      send(phone)
+        .then((res) => {
+          dispatch(
+            // @ts-ignore
+            setUserNavigatePage({phone, otp_token: res.otp_token, navigate: 'ResetPassword'}),
+          )
+          navigation.navigate('VerifyOTP')
+        })
+        .catch((error) => handleError(error, setModalVisible, setDialogTitle, setDialogContent))
     }
   }
 
@@ -39,15 +54,6 @@ export default function PasswordRecovery({navigation}) {
     setDialogTitle('')
     setDialogContent('')
   }, [])
-
-  const {isLoading, mutateAsync} = useMutation(
-    'password-recovery',
-    (values) => axios.post('/user/select-user', values),
-    {
-      onError: (e) => handleError(e, setModalVisible, setDialogTitle, setDialogContent),
-      onSuccess: () => navigation.navigate('ResetPassword'),
-    },
-  )
 
   return (
     <ImageBackground style={styles.container} source={{uri: passwordRecoveryBackground}}>

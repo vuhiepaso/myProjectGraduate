@@ -204,12 +204,64 @@
     "momo-caption": "* Please make payment within 2 hours of placing your order. The order will be canceled if the payment has not been received by the above time.",
     "direct-label": "Payment direct"
   },
-  "EnterPassword": {
-    "title": "Forgot password",
-    "instruct": "Enter your new password and make sure it strong enough",
-    "Button": "Verify",
-    "Password": "Password",
-    "confirmPassword": "Confirm password"
+  "PasswordRecovery": {
+    "name": "Password Recovery",
+    "title": "Password Recovery",
+    "caption": "Enter your phone and we will send you instructions on how to reset password",
+    "button-title": "Verify"
+  },
+  "VerifyOTP": {
+    "name": "Verify OTP",
+    "title": "Verify OTP",
+    "caption": "Please enter the confirmation code sent to phone number ",
+    "button-title": "Verify",
+    "expire-front": "Verification code expires in",
+    "expire-back": "seconds"
+  },
+  "ResetPassword": {
+    "name": "Reset password",
+    "title": "Reset password",
+    "caption": "Enter your new password and make sure it strong enough",
+    "button-title": "Verify",
+    "placeholder": {
+      "password": "Password",
+      "confirm-password": "Confirm password"
+    }
+  },
+  "ModifyEmail": {
+    "title": "Modify Email",
+    "name": "Modify Email",
+    "caption": "Enter your new email and make sure it valid",
+    "placeholder": {
+      "old-email": "Old email",
+      "new-email": "New email"
+    },
+    "button-title": "Verify"
+  },
+  "ModifyPassword": {
+    "title": "Modify password",
+    "name": "Modify password",
+    "caption": "Enter your new password and make sure it strong enough",
+    "placeholder": {
+      "password": "Password",
+      "confirm-password": "Confirm password"
+    },
+    "button-title": "Verify"
+  },
+  "Validate": {
+    "email-invalid": "Your email is invalid",
+    "email-empty": "Your email is empty",
+    "phone-invalid": "Your phone is invalid",
+    "phone-empty": "Your phone is empty",
+    "password-length": "Your password at least 6 characters",
+    "password-empty": "Your password is empty",
+    "confirm-password-length": "Your confirm password at least 6 characters",
+    "confirm-password-empty": "Your confirm password is empty",
+    "password-not-match": "Your password and confirm password and password not match",
+    "address-empty": "Your address is empty",
+    "address-length": "Your address at least 6 characters",
+    "recipient-name-empty": "Your recipient name is empty",
+    "recipient-name-length": "Your recipient at least 6 characters"
   },
   "Language": {
     "title": "Language",

@@ -17,7 +17,8 @@ export const loginBackground =
   'https://res.cloudinary.com/cde/image/upload/v1637285776/do-an/model151_z9untm.jpg'
 export const anonymousAvatar =
   'https://res.cloudinary.com/cde/image/upload/v1638279626/do-an/res-console.cloudinary_wrlsah.jpg'
-
+export const resetPasswordBackground =
+  'https://res.cloudinary.com/cde/image/upload/v1637285745/do-an/model67_glrej2.jpg'
 // icons
 export const googleIcon =
   'https://res.cloudinary.com/cde/image/upload/v1638099555/Icon/GoogleIcon_rwiso5.png'

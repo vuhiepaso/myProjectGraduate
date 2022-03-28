@@ -19,4 +19,9 @@ export default StyleSheet.create({
     marginTop: 8,
     marginBottom: 16,
   },
+  extraCaption: {
+    fontSize: primaryTextSize,
+    color: primaryTextColor,
+    fontWeight: textBold,
+  },
 })

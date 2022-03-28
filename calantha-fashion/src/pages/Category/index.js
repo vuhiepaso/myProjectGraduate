@@ -7,10 +7,8 @@ import {LoadingIndicator} from '../../component/loading'
 import client from '../../config/axios'
 
 export default function Category() {
-  const {data: category, isLoading: categoryLoading} = useQuery(
-    'dashboard-category',
-    () => client.get('/category/all'),
-    {onError: (err) => console.log(err)},
+  const {data: category, isLoading: categoryLoading} = useQuery('dashboard-category', () =>
+    client.get('/category/all'),
   )
 
   if (categoryLoading) {

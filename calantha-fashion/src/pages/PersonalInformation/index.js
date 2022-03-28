@@ -28,11 +28,13 @@ import {
   updateUserInformation,
 } from '../../api/personalInformationApi'
 import validate from '../../utils/validate/personalInformationValidate'
-import {t} from 'i18next'
+
 import {clearUser, setUserNavigatePage} from '../../redux/action/userAction'
 import CropImage from '../../component/view/CropImage'
+import {useTranslation} from 'react-i18next'
 
 function PersonalInformation({navigation}) {
+  const {t} = useTranslation()
   // @ts-ignore
   const userStore = useSelector((state) => state.user)
   const dispatch = useDispatch()
@@ -76,7 +78,7 @@ function PersonalInformation({navigation}) {
       updateUser({
         full_name: fullName,
         date_of_birth: birthday,
-        avatar: avatar ? avatar : user?.data?.avatar,
+        avatar: avatar ? avatar : user?.data?.data?.avatar,
       })
         .then(() => {
           // refetch()
@@ -153,11 +155,11 @@ function PersonalInformation({navigation}) {
   }, [])
 
   const handleNavigateModifyPassword = () => {
-    send(user?.data?.phone)
+    send(user?.data?.data?.phone)
       .then((res) => {
         dispatch(
           setUserNavigatePage({
-            phone: user?.data?.phone,
+            phone: user?.data?.data?.phone,
             // @ts-ignore
             otp_token: res.otp_token,
             navigate: 'ModifyPassword',
@@ -168,14 +170,14 @@ function PersonalInformation({navigation}) {
       .catch((error) => handleError(error, setModalVisible, setDialogTitle, setDialogContent))
   }
   const handleNavigateModifyEmail = () => {
-    send(user?.data?.phone)
+    send(user?.data?.data?.phone)
       .then((res) => {
         dispatch(
           setUserNavigatePage({
-            phone: user?.data?.phone,
-            email: user?.data?.email,
+            phone: user?.data?.data?.phone,
+            email: user?.data?.data?.email,
             // @ts-ignore
-            otp_token: res.otp_token,
+            otp_token: res?.data?.otp_token,
             navigate: 'ModifyEmail',
           }),
         )
