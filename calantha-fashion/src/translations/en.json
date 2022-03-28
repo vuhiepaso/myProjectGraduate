@@ -189,9 +189,10 @@
   },
   "Cart": {
     "title": "Shopping cart",
-    "Checkout": "Checkout",
-    "Remain": "Remain",
-    "Total": "Total"
+    "name": "Shopping cart",
+    "checkout": "Checkout",
+    "remain": "Remain",
+    "total": "Total"
   },
   "Checkout": {
     "title": "Checkout"
