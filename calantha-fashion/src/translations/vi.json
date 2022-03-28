@@ -194,7 +194,14 @@
     "total": "Tổng"
   },
   "Checkout": {
-    "title": "Thanh toán"
+    "title": "Thanh toán",
+    "name": "Thanh toán",
+    "total": "Tổng",
+    "change-address": "Thay đổi",
+    "button": "Thanh toán",
+    "momo-label": "Thanh toán qua momo",
+    "momo-caption": "* Vui lòng thực hiện thanh toán trong vòng 2 giờ sau khi đặt hàng. Đơn hàng sẽ bị hủy nếu chưa nhận được chuyển khoản quá thời gian trên.",
+    "direct-label": "Thanh toán trực tiếp"
   },
   "EnterPassword": {
     "title": "Quên mật khẩu",
