@@ -188,9 +188,10 @@
   },
   "Cart": {
     "title": "Giỏ hàng",
-    "Checkout": "Thanh toán",
-    "Remain": "Còn lại",
-    "Total": "Tổng"
+    "name": "Giỏ hàng",
+    "checkout": "Thanh toán",
+    "remain": "Còn lại",
+    "total": "Tổng"
   },
   "Checkout": {
     "title": "Thanh toán"
