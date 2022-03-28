@@ -9,6 +9,10 @@ import Address from '../pages/Address'
 import AddAddress from '../pages/AddAddress'
 import ModifyAddress from '../pages/ModifyAddress'
 import TopTab from './TopTab'
+import VerifyOTPInsideTab from '../pages/VerifyOTPInsideTab'
+import {whiteColor} from '../assets/styles'
+import ModifyPassword from '../pages/ModifyPassword'
+import ModifyEmail from '../pages/ModifyEmail'
 
 const Stack = createStackNavigator()
 
@@ -60,6 +64,29 @@ const PersonalStack = () => {
         }}
       />
       <Stack.Screen name="History" component={TopTab} options={{headerShown: false}} />
+      <Stack.Screen
+        name="VerifyOTPInsideTab"
+        component={VerifyOTPInsideTab}
+        options={{title: 'VerifyOTP.name', headerTintColor: whiteColor, headerTransparent: true}}
+      />
+      <Stack.Screen
+        name="ModifyPassword"
+        component={ModifyPassword}
+        options={{
+          title: 'ModifyPassword.name',
+          headerTintColor: whiteColor,
+          headerTransparent: true,
+        }}
+      />
+      <Stack.Screen
+        name="ModifyEmail"
+        component={ModifyEmail}
+        options={{
+          title: 'ModifyEmail.name',
+          headerTintColor: whiteColor,
+          headerTransparent: true,
+        }}
+      />
     </Stack.Navigator>
   )
 }

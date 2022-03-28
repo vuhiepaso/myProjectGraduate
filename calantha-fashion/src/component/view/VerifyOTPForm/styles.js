@@ -1,4 +1,4 @@
-import { StyleSheet } from 'react-native'
+import {StyleSheet} from 'react-native'
 import {
   buttonHeight,
   buttonTextSize,
@@ -24,6 +24,7 @@ export default StyleSheet.create({
   },
   box: {
     width: 16,
+    lineHeight: buttonHeight,
     fontSize: buttonTextSize,
     fontWeight: textSupperBold,
   },
