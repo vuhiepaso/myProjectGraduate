@@ -161,7 +161,7 @@ function PersonalInformation({navigation}) {
           setUserNavigatePage({
             phone: user?.data?.data?.phone,
             // @ts-ignore
-            otp_token: res.otp_token,
+            otp_token: res?.data?.otp_token,
             navigate: 'ModifyPassword',
           }),
         )
