@@ -12,6 +12,8 @@ import Language from '../pages/Language'
 import DashboardTab from './DashboardTab'
 import Category from '../pages/Category/'
 import TakePhoto from '../pages/TakePhoto'
+import VerifyOTP from '../pages/VerifyOTP'
+import ResetPassword from '../pages/ResetPassword'
 
 const Stack = createStackNavigator()
 const Container = () => {
@@ -70,6 +72,24 @@ const Container = () => {
         component={PasswordRecovery}
         options={{
           title: t('Password Recovery'),
+          headerTintColor: whiteColor,
+          headerTransparent: true,
+        }}
+      />
+      <Stack.Screen
+        name="VerifyOTP"
+        component={VerifyOTP}
+        options={{
+          title: t('VerifyOTP.name'),
+          headerTintColor: whiteColor,
+          headerTransparent: true,
+        }}
+      />
+      <Stack.Screen
+        name="ResetPassword"
+        component={ResetPassword}
+        options={{
+          title: t('ResetPassword.name'),
           headerTintColor: whiteColor,
           headerTransparent: true,
         }}
