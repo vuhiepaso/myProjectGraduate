@@ -8,7 +8,7 @@ const getProduct = (product_id) => {
 
 const addToCart = () => {
   const url = `/cart/add`
-  return useMutation('add-tp-products', (values) => axiosClient.put(url, values))
+  return useMutation('add-tp-products', (values) => axiosClient.post(url, values))
 }
 
 export {getProduct, addToCart}
