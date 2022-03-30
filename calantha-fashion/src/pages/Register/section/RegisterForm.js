@@ -1,86 +1,52 @@
-import React, {useCallback, useState} from 'react'
-import {useTranslation} from 'react-i18next'
+import React, { memo } from 'react'
 
-import {emailIcon, lockIcon, phoneIcon} from '../../../assets/images'
-import {DefaultInput, PasswordInput, DefaultButton} from '../../../component/view'
+import { emailIcon, lockIcon, phoneIcon } from '../../../assets/images'
+import { DefaultInput, PasswordInput, DefaultButton } from '../../../component/view'
 
-function RegisterForm({onRegister}) {
-  const {t} = useTranslation()
-
-  const [email, setEmail] = useState('')
-  const [emailError, setEmailError] = useState('')
-  const [phone, setPhone] = useState('')
-  const [phoneError, setPhoneError] = useState('')
-  const [password, setPassword] = useState('')
-  const [passwordError, setPasswordError] = useState('')
-  const [confirmPassword, setConfirmPassword] = useState('')
-  const [confirmPasswordError, setConfirmPasswordError] = useState('')
-
-  const changeEmail = useCallback((e) => {
-    setEmail(e)
-    setEmailError('')
-  }, [])
-
-  const changePhone = useCallback((e) => {
-    setPhone(e)
-    setPhoneError('')
-  }, [])
-
-  const changePassword = useCallback((e) => {
-    setPassword(e)
-    setPasswordError('')
-  }, [])
-
-  const changeConfirmPassword = useCallback((e) => {
-    setConfirmPassword(e)
-    setConfirmPasswordError('')
-  }, [])
-
+function RegisterForm({
+  onRegister,
+  email,
+  changeEmail,
+  emailError,
+  changePhone,
+  phoneError,
+  changePassword,
+  passwordError,
+  changeConfirmPassword,
+  confirmPasswordError,
+}) {
   return (
     <>
       <DefaultInput
         icon={emailIcon}
-        placeholder={t('Register.placeholder.email')}
+        placeholder="Register.placeholder.email"
         onChange={changeEmail}
+        value={email}
         // autoFocus
         error={emailError}
       />
       <DefaultInput
         icon={phoneIcon}
-        placeholder={t('Register.placeholder.phone')}
+        placeholder="Register.placeholder.phone"
         keyboardType="phone-pad"
         onChange={changePhone}
         error={phoneError}
       />
       <PasswordInput
         icon={lockIcon}
-        placeholder={t('Register.placeholder.password')}
+        placeholder="Register.placeholder.password"
         onChange={changePassword}
         error={passwordError}
       />
       <PasswordInput
         icon={lockIcon}
-        placeholder={t('Register.placeholder.confirm-password')}
+        placeholder="Register.placeholder.confirm-password"
         onChange={changeConfirmPassword}
         error={confirmPasswordError}
       />
-      <DefaultButton
-        buttonName="Register.button"
-        onClick={() =>
-          onRegister({
-            email,
-            phone,
-            password,
-            confirmPassword,
-            setEmailError,
-            setPhoneError,
-            setPasswordError,
-            setConfirmPasswordError,
-          })
-        }
-      />
+      <DefaultButton buttonName="Register.button" onClick={onRegister} />
     </>
   )
 }
 
-export default RegisterForm
+export default memo(RegisterForm)
