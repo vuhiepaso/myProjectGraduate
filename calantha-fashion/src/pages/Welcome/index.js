@@ -22,8 +22,11 @@ import OverlayIndicator from '../../component/loading/OverlayIndicator'
 import LoadingIndicator from '../../component/loading/LoadingIndicator'
 import {handleError} from '../../utils/middleware'
 import {googleConfig} from '../../config'
+import {useDispatch} from 'react-redux'
+import {setUserAfterGoogleRegister} from '../../redux/action/userAction'
 
 function Welcome({navigation}) {
+  const dispatch = useDispatch()
   const {t} = useTranslation()
   const [Loading, setLoading] = useState(true)
   const [modalVisible, setModalVisible] = useState(false)
@@ -36,38 +39,38 @@ function Welcome({navigation}) {
     setDialogContent('')
   }, [])
 
-  const {isLoading, mutateAsync} = useMutation(
-    'google-login',
-    (values) => axios.post('/user/google-login', values),
-    {onError: (e) => handleError(e, setModalVisible, setDialogTitle, setDialogContent)},
+  const {isLoading, mutateAsync} = useMutation('google-login', (values) =>
+    axios.post('/user/google-login', values),
   )
 
-  const SignInWithGoogle = async () => {
+  const signInWithGoogle = async () => {
     try {
       const result = await Google.logInAsync(googleConfig)
-      if (result.type === 'success') {
-        LoginGoogle({email: result.user.email, email_token: result.accessToken})
-      }
+      if (result.type === 'success')
+        loginUser({email: result.user.email, email_token: result.accessToken})
     } catch (error) {
       alert(`${error}`)
     }
   }
 
-  const LoginGoogle = ({email, email_token}) => {
+  const loginUser = ({email, email_token}) => {
     // @ts-ignore
-    mutateAsync({email, email_token}).then(async (res) => {
-      const {message, token} = res.data
-      if (message === 'User existed') {
-        try {
-          await AsyncStorage.setItem('token', token)
-          navigation.navigate('Dashboard')
-        } catch (error) {
-          alert(`async storage: ${error}`)
+    mutateAsync({email, email_token})
+      .then(async (res) => {
+        const {message, token} = res.data
+        if (message === 'User existed') {
+          try {
+            await AsyncStorage.setItem('token', token)
+            navigation.push('Dashboard')
+          } catch (error) {
+            console.log(error)
+          }
+        } else {
+          dispatch(setUserAfterGoogleRegister({email: email}))
+          navigation.push('Register')
         }
-      } else {
-        navigation.navigate('Register')
-      }
-    })
+      })
+      .catch((e) => handleError(e, setModalVisible, setDialogTitle, setDialogContent))
   }
 
   const handleNavigateRegister = () => navigation.navigate('Register')
@@ -116,7 +119,7 @@ function Welcome({navigation}) {
             <View style={styles.welcomeView}>
               <Text style={styles.title}>{t('Welcome.title')}</Text>
               <Text style={styles.caption}>{t('Welcome.caption')}</Text>
-              <TouchableOpacity style={styles.googleButton} onPress={SignInWithGoogle}>
+              <TouchableOpacity style={styles.googleButton} onPress={signInWithGoogle}>
                 <Image style={styles.icon} source={{uri: googleIcon}} />
                 <Text style={styles.googleText}>{t('Welcome.google-button')}</Text>
                 <View style={styles.icon} />
