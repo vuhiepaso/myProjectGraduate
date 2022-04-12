@@ -5,7 +5,6 @@ import {
   Card,
   Table,
   Stack,
-  Avatar,
   Button,
   Checkbox,
   TableRow,
@@ -17,29 +16,26 @@ import {
   TablePagination
 } from '@mui/material';
 // call api
-import { GetUsers } from '../../api/UserAPI';
+import { GetHistories } from '../../api/HistoryAPI';
 // components
 import Page from '../../components/Page';
 import Label from '../../components/Label';
 import Scrollbar from '../../components/Scrollbar';
 import Iconify from '../../components/Iconify';
 import SearchNotFound from '../../components/SearchNotFound';
-import { HistoryListHead, HistoryListToolbar } from './sections';
+import { HistoryListHead, HistoryListToolbar, HistoryMoreMenu } from './sections';
 import { getComparator, applySortFilter } from '../../utils/formatTable';
 
 // ----------------------------------------------------------------------
 
 const TABLE_HEAD = [
   { id: 'phone', label: 'Phone Number', alignRight: false },
-  { id: 'avatar', label: 'Avatar', alignRight: false },
-  { id: 'email', label: 'Email', alignRight: false },
-  { id: 'date_of_birth', label: 'Date Of Birth', alignRight: false },
-  { id: 'full_name', label: 'Full Name', alignRight: false },
-  { id: 'role', label: 'Role', alignRight: false },
-  { id: 'deleted_at', label: 'Status', alignRight: false }
+  { id: 'search', label: 'Search Word', alignRight: false },
+  { id: 'history_deleted_at', label: 'Status', alignRight: false },
+  { id: '' }
 ];
 
-function User() {
+function History() {
   const [page, setPage] = useState(0);
   const [order, setOrder] = useState('asc');
   const [selected, setSelected] = useState([]);
@@ -47,7 +43,7 @@ function User() {
   const [filterName, setFilterName] = useState('');
   const [rowsPerPage, setRowsPerPage] = useState(5);
 
-  const { data: users, isLoading } = GetUsers();
+  const { data: histories, isLoading } = GetHistories();
 
   const handleRequestSort = (event, property) => {
     const isAsc = orderBy === property && order === 'asc';
@@ -57,7 +53,7 @@ function User() {
 
   const handleSelectAllClick = (event) => {
     if (event.target.checked) {
-      const newSelected = (users?.data || []).map((n) => n.user_id);
+      const newSelected = (histories?.data || []).map((n) => n.user_id);
       setSelected(newSelected);
       return;
     }
@@ -96,10 +92,10 @@ function User() {
   };
 
   const emptyRows =
-    page > 0 ? Math.max(0, (1 + page) * rowsPerPage - (users?.data || []).length) : 0;
+    page > 0 ? Math.max(0, (1 + page) * rowsPerPage - (histories?.data || []).length) : 0;
 
   const filteredUsers = applySortFilter(
-    users?.data || [],
+    histories?.data || [],
     getComparator(order, orderBy),
     filterName,
     'phone'
@@ -111,7 +107,7 @@ function User() {
       <Container>
         <Stack direction="row" alignItems="center" justifyContent="space-between" mb={5}>
           <Typography variant="h4" gutterBottom>
-            User
+            History
           </Typography>
           <Button
             variant="contained"
@@ -119,7 +115,7 @@ function User() {
             to="#"
             startIcon={<Iconify icon="eva:plus-fill" />}
           >
-            New User
+            New History
           </Button>
         </Stack>
 
@@ -136,7 +132,7 @@ function User() {
                   order={order}
                   orderBy={orderBy}
                   headLabel={TABLE_HEAD}
-                  rowCount={(users?.data || []).length}
+                  rowCount={(histories?.data || []).length}
                   numSelected={selected.length}
                   onRequestSort={handleRequestSort}
                   onSelectAllClick={handleSelectAllClick}
@@ -145,11 +141,11 @@ function User() {
                   {filteredUsers
                     .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                     .map((row) => {
-                      const isItemSelected = selected.indexOf(row.category_name) !== -1;
+                      const isItemSelected = selected.indexOf(row.history_id) !== -1;
                       return (
                         <TableRow
                           hover
-                          key={row.user_id}
+                          key={row.history_id}
                           tabIndex={-1}
                           role="checkbox"
                           selected={isItemSelected}
@@ -158,35 +154,32 @@ function User() {
                           <TableCell padding="checkbox">
                             <Checkbox
                               checked={isItemSelected}
-                              onChange={(event) => handleClick(event, row.user_id)}
+                              onChange={(event) => handleClick(event, row.history_id)}
                             />
                           </TableCell>
                           <TableCell align="left">{row.phone}</TableCell>
-                          <TableCell align="center">
-                            <Avatar alt={row.avatar} src={row.avatar} />
-                          </TableCell>
-                          <TableCell align="left">{row.email}</TableCell>
-                          <TableCell align="left">{row.date_of_birth}</TableCell>
-                          <TableCell align="left">{row.full_name}</TableCell>
-                          <TableCell align="left">{row.role}</TableCell>
+                          <TableCell align="left">{row.search}</TableCell>
                           <TableCell align="left">
                             <Stack direction="row" spacing={1}>
-                              {row.created_at !== null && (
+                              {row.history_created_at && (
                                 <Label variant="ghost" color="success">
                                   Created
                                 </Label>
                               )}
-                              {row.updated_at && (
+                              {row.history_updated_at && (
                                 <Label variant="ghost" color="warning">
                                   Updated
                                 </Label>
                               )}
-                              {row.deleted_at !== null && (
+                              {row.history_deleted_at && (
                                 <Label variant="ghost" color="error">
                                   Deleted
                                 </Label>
                               )}
                             </Stack>
+                          </TableCell>
+                          <TableCell align="left">
+                            <HistoryMoreMenu />
                           </TableCell>
                         </TableRow>
                       );
@@ -213,7 +206,7 @@ function User() {
           <TablePagination
             rowsPerPageOptions={[5, 10, 25]}
             component="div"
-            count={(users?.data || []).length}
+            count={(histories?.data || []).length}
             rowsPerPage={rowsPerPage}
             page={page}
             onPageChange={handleChangePage}
@@ -225,4 +218,4 @@ function User() {
   );
 }
 
-export default memo(User);
+export default memo(History);

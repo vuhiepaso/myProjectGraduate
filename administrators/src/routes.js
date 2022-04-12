@@ -6,8 +6,6 @@ import LogoOnlyLayout from './layouts/LogoOnlyLayout';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import DashboardApp from './pages/DashboardApp';
-import Products from './pages/Products';
-import Blog from './pages/Blog';
 import User from './pages/User';
 import Category from './pages/Category';
 import NotFound from './pages/Page404';
@@ -17,6 +15,7 @@ import Cart from './pages/Cart';
 import Favorite from './pages/Favorite';
 import History from './pages/History';
 import Product from './pages/Product';
+import Contact from './pages/Contact';
 
 // ----------------------------------------------------------------------
 
@@ -35,9 +34,7 @@ export default function Router() {
         { path: 'history', element: <History /> },
         { path: 'product', element: <Product /> },
         { path: 'user', element: <User /> },
-        //
-        { path: 'products', element: <Products /> },
-        { path: 'blog', element: <Blog /> }
+        { path: 'contact', element: <Contact /> }
       ]
     },
     {

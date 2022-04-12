@@ -61,7 +61,7 @@ export default function CategoryListToolbar({ numSelected, filterName, onFilterN
         <SearchStyle
           value={filterName}
           onChange={onFilterName}
-          placeholder="Search category..."
+          placeholder="Search bill by phone..."
           startAdornment={
             <InputAdornment position="start">
               <Iconify icon="eva:search-fill" sx={{ color: 'text.disabled' }} />

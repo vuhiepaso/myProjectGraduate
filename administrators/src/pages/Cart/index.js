@@ -5,7 +5,6 @@ import {
   Card,
   Table,
   Stack,
-  Avatar,
   Button,
   Checkbox,
   TableRow,
@@ -17,29 +16,30 @@ import {
   TablePagination
 } from '@mui/material';
 // call api
-import { GetUsers } from '../../api/UserAPI';
+import { GetCarts } from '../../api/CartApi';
 // components
 import Page from '../../components/Page';
 import Label from '../../components/Label';
 import Scrollbar from '../../components/Scrollbar';
 import Iconify from '../../components/Iconify';
 import SearchNotFound from '../../components/SearchNotFound';
-import { CartListHead, CartListToolbar } from './sections';
+import { CartListHead, CartListToolbar, CartMoreMenu } from './sections';
 import { getComparator, applySortFilter } from '../../utils/formatTable';
 
 // ----------------------------------------------------------------------
 
 const TABLE_HEAD = [
   { id: 'phone', label: 'Phone Number', alignRight: false },
-  { id: 'avatar', label: 'Avatar', alignRight: false },
-  { id: 'email', label: 'Email', alignRight: false },
-  { id: 'date_of_birth', label: 'Date Of Birth', alignRight: false },
-  { id: 'full_name', label: 'Full Name', alignRight: false },
-  { id: 'role', label: 'Role', alignRight: false },
-  { id: 'deleted_at', label: 'Status', alignRight: false }
+  { id: 'product_name', label: 'Product Name', alignRight: false },
+  { id: 'color', label: 'Color', alignRight: false },
+  { id: 'size', label: 'Size', alignRight: false },
+  { id: 'import_quantity', label: 'Import Quantity', alignRight: false },
+  { id: 'sold_quantity', label: 'Sold Quantity', alignRight: false },
+  { id: 'deleted_at', label: 'Status', alignRight: false },
+  { id: '' }
 ];
 
-function User() {
+function Cart() {
   const [page, setPage] = useState(0);
   const [order, setOrder] = useState('asc');
   const [selected, setSelected] = useState([]);
@@ -47,7 +47,7 @@ function User() {
   const [filterName, setFilterName] = useState('');
   const [rowsPerPage, setRowsPerPage] = useState(5);
 
-  const { data: users, isLoading } = GetUsers();
+  const { data: carts, isLoading } = GetCarts();
 
   const handleRequestSort = (event, property) => {
     const isAsc = orderBy === property && order === 'asc';
@@ -57,7 +57,7 @@ function User() {
 
   const handleSelectAllClick = (event) => {
     if (event.target.checked) {
-      const newSelected = (users?.data || []).map((n) => n.user_id);
+      const newSelected = (carts?.data || []).map((n) => n.cart_id);
       setSelected(newSelected);
       return;
     }
@@ -96,10 +96,10 @@ function User() {
   };
 
   const emptyRows =
-    page > 0 ? Math.max(0, (1 + page) * rowsPerPage - (users?.data || []).length) : 0;
+    page > 0 ? Math.max(0, (1 + page) * rowsPerPage - (carts?.data || []).length) : 0;
 
   const filteredUsers = applySortFilter(
-    users?.data || [],
+    carts?.data || [],
     getComparator(order, orderBy),
     filterName,
     'phone'
@@ -111,7 +111,7 @@ function User() {
       <Container>
         <Stack direction="row" alignItems="center" justifyContent="space-between" mb={5}>
           <Typography variant="h4" gutterBottom>
-            User
+            Cart
           </Typography>
           <Button
             variant="contained"
@@ -119,7 +119,7 @@ function User() {
             to="#"
             startIcon={<Iconify icon="eva:plus-fill" />}
           >
-            New User
+            New Cart
           </Button>
         </Stack>
 
@@ -136,7 +136,7 @@ function User() {
                   order={order}
                   orderBy={orderBy}
                   headLabel={TABLE_HEAD}
-                  rowCount={(users?.data || []).length}
+                  rowCount={(carts?.data || []).length}
                   numSelected={selected.length}
                   onRequestSort={handleRequestSort}
                   onSelectAllClick={handleSelectAllClick}
@@ -149,7 +149,7 @@ function User() {
                       return (
                         <TableRow
                           hover
-                          key={row.user_id}
+                          key={row.cart_id}
                           tabIndex={-1}
                           role="checkbox"
                           selected={isItemSelected}
@@ -158,20 +158,22 @@ function User() {
                           <TableCell padding="checkbox">
                             <Checkbox
                               checked={isItemSelected}
-                              onChange={(event) => handleClick(event, row.user_id)}
+                              onChange={(event) => handleClick(event, row.cart_id)}
                             />
                           </TableCell>
                           <TableCell align="left">{row.phone}</TableCell>
-                          <TableCell align="center">
-                            <Avatar alt={row.avatar} src={row.avatar} />
+                          <TableCell align="left">{row.product_name}</TableCell>
+                          <TableCell align="left">
+                            <Typography sx={{ backgroundColor: row.color, width: 'fit-content' }}>
+                              {row.color}
+                            </Typography>
                           </TableCell>
-                          <TableCell align="left">{row.email}</TableCell>
-                          <TableCell align="left">{row.date_of_birth}</TableCell>
-                          <TableCell align="left">{row.full_name}</TableCell>
-                          <TableCell align="left">{row.role}</TableCell>
+                          <TableCell align="left">{row.size}</TableCell>
+                          <TableCell align="left">{row.import_quantity}</TableCell>
+                          <TableCell align="left">{row.sold_quantity}</TableCell>
                           <TableCell align="left">
                             <Stack direction="row" spacing={1}>
-                              {row.created_at !== null && (
+                              {row.created_at && (
                                 <Label variant="ghost" color="success">
                                   Created
                                 </Label>
@@ -181,12 +183,15 @@ function User() {
                                   Updated
                                 </Label>
                               )}
-                              {row.deleted_at !== null && (
+                              {row.deleted_at && (
                                 <Label variant="ghost" color="error">
                                   Deleted
                                 </Label>
                               )}
                             </Stack>
+                          </TableCell>
+                          <TableCell align="left">
+                            <CartMoreMenu />
                           </TableCell>
                         </TableRow>
                       );
@@ -213,7 +218,7 @@ function User() {
           <TablePagination
             rowsPerPageOptions={[5, 10, 25]}
             component="div"
-            count={(users?.data || []).length}
+            count={(carts?.data || []).length}
             rowsPerPage={rowsPerPage}
             page={page}
             onPageChange={handleChangePage}
@@ -225,4 +230,4 @@ function User() {
   );
 }
 
-export default memo(User);
+export default memo(Cart);

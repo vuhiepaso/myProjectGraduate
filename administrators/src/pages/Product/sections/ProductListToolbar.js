@@ -37,13 +37,13 @@ const SearchStyle = styled(OutlinedInput)(({ theme }) => ({
 
 // ----------------------------------------------------------------------
 
-CategoryListToolbar.propTypes = {
+ProductListToolbar.propTypes = {
   numSelected: PropTypes.number,
   filterName: PropTypes.string,
   onFilterName: PropTypes.func
 };
 
-export default function CategoryListToolbar({ numSelected, filterName, onFilterName }) {
+export default function ProductListToolbar({ numSelected, filterName, onFilterName }) {
   return (
     <RootStyle
       sx={{
@@ -61,7 +61,7 @@ export default function CategoryListToolbar({ numSelected, filterName, onFilterN
         <SearchStyle
           value={filterName}
           onChange={onFilterName}
-          placeholder="Search category..."
+          placeholder="Search by product name..."
           startAdornment={
             <InputAdornment position="start">
               <Iconify icon="eva:search-fill" sx={{ color: 'text.disabled' }} />

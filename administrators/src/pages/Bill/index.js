@@ -17,7 +17,7 @@ import {
   TablePagination
 } from '@mui/material';
 // call api
-import { GetCategories } from '../../api/CategoryAPI';
+import { GetBills } from '../../api/BillAPI';
 // components
 import Page from '../../components/Page';
 import Label from '../../components/Label';
@@ -30,10 +30,12 @@ import { getComparator, applySortFilter } from '../../utils/formatTable';
 // ----------------------------------------------------------------------
 
 const TABLE_HEAD = [
-  { id: 'name', label: 'Name', alignRight: false },
+  { id: 'phone', label: 'Phone', alignRight: false },
+  { id: 'product_name', label: 'Product Name', alignRight: false },
   { id: 'image', label: 'Image', alignRight: false },
-  { id: 'background_color', label: 'Background Color', alignRight: false },
-  { id: 'text_color', label: 'Text Color', alignRight: false },
+  { id: 'color', label: 'Color', alignRight: false },
+  { id: 'size', label: 'Size', alignRight: false },
+  { id: 'status', label: 'Bill status', alignRight: false },
   { id: 'deleted_at', label: 'Status', alignRight: false },
   { id: '' }
 ];
@@ -42,11 +44,11 @@ function Category() {
   const [page, setPage] = useState(0);
   const [order, setOrder] = useState('asc');
   const [selected, setSelected] = useState([]);
-  const [orderBy, setOrderBy] = useState('category_name');
+  const [orderBy, setOrderBy] = useState('phone');
   const [filterName, setFilterName] = useState('');
   const [rowsPerPage, setRowsPerPage] = useState(5);
 
-  const { data: categories, isLoading } = GetCategories();
+  const { data: bills, isLoading } = GetBills();
 
   const handleRequestSort = (event, property) => {
     const isAsc = orderBy === property && order === 'asc';
@@ -56,7 +58,7 @@ function Category() {
 
   const handleSelectAllClick = (event) => {
     if (event.target.checked) {
-      const newSelected = (categories?.data || []).map((n) => n.category_id);
+      const newSelected = (bills?.data || []).map((n) => n.category_id);
       setSelected(newSelected);
       return;
     }
@@ -95,13 +97,13 @@ function Category() {
   };
 
   const emptyRows =
-    page > 0 ? Math.max(0, (1 + page) * rowsPerPage - (categories?.data || []).length) : 0;
+    page > 0 ? Math.max(0, (1 + page) * rowsPerPage - (bills?.data || []).length) : 0;
 
   const filteredUsers = applySortFilter(
-    categories?.data || [],
+    bills?.data || [],
     getComparator(order, orderBy),
     filterName,
-    'category_name'
+    'phone'
   );
 
   if (isLoading) return 'Loading...';
@@ -110,7 +112,7 @@ function Category() {
       <Container>
         <Stack direction="row" alignItems="center" justifyContent="space-between" mb={5}>
           <Typography variant="h4" gutterBottom>
-            Category
+            Bill
           </Typography>
           <Button
             variant="contained"
@@ -118,7 +120,7 @@ function Category() {
             to="#"
             startIcon={<Iconify icon="eva:plus-fill" />}
           >
-            New Category
+            New Bill
           </Button>
         </Stack>
 
@@ -135,7 +137,7 @@ function Category() {
                   order={order}
                   orderBy={orderBy}
                   headLabel={TABLE_HEAD}
-                  rowCount={(categories?.data || []).length}
+                  rowCount={(bills?.data || []).length}
                   numSelected={selected.length}
                   onRequestSort={handleRequestSort}
                   onSelectAllClick={handleSelectAllClick}
@@ -143,12 +145,12 @@ function Category() {
                 <TableBody>
                   {filteredUsers
                     .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-                    .map((row) => {
-                      const isItemSelected = selected.indexOf(row.category_name) !== -1;
+                    .map((row, index) => {
+                      const isItemSelected = selected.indexOf(row.bill_id) !== -1;
                       return (
                         <TableRow
                           hover
-                          key={row.category_id}
+                          key={index}
                           tabIndex={-1}
                           role="checkbox"
                           selected={isItemSelected}
@@ -157,26 +159,24 @@ function Category() {
                           <TableCell padding="checkbox">
                             <Checkbox
                               checked={isItemSelected}
-                              onChange={(event) => handleClick(event, row.category_id)}
+                              onChange={(event) => handleClick(event, row.bill_id)}
                             />
                           </TableCell>
-                          <TableCell align="left">{row.category_name}</TableCell>
+                          <TableCell align="left">{row.phone}</TableCell>
+                          <TableCell align="center">{row.product_name}</TableCell>
                           <TableCell align="center">
-                            <Avatar alt={row.category_name} src={row.image} />
+                            <Avatar alt={row.image} src={row.image} />
                           </TableCell>
                           <TableCell align="left">
-                            <Typography
-                              sx={{ backgroundColor: row.background_color, width: 'fit-content' }}
-                            >
-                              {row.background_color}
+                            <Typography sx={{ color: row.color, width: 'fit-content' }}>
+                              {row.color}
                             </Typography>
                           </TableCell>
-                          <TableCell align="left">
-                            <Typography sx={{ color: row.text_color }}>{row.text_color}</Typography>
-                          </TableCell>
+                          <TableCell align="center">{row.size}</TableCell>
+                          <TableCell align="center">{row.status}</TableCell>
                           <TableCell align="left">
                             <Stack direction="row" spacing={1}>
-                              {row.created_at !== null && (
+                              {row.created_at && (
                                 <Label variant="ghost" color="success">
                                   Created
                                 </Label>
@@ -186,7 +186,7 @@ function Category() {
                                   Updated
                                 </Label>
                               )}
-                              {row.deleted_at !== null && (
+                              {row.deleted_at && (
                                 <Label variant="ghost" color="error">
                                   Deleted
                                 </Label>
@@ -221,7 +221,7 @@ function Category() {
           <TablePagination
             rowsPerPageOptions={[5, 10, 25]}
             component="div"
-            count={(categories?.data || []).length}
+            count={(bills?.data || []).length}
             rowsPerPage={rowsPerPage}
             page={page}
             onPageChange={handleChangePage}

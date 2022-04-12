@@ -45,6 +45,11 @@ const sidebarConfig = [
     title: 'user',
     path: '/dashboard/user',
     icon: getIcon('eva:people-fill')
+  },
+  {
+    title: 'contact',
+    path: '/dashboard/contact',
+    icon: getIcon('eva:message-square-fill')
   }
   // {
   //   title: 'product',

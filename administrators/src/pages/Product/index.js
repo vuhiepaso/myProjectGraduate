@@ -17,7 +17,7 @@ import {
   TablePagination
 } from '@mui/material';
 // call api
-import { GetCategories } from '../../api/CategoryAPI';
+import { GetProducts } from '../../api/ProductAPI';
 // components
 import Page from '../../components/Page';
 import Label from '../../components/Label';
@@ -30,15 +30,18 @@ import { getComparator, applySortFilter } from '../../utils/formatTable';
 // ----------------------------------------------------------------------
 
 const TABLE_HEAD = [
-  { id: 'name', label: 'Name', alignRight: false },
-  { id: 'image', label: 'Image', alignRight: false },
-  { id: 'background_color', label: 'Background Color', alignRight: false },
-  { id: 'text_color', label: 'Text Color', alignRight: false },
-  { id: 'deleted_at', label: 'Status', alignRight: false },
+  { id: 'product_name', label: 'Product Name', alignRight: false },
+  { id: 'image', label: 'Product Image', alignRight: false },
+  { id: 'category_name', label: 'Category Name', alignRight: false },
+  { id: 'description', label: 'Description', alignRight: false },
+  { id: 'price', label: 'Price', alignRight: false },
+  { id: 'sale_off', label: 'Sale off', alignRight: false },
+  { id: '', label: 'Color', alignRight: false },
+  { id: '', label: 'Size', alignRight: false },
   { id: '' }
 ];
 
-function Category() {
+function Product() {
   const [page, setPage] = useState(0);
   const [order, setOrder] = useState('asc');
   const [selected, setSelected] = useState([]);
@@ -46,7 +49,7 @@ function Category() {
   const [filterName, setFilterName] = useState('');
   const [rowsPerPage, setRowsPerPage] = useState(5);
 
-  const { data: categories, isLoading } = GetCategories();
+  const { data: products, isLoading } = GetProducts();
 
   const handleRequestSort = (event, property) => {
     const isAsc = orderBy === property && order === 'asc';
@@ -56,7 +59,7 @@ function Category() {
 
   const handleSelectAllClick = (event) => {
     if (event.target.checked) {
-      const newSelected = (categories?.data || []).map((n) => n.category_id);
+      const newSelected = (products?.data || []).map((n) => n.product_id);
       setSelected(newSelected);
       return;
     }
@@ -95,13 +98,13 @@ function Category() {
   };
 
   const emptyRows =
-    page > 0 ? Math.max(0, (1 + page) * rowsPerPage - (categories?.data || []).length) : 0;
+    page > 0 ? Math.max(0, (1 + page) * rowsPerPage - (products?.data || []).length) : 0;
 
   const filteredUsers = applySortFilter(
-    categories?.data || [],
+    products?.data || [],
     getComparator(order, orderBy),
     filterName,
-    'category_name'
+    'product_name'
   );
 
   if (isLoading) return 'Loading...';
@@ -110,7 +113,7 @@ function Category() {
       <Container>
         <Stack direction="row" alignItems="center" justifyContent="space-between" mb={5}>
           <Typography variant="h4" gutterBottom>
-            Category
+            Product
           </Typography>
           <Button
             variant="contained"
@@ -118,7 +121,7 @@ function Category() {
             to="#"
             startIcon={<Iconify icon="eva:plus-fill" />}
           >
-            New Category
+            New Product
           </Button>
         </Stack>
 
@@ -135,7 +138,7 @@ function Category() {
                   order={order}
                   orderBy={orderBy}
                   headLabel={TABLE_HEAD}
-                  rowCount={(categories?.data || []).length}
+                  rowCount={(products?.data || []).length}
                   numSelected={selected.length}
                   onRequestSort={handleRequestSort}
                   onSelectAllClick={handleSelectAllClick}
@@ -143,12 +146,12 @@ function Category() {
                 <TableBody>
                   {filteredUsers
                     .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-                    .map((row) => {
-                      const isItemSelected = selected.indexOf(row.category_name) !== -1;
+                    .map((row, index) => {
+                      const isItemSelected = selected.indexOf(row.product_name) !== -1;
                       return (
                         <TableRow
                           hover
-                          key={row.category_id}
+                          key={index}
                           tabIndex={-1}
                           role="checkbox"
                           selected={isItemSelected}
@@ -157,13 +160,31 @@ function Category() {
                           <TableCell padding="checkbox">
                             <Checkbox
                               checked={isItemSelected}
-                              onChange={(event) => handleClick(event, row.category_id)}
+                              onChange={(event) => handleClick(event, row.product_id)}
                             />
                           </TableCell>
-                          <TableCell align="left">{row.category_name}</TableCell>
+                          <TableCell align="left">{row.product_name}</TableCell>
                           <TableCell align="center">
-                            <Avatar alt={row.category_name} src={row.image} />
+                            <Avatar alt={row.image} src={row.image} />
                           </TableCell>
+                          <TableCell align="left">{row.category_name}</TableCell>
+                          <TableCell align="left">{row.description}</TableCell>
+                          <TableCell align="left">{row.price}</TableCell>
+                          <TableCell align="left">{row.sale_off}%</TableCell>
+
+                          <TableCell align="left">
+                            {row.color_table.map((color, colorIndex) => (
+                              <Typography key={colorIndex} sx={{ color: color.color }}>
+                                {color.color}
+                              </Typography>
+                            ))}
+                          </TableCell>
+                          <TableCell align="left">
+                            {row.color_table.map((color) =>
+                              color.size_table.map((size) => `${size.size} `)
+                            )}
+                          </TableCell>
+
                           <TableCell align="left">
                             <Typography
                               sx={{ backgroundColor: row.background_color, width: 'fit-content' }}
@@ -176,17 +197,17 @@ function Category() {
                           </TableCell>
                           <TableCell align="left">
                             <Stack direction="row" spacing={1}>
-                              {row.created_at !== null && (
+                              {row.product_created_at && (
                                 <Label variant="ghost" color="success">
                                   Created
                                 </Label>
                               )}
-                              {row.updated_at && (
+                              {row.product_updated_at && (
                                 <Label variant="ghost" color="warning">
                                   Updated
                                 </Label>
                               )}
-                              {row.deleted_at !== null && (
+                              {row.product_deleted_at && (
                                 <Label variant="ghost" color="error">
                                   Deleted
                                 </Label>
@@ -221,7 +242,7 @@ function Category() {
           <TablePagination
             rowsPerPageOptions={[5, 10, 25]}
             component="div"
-            count={(categories?.data || []).length}
+            count={(products?.data || []).length}
             rowsPerPage={rowsPerPage}
             page={page}
             onPageChange={handleChangePage}
@@ -233,4 +254,4 @@ function Category() {
   );
 }
 
-export default memo(Category);
+export default memo(Product);

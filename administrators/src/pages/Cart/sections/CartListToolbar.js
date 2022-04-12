@@ -61,7 +61,7 @@ export default function FavoriteListToolbar({ numSelected, filterName, onFilterN
         <SearchStyle
           value={filterName}
           onChange={onFilterName}
-          placeholder="Search user..."
+          placeholder="Search cart by phone..."
           startAdornment={
             <InputAdornment position="start">
               <Iconify icon="eva:search-fill" sx={{ color: 'text.disabled' }} />

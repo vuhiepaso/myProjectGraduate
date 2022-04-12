@@ -176,7 +176,7 @@ function Category() {
                           </TableCell>
                           <TableCell align="left">
                             <Stack direction="row" spacing={1}>
-                              {row.created_at !== null && (
+                              {row.created_at && (
                                 <Label variant="ghost" color="success">
                                   Created
                                 </Label>
@@ -186,7 +186,7 @@ function Category() {
                                   Updated
                                 </Label>
                               )}
-                              {row.deleted_at !== null && (
+                              {row.deleted_at && (
                                 <Label variant="ghost" color="error">
                                   Deleted
                                 </Label>

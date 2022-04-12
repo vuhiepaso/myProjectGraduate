@@ -1,11 +1,10 @@
-import { memo, useState } from 'react';
+import { memo, useEffect, useState } from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 // material
 import {
   Card,
   Table,
   Stack,
-  Avatar,
   Button,
   Checkbox,
   TableRow,
@@ -17,7 +16,7 @@ import {
   TablePagination
 } from '@mui/material';
 // call api
-import { GetUsers } from '../../api/UserAPI';
+import { GetAddress } from '../../api/AddressAPI';
 // components
 import Page from '../../components/Page';
 import Label from '../../components/Label';
@@ -26,20 +25,21 @@ import Iconify from '../../components/Iconify';
 import SearchNotFound from '../../components/SearchNotFound';
 import { AddressListHead, AddressListToolbar } from './sections';
 import { getComparator, applySortFilter } from '../../utils/formatTable';
+import { BillMoreMenu } from '../Bill/sections';
 
 // ----------------------------------------------------------------------
 
 const TABLE_HEAD = [
-  { id: 'phone', label: 'Phone Number', alignRight: false },
-  { id: 'avatar', label: 'Avatar', alignRight: false },
-  { id: 'email', label: 'Email', alignRight: false },
-  { id: 'date_of_birth', label: 'Date Of Birth', alignRight: false },
-  { id: 'full_name', label: 'Full Name', alignRight: false },
-  { id: 'role', label: 'Role', alignRight: false },
-  { id: 'deleted_at', label: 'Status', alignRight: false }
+  { id: 'user_phone', label: 'User phone', alignRight: false },
+  { id: 'address', label: 'Address', alignRight: false },
+  { id: 'address_phone', label: 'Address phone', alignRight: false },
+  { id: 'recipient_name', label: 'Recipient Name', alignRight: false },
+  { id: 'is_default', label: 'Default', alignRight: false },
+  { id: 'address_deleted_at', label: 'Status', alignRight: false },
+  { id: '' }
 ];
 
-function User() {
+function Address() {
   const [page, setPage] = useState(0);
   const [order, setOrder] = useState('asc');
   const [selected, setSelected] = useState([]);
@@ -47,7 +47,7 @@ function User() {
   const [filterName, setFilterName] = useState('');
   const [rowsPerPage, setRowsPerPage] = useState(5);
 
-  const { data: users, isLoading } = GetUsers();
+  const { data: addresses, isLoading } = GetAddress();
 
   const handleRequestSort = (event, property) => {
     const isAsc = orderBy === property && order === 'asc';
@@ -57,7 +57,7 @@ function User() {
 
   const handleSelectAllClick = (event) => {
     if (event.target.checked) {
-      const newSelected = (users?.data || []).map((n) => n.user_id);
+      const newSelected = (addresses?.data || []).map((n) => n.address_id);
       setSelected(newSelected);
       return;
     }
@@ -96,14 +96,21 @@ function User() {
   };
 
   const emptyRows =
-    page > 0 ? Math.max(0, (1 + page) * rowsPerPage - (users?.data || []).length) : 0;
+    page > 0 ? Math.max(0, (1 + page) * rowsPerPage - (addresses?.data || []).length) : 0;
 
   const filteredUsers = applySortFilter(
-    users?.data || [],
+    addresses?.data || [],
     getComparator(order, orderBy),
     filterName,
-    'phone'
+    'user_phone'
   );
+
+  useEffect(() => {
+    localStorage.setItem(
+      'token',
+      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNzlhYmNiOGYtNmM4ZC00YzdjLWJkNDUtMDExY2M0MzA2ZWNlIiwicm9sZSI6ImFkbWluIiwiZGF0ZSI6IjIwMjItMDQtMDFUMTQ6MDc6NTIuMzk3WiIsImlhdCI6MTY0ODgyMjA3Mn0.oIUij4kjHa78Si_bXB-s2rg0zaih9TCL0ix0ak2ylrs'
+    );
+  });
 
   if (isLoading) return 'Loading...';
   return (
@@ -111,7 +118,7 @@ function User() {
       <Container>
         <Stack direction="row" alignItems="center" justifyContent="space-between" mb={5}>
           <Typography variant="h4" gutterBottom>
-            User
+            Address
           </Typography>
           <Button
             variant="contained"
@@ -119,7 +126,7 @@ function User() {
             to="#"
             startIcon={<Iconify icon="eva:plus-fill" />}
           >
-            New User
+            New Address
           </Button>
         </Stack>
 
@@ -136,7 +143,7 @@ function User() {
                   order={order}
                   orderBy={orderBy}
                   headLabel={TABLE_HEAD}
-                  rowCount={(users?.data || []).length}
+                  rowCount={(addresses?.data || []).length}
                   numSelected={selected.length}
                   onRequestSort={handleRequestSort}
                   onSelectAllClick={handleSelectAllClick}
@@ -145,11 +152,11 @@ function User() {
                   {filteredUsers
                     .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                     .map((row) => {
-                      const isItemSelected = selected.indexOf(row.category_name) !== -1;
+                      const isItemSelected = selected.indexOf(row.address_id) !== -1;
                       return (
                         <TableRow
                           hover
-                          key={row.user_id}
+                          key={row.address_id}
                           tabIndex={-1}
                           role="checkbox"
                           selected={isItemSelected}
@@ -158,35 +165,41 @@ function User() {
                           <TableCell padding="checkbox">
                             <Checkbox
                               checked={isItemSelected}
-                              onChange={(event) => handleClick(event, row.user_id)}
+                              onChange={(event) => handleClick(event, row.address_id)}
                             />
                           </TableCell>
-                          <TableCell align="left">{row.phone}</TableCell>
-                          <TableCell align="center">
-                            <Avatar alt={row.avatar} src={row.avatar} />
+                          <TableCell align="left">{row.user_phone}</TableCell>
+                          <TableCell align="left">{row.address}</TableCell>
+                          <TableCell align="left">{row.address_phone}</TableCell>
+                          <TableCell align="left">{row.recipient_name}</TableCell>
+                          <TableCell align="left">
+                            {row.is_default === 1 && (
+                              <Label variant="ghost" color="success">
+                                Default
+                              </Label>
+                            )}
                           </TableCell>
-                          <TableCell align="left">{row.email}</TableCell>
-                          <TableCell align="left">{row.date_of_birth}</TableCell>
-                          <TableCell align="left">{row.full_name}</TableCell>
-                          <TableCell align="left">{row.role}</TableCell>
                           <TableCell align="left">
                             <Stack direction="row" spacing={1}>
-                              {row.created_at !== null && (
+                              {row.address_created_at && (
                                 <Label variant="ghost" color="success">
                                   Created
                                 </Label>
                               )}
-                              {row.updated_at && (
+                              {row.address_updated_at && (
                                 <Label variant="ghost" color="warning">
                                   Updated
                                 </Label>
                               )}
-                              {row.deleted_at !== null && (
+                              {row.address_deleted_at && (
                                 <Label variant="ghost" color="error">
                                   Deleted
                                 </Label>
                               )}
                             </Stack>
+                          </TableCell>
+                          <TableCell align="right">
+                            <BillMoreMenu />
                           </TableCell>
                         </TableRow>
                       );
@@ -213,7 +226,7 @@ function User() {
           <TablePagination
             rowsPerPageOptions={[5, 10, 25]}
             component="div"
-            count={(users?.data || []).length}
+            count={(addresses?.data || []).length}
             rowsPerPage={rowsPerPage}
             page={page}
             onPageChange={handleChangePage}
@@ -225,4 +238,4 @@ function User() {
   );
 }
 
-export default memo(User);
+export default memo(Address);
