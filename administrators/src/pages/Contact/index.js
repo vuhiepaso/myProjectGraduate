@@ -13,26 +13,13 @@ function Contact() {
   const chatRef = useRef(null);
   const [userId, setUserId] = useState('');
 
-  const socket = io(api);
+  const socket = io.connect(api);
 
   const { data: users } = GetListUser();
   const { data: messages, refetch } = GetMessages(userId);
 
   useEffect(() => {
-    setListMessages(messages?.data || []);
-  }, [messages]);
-
-  useEffect(() => {
-    setListMessages(messages?.data || []);
-  }, [userId]);
-
-  useEffect(() => {
-    setUserId(users?.data[0]?.user_id);
-  }, [users]);
-
-  useEffect(() => socket.emit('join', { user_id: userId }), []);
-
-  useEffect(() => {
+    console.log('?????');
     const handleReceiveMessage = () =>
       socket.on('receive_chat', ({ data }) => setListMessages((list) => [...list, data]));
     handleReceiveMessage();
@@ -40,7 +27,19 @@ function Contact() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [socket]);
 
-  useEffect(() => refetch(), [userId]);
+  useEffect(() => {
+    setListMessages(messages?.data || []);
+  }, [messages]);
+
+  useEffect(() => {
+    refetch();
+    setListMessages(messages?.data || []);
+    socket.emit('join', { user_id: userId });
+  }, [userId]);
+
+  useEffect(() => {
+    setUserId(users?.data[0]?.user_id);
+  }, [users]);
 
   const handleSendMessage = () => {
     pagerRef?.current?.scroll({ top: pagerRef?.current?.scrollHeight, behavior: 'smooth' });
