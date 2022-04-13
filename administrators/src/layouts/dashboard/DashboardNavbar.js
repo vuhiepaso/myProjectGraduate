@@ -6,7 +6,6 @@ import { Box, Stack, AppBar, Toolbar, IconButton } from '@mui/material';
 import Iconify from '../../components/Iconify';
 //
 import AccountPopover from './AccountPopover';
-import NotificationsPopover from './NotificationsPopover';
 // const
 import { DRAWER_WIDTH, APP_BAR_MOBILE, APP_BAR_DESKTOP } from '../../constants';
 
