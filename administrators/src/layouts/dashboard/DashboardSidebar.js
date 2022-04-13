@@ -4,8 +4,6 @@ import { Link as RouterLink, useLocation } from 'react-router-dom';
 // material
 import { styled } from '@mui/material/styles';
 import { Box, Link, Drawer, Typography, Avatar } from '@mui/material';
-// mocks_
-import account from '../../_mocks_/account';
 // hooks
 import useResponsive from '../../hooks/useResponsive';
 // components
@@ -30,10 +28,11 @@ const AccountStyle = styled('div')(({ theme }) => ({
 
 DashboardSidebar.propTypes = {
   isOpenSidebar: PropTypes.bool,
-  onCloseSidebar: PropTypes.func
+  onCloseSidebar: PropTypes.func,
+  user: PropTypes.object
 };
 
-export default function DashboardSidebar({ isOpenSidebar, onCloseSidebar }) {
+export default function DashboardSidebar({ isOpenSidebar, onCloseSidebar, user }) {
   const { pathname } = useLocation();
 
   const isDesktop = useResponsive('up', 'lg');
@@ -67,13 +66,10 @@ export default function DashboardSidebar({ isOpenSidebar, onCloseSidebar }) {
         <Box sx={{ mb: 5, mx: 2.5 }}>
           <Link underline="none" component={RouterLink} to="#">
             <AccountStyle>
-              <Avatar src={account.photoURL} alt="photoURL" />
+              <Avatar src={user.avatar} alt="photoURL" />
               <Box sx={{ ml: 2 }}>
                 <Typography variant="subtitle2" sx={{ color: 'text.primary' }}>
-                  {account.displayName}
-                </Typography>
-                <Typography variant="body2" sx={{ color: 'text.secondary' }}>
-                  {account.role}
+                  {user.full_name}
                 </Typography>
               </Box>
             </AccountStyle>

@@ -26,6 +26,7 @@ import Iconify from '../../components/Iconify';
 import SearchNotFound from '../../components/SearchNotFound';
 import { UserListHead, UserListToolbar } from './sections';
 import { getComparator, applySortFilter } from '../../utils/formatTable';
+import UserMoreMenu from './sections/UserMoreMenu';
 
 // ----------------------------------------------------------------------
 
@@ -187,6 +188,9 @@ function User() {
                                 </Label>
                               )}
                             </Stack>
+                          </TableCell>
+                          <TableCell align="right">
+                            <UserMoreMenu />
                           </TableCell>
                         </TableRow>
                       );

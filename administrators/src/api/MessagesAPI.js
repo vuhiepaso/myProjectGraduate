@@ -1,9 +1,14 @@
 import { useQuery } from 'react-query';
 import axiosClient from '../config/axios';
 
-const GetMessages = () => {
-  const url = '/message/messages';
+const GetMessages = (userId) => {
+  const url = `/message/messages/${userId}`;
   return useQuery('get-messages', () => axiosClient.get(url));
 };
 
-export { GetMessages };
+const GetListUser = () => {
+  const url = `/message/users`;
+  return useQuery('get-list-user', () => axiosClient.get(url));
+};
+
+export { GetMessages, GetListUser };

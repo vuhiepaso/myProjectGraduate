@@ -7,8 +7,6 @@ import { Button, Box, Divider, MenuItem, Typography, Avatar, IconButton } from '
 // components
 import Iconify from '../../components/Iconify';
 import MenuPopover from '../../components/MenuPopover';
-//
-import account from '../../_mocks_/account';
 
 // ----------------------------------------------------------------------
 
@@ -32,10 +30,11 @@ const MENU_OPTIONS = [
 
 // ----------------------------------------------------------------------
 AccountPopover.propTypes = {
-  onLogout: PropTypes.func
+  onLogout: PropTypes.func,
+  user: PropTypes.object
 };
 
-export default function AccountPopover({ onLogout }) {
+export default function AccountPopover({ onLogout, user }) {
   const anchorRef = useRef(null);
   const [open, setOpen] = useState(false);
 
@@ -68,7 +67,7 @@ export default function AccountPopover({ onLogout }) {
           })
         }}
       >
-        <Avatar src={account.photoURL} alt="photoURL" />
+        <Avatar src={user?.avatar} alt="photoURL" />
       </IconButton>
 
       <MenuPopover
@@ -79,10 +78,10 @@ export default function AccountPopover({ onLogout }) {
       >
         <Box sx={{ my: 1.5, px: 2.5 }}>
           <Typography variant="subtitle1" noWrap>
-            {account.displayName}
+            {user?.fullname}
           </Typography>
           <Typography variant="body2" sx={{ color: 'text.secondary' }} noWrap>
-            {account.email}
+            {user?.email}
           </Typography>
         </Box>
 

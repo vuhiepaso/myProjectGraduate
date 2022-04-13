@@ -7,6 +7,7 @@ import DashboardNavbar from './DashboardNavbar';
 import DashboardSidebar from './DashboardSidebar';
 // const
 import { APP_BAR_MOBILE, APP_BAR_DESKTOP } from '../../constants';
+import { GetCurrentUser } from '../../api/UserAPI';
 // ----------------------------------------------------------------------
 
 const RootStyle = styled('div')({
@@ -34,16 +35,23 @@ export default function DashboardLayout() {
   const [open, setOpen] = useState(true);
   const navigate = useNavigate();
 
+  const { data: user } = GetCurrentUser();
+
   const handleLogout = () => navigate('/login', { replace: true });
 
   return (
     <RootStyle>
       <DashboardNavbar
+        user={user?.data || {}}
         onLogout={handleLogout}
         isOpenSidebar={open}
         onOpenSidebar={() => setOpen(!open)}
       />
-      <DashboardSidebar isOpenSidebar={open} onCloseSidebar={() => setOpen(false)} />
+      <DashboardSidebar
+        user={user?.data || {}}
+        isOpenSidebar={open}
+        onCloseSidebar={() => setOpen(false)}
+      />
       <MainStyle>
         <Outlet />
       </MainStyle>

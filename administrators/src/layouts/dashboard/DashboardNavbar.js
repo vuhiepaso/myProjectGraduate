@@ -25,10 +25,11 @@ const ToolbarStyle = styled(Toolbar)(({ theme }) => ({
 DashboardNavbar.propTypes = {
   isOpenSidebar: PropTypes.bool,
   onOpenSidebar: PropTypes.func,
-  onLogout: PropTypes.func
+  onLogout: PropTypes.func,
+  user: PropTypes.object
 };
 
-export default function DashboardNavbar({ isOpenSidebar, onOpenSidebar, onLogout }) {
+export default function DashboardNavbar({ isOpenSidebar, onOpenSidebar, onLogout, user }) {
   return (
     <AppBar
       sx={{
@@ -47,8 +48,8 @@ export default function DashboardNavbar({ isOpenSidebar, onOpenSidebar, onLogout
         <Box sx={{ flexGrow: 1 }} />
 
         <Stack direction="row" alignItems="center" spacing={{ xs: 0.5, sm: 1.5 }}>
-          <NotificationsPopover />
-          <AccountPopover onLogout={onLogout} />
+          {/* <NotificationsPopover /> */}
+          <AccountPopover user={user} onLogout={onLogout} />
         </Stack>
       </ToolbarStyle>
     </AppBar>

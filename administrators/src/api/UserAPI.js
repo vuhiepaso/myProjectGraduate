@@ -6,4 +6,9 @@ const GetUsers = () => {
   return useQuery('get-users', () => axiosClient.get(url));
 };
 
-export { GetUsers };
+const GetCurrentUser = () => {
+  const url = '/user/information';
+  return useQuery('get-user-detail', () => axiosClient.get(url));
+};
+
+export { GetUsers, GetCurrentUser };
